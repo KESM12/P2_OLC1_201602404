@@ -1,0 +1,9 @@
+const TIPO_DATO = {
+    ENTERO: "ENTERO",
+    DECIMAL: "DECIMAL",
+    CADENA: "CADENA",
+    BOOLEANO: "BOOLEANO",
+    CARACTER: "CARACTER",
+}
+
+module.exports = TIPO_DATO;
