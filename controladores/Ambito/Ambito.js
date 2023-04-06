@@ -90,4 +90,11 @@ class Ambito{
         return false;
     }
     
+    existeSimboloAmbitoActual(_clave){
+        var encontrado = this.tablaSimbolos.get(_clave.toLowerCase());
+        if(encontrado != null){
+            return true;
+        }
+        return false;
+    }
 }

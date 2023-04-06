@@ -1,0 +1,56 @@
+const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion");
+const Asignacion = require("./Asignacion");
+const Declaracion = require("./Declaracion");
+const DeclaracionMetodo = require("./DeclaracionMetodo");
+const Main = require("./Main");
+
+function Global(_instrucciones, _ambito){
+    var cadena = "";
+    //primer pasada para verificar que solo sea un Main
+    var contadorMain = 0;
+    for (let i = 0; i < _instrucciones.length; i++) {
+        if(_instrucciones[i].tipo === TIPO_INSTRUCCION.MAIN){
+            contadorMain++;
+        }
+    }
+    if(contadorMain > 1){
+        return "Error: Solo puede haber un metodo Main";
+    }
+    else if(contadorMain == 0){
+        return "Error: No existe un metodo Main";
+    }
+    //segunda pasada para ejecutar las instrucciones
+    for (let i = 0; i < _instrucciones.length; i++) {
+        if(_instrucciones[i].tipo === TIPO_INSTRUCCION.DECLARACION){
+            var mensaje = Declaracion(_instrucciones[i], _ambito);
+            if(mensaje != null){
+                cadena += mensaje + '\n';
+            }
+        }else if(_instrucciones[i].tipo === TIPO_INSTRUCCION.DECLARACION_METODO){
+            var mensaje = DeclaracionMetodo(_instrucciones[i], _ambito);
+            if(mensaje != null){
+                cadena += mensaje + '\n';
+            }
+        }else if(_instrucciones[i].tipo === TIPO_INSTRUCCION.ASIGNACION){
+            var mensaje = Asignacion(_instrucciones[i], _ambito);
+            if(mensaje != null){
+                cadena += mensaje + '\n';
+            }
+        }
+    }
+//tercera pasada para ejecutar el Main
+    for (let i = 0; i < _instrucciones.length; i++) {
+        if(_instrucciones[i].tipo === TIPO_INSTRUCCION.MAIN){
+            var mensaje = Main(_instrucciones[i], _ambito);
+            if(mensaje != null){
+                cadena += mensaje + '\n';
+            }
+            break;
+        }
+    }
+    return cadena;
+}
+
+//creo que esta completo.
+
+module.exports = Global;
