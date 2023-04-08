@@ -1,10 +1,10 @@
 const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion");
 const TIPO_OPERACION = require("../Enums/TipoOperacion");
 const TIPO_VALOR = require("../Enums/TipoValor");
-const Aritmetica = require("./Aritmetica");
-const Logica = require("./Logica");
-const Relacional = require("./Relacional");
-const ValorExpresion = require("./ValorExpresion");
+const Aritmetica = require("../Operaciones/Aritmetica");
+const Logica = require("../Operaciones/Logica");
+const Relacional = require("../Operaciones/Relacional");
+const ValorExpresion = require("../Operaciones/ValorExpresion");
 
 function Operacion(_expresion, _ambito){
     if(_expresion.tipo === TIPO_VALOR.ENTERO

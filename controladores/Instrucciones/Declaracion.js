@@ -1,6 +1,6 @@
-const Simbolo = require("../Simbolo");
+const Simbolo = require("../Ambito/Simbolo");
 const TIPO_DATO = require("../Enums/TipoDato");
-const Operacion =  require('../Operacion');
+const Operacion =  require('../Operaciones/Operacion');
 
 function Declaracion(_instruccion, _ambito){
     if(_instruccion.tipo_dato === TIPO_DATO.ENTERO){
@@ -110,5 +110,7 @@ function Declaracion(_instruccion, _ambito){
     return null;
 }
 }
+
+module.exports = Declaracion;
 
 //esperar la validación del aux si se deja objeto y arreglo 

@@ -98,3 +98,5 @@ class Ambito{
         return false;
     }
 }
+
+module.exports = Ambito;

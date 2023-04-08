@@ -1,5 +1,5 @@
-const Ambito = require("./Ambito");
-const Global = require("./Global");
+const Ambito = require("../controladores/Ambito/Ambito");
+const Global = require("../controladores/Instrucciones/Global");
 
 module.exports = (parse, app ) => {
     var prueba;
@@ -8,7 +8,7 @@ module.exports = (parse, app ) => {
         prueba = req.body,entrada;
         ast = parse(prueba);
         const AmbitoGlobal = new Ambito(null, "Global");
-        var cadana = new Global(ast, AmbitoGlobal);
+        var cadana = Global(ast, AmbitoGlobal);
         var resultado = {
             arbol: ast, 
             resultado: cadana

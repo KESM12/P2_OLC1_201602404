@@ -17,7 +17,7 @@ app.get('/',(req, res)=>{
     res.send(respuesta)
 })
 
-const analizar = require('./dndpoints/analizador')(parser, app)
+const analizar = require('./endpoints/analizador')(parser, app)
 app.listen('5000', ()=>{
     console.log("Servidor en puerto 5000")
 })

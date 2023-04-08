@@ -1,4 +1,4 @@
-const Operacion = require('../Operacion');
+const Operacion = require('../Operaciones/Operacion');
 
 function Asignacion(_instruccion, _ambito){
     const id = _instruccion.id;
@@ -23,4 +23,5 @@ function Asignacion(_instruccion, _ambito){
 
 }
 
+module.exports = Asignacion;
 //no se que mas falta la dvd

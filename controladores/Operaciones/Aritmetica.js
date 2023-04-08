@@ -2,7 +2,7 @@ const TIPO_DATO = require("../Enums/TipoDato");
 const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion");
 const TIPO_OPERACION = require("../Enums/TipoOperacion");
 const TIPO_VALOR = require("../Enums/TipoValor");
-const tipoResultado = require("../Enums/TipoResultado");
+const tipoResultado = require("../Operaciones/TipoResultado");
 const ValorExpresion = require("./ValorExpresion");
 
 function Aritmetica(_expresion, _ambito){

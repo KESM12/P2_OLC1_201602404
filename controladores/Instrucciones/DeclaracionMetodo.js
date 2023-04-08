@@ -1,4 +1,4 @@
-const Metodo = require('../Metodo');
+const Metodo = require('../Ambito/Metodo');
 
 function DeclaracionMetodo(_instruccion, _ambito){
     var nuevoMetodo = new Metodo(_instruccion.id, _instruccion.parametros, _instruccion.instrucciones, _instruccion.linea, _instruccion.columna);
