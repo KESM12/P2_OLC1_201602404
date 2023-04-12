@@ -1,117 +1,355 @@
-const TIPO_DATO = require("../Enums/TipoDato");
-const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion");
-const TIPO_OPERACION = require("../Enums/TipoOperacion");
-const TIPO_VALOR = require("../Enums/TipoValor");
-const tipoResultado = require("../Operaciones/TipoResultado");
-const ValorExpresion = require("./ValorExpresion");
+const TIPO_DATO = require("../Enums/TipoDato")
+const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion")
+const TIPO_OPERACION = require("../Enums/TipoOperacion")
+const TIPO_VALOR = require("../Enums/TipoValor")
+const TipoResultado = require("./TipoResultado")
+const ValorExpresion = require("./ValorExpresion")   
 
-function Aritmetica(_expresion, _ambito){
-    if(_expresion.tipo === TIPO_VALOR.ENTERO
-        || _expresion.tipo === TIPO_VALOR.DECIMAL
-        || _expresion.tipo === TIPO_VALOR.BOOLEANO
-        || _expresion.tipo === TIPO_VALOR.CHAR
-        || _expresion.tipo === TIPO_VALOR.CADENA
-        || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR
-        || _expresion.tipo === TIPO_INSTRUCCION.LLAMADA_METODO){
-            return ValorExpresion(_expresion, _ambito);
-    }else if(_expresion.tipo === TIPO_OPERACION.SUMA){
-        return suma(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
-    }else if(_expresion.tipo === TIPO_OPERACION.RESTA){
-        return resta(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
-    }else if(_expresion.tipo === TIPO_OPERACION.MULTIPLICACION){
-        return multiplicacion(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
-    }else if(_expresion.tipo === TIPO_OPERACION.DIVISION){
-        return division(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
-    }else if(_expresion.tipo === TIPO_OPERACION.MODULO){
-        return modulo(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
+function Aritmetica(_expresion,_ambito){
+    if (_expresion.tipo === TIPO_VALOR.DECIMAL || _expresion.tipo === TIPO_VALOR.BOOL || _expresion.tipo === TIPO_VALOR.ENTERO ||
+        _expresion.tipo === TIPO_VALOR.CADENA || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR || _expresion.tipo === TIPO_VALOR.CHAR || _expresion.tipo === TIPO_INSTRUCCION.LLAMADA_METODO) {
+        return ValorExpresion(_expresion, _ambito) 
+    }else if (_expresion.tipo === TIPO_OPERACION.SUMA) {
+        // console.log("suma")
+        return suma(_expresion.opIzq, _expresion.opDer, _ambito)
+    }else if (_expresion.tipo === TIPO_OPERACION.RESTA) {
+        // console.log("resta")
+        return resta(_expresion.opIzq, _expresion.opDer, _ambito)
+}
+}
+
+function suma(_opizq, _opDer, _ambito) {
+    const opIzq = Aritmetica(_opizq, _ambito)  
+    const opDer = Aritmetica(_opDer, _ambito)
+    
+    const tipores = TipoResultado(opIzq.tipo, opDer.tipo)  
+
+
+    if (tipores != null) {
+        if (tipores === TIPO_DATO.DECIMAL || tipores === TIPO_DATO.ENTERO) {
+            if (opIzq.tipo === TIPO_DATO.BOOL || opDer.tipo === TIPO_DATO.BOOL) {
+                if (opIzq.tipo === TIPO_DATO.BOOL) {
+                    if (opIzq.valor === true) {
+                        const resultado = 1 + Number(opDer.valor);
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    } else {
+                        const resultado = 0 + Number(opDer.valor);
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    }
+
+                }
+                else if (opDer.tipo === TIPO_DATO.BOOL) {
+                    if (opDer.valor === true) {
+                        const resultado = Number(opIzq.valor) + 1;
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    } else {
+                        const resultado = Number(opIzq.valor) + 0;
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    }
+
+                }
+            } else if (opIzq.tipo === TIPO_DATO.CHAR || opDer.tipo === TIPO_DATO.CHAR) {
+                if (opIzq.tipo === TIPO_DATO.CHAR) {
+                    const resultado = Number((opIzq.valor).charCodeAt(0)) + Number(opDer.valor);
+                    return {
+                        valor: resultado,
+                        tipo: tipores,
+                        linea: _opizq.linea,
+                        columna: _opizq.columna
+
+                    }
+
+                }
+                else if (opDer.tipo === TIPO_DATO.CHAR) {
+                    const resultado = Number(opIzq.valor) + Number((opDer.valor).charCodeAt(0));
+                    return {
+                        valor: resultado,
+                        tipo: tipores,
+                        linea: _opizq.linea,
+                        columna: _opizq.columna
+
+                    }
+                }
+            } else {
+                const resultado = Number(opIzq.valor) + Number(opDer.valor);
+                return {
+                    valor: resultado,
+                    tipo: tipores,
+                    linea: _opizq.linea,
+                    columna: _opizq.columna
+
+                }
+            }
+
+
+        }
+        if (tipores === TIPO_DATO.CADENA) {
+            const resultado = opIzq.valor.toString() + opDer.valor.toString();
+            return {
+                valor: resultado,
+                tipo: tipores,
+                linea: _opizq.linea,
+                columna: _opizq.columna
+
+            }
+
+        }
+
+    } 
+
+}
+
+function resta(_opizq, _opDer, _ambito) {
+    const opIzq = Aritmetica(_opizq, _ambito)  
+    const opDer = Aritmetica(_opDer, _ambito)
+    
+    const tipores = TipoResultado(opIzq.tipo, opDer.tipo)
+
+    console.log(opIzq.valor)
+    console.log(opDer.valor)
+    console.log(tipores)
+    console.log("resta")
+
+    if (tipores != null) {
+        if (tipores === TIPO_DATO.DECIMAL || tipores === TIPO_DATO.ENTERO) {
+            if (opIzq.tipo === TIPO_DATO.BOOL || opDer.tipo === TIPO_DATO.BOOL) {
+                if (opIzq.tipo === TIPO_DATO.BOOL) {
+                    if (opIzq.valor === true) {
+                        const resultado = 1 - Number(opDer.valor);
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    } else {
+                        const resultado = 0 - Number(opDer.valor);
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    }
+
+                }
+                else if (opDer.tipo === TIPO_DATO.BOOL) {
+                    if (opDer.valor === true) {
+                        const resultado = Number(opIzq.valor) - 1;
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    } else {
+                        const resultado = Number(opIzq.valor) - 0;
+                        return {
+                            valor: resultado,
+                            tipo: tipores,
+                            linea: _opizq.linea,
+                            columna: _opizq.columna
+
+                        }
+                    }
+
+                }
+            } else if (opIzq.tipo === TIPO_DATO.CHAR || opDer.tipo === TIPO_DATO.CHAR) {
+                if (opIzq.tipo === TIPO_DATO.CHAR) {
+                    const resultado = Number((opIzq.valor).charCodeAt(0)) - Number(opDer.valor);
+                    return {
+                        valor: resultado,
+                        tipo: tipores,
+                        linea: _opizq.linea,
+                        columna: _opizq.columna
+
+                    }
+
+                }
+                else if (opDer.tipo === TIPO_DATO.CHAR) {
+                    const resultado = Number(opIzq.valor) - Number((opDer.valor).charCodeAt(0));
+                    return {
+                        valor: resultado,
+                        tipo: tipores,
+                        linea: _opizq.linea,
+                        columna: _opizq.columna
+
+                    }
+                }
+            } else {
+                const resultado = Number(opIzq.valor) - Number(opDer.valor);
+                return {
+                    valor: resultado,
+                    tipo: tipores,
+                    linea: _opizq.linea,
+                    columna: _opizq.columna
+
+                }
+            }
+
+
+        }
+        if (tipores === TIPO_DATO.CADENA) {
+            console.log(tipores + " " + opIzq.tipo + " " + opDer.tipo)
+            const resultado = "No se puede realizar la resta de cadenas";
+            return {
+                valor: "No se puede realizar la resta de cadenas",
+                tipo: tipores,
+                linea: _opizq.linea,
+                columna: _opizq.columna
+
+            }
+
+        }
+
     }
 }
 
-function suma(_opIzquierdo, _opDerecho, _ambito){
-    const resultado = tipoResultado(_opIzquierdo.tipo, _opDerecho.tipo);
-    
-    const opIzquierdo = Aritmetica(_opIzquierdo, _ambito);
-    const opDerecho = Aritmetica(_opDerecho, _ambito);
 
-    if(resultado != null){
-        if(resultado === TIPO_DATO.ENTERO
-            || resultado === TIPO_DATO.DECIMAL){
-                if(opIzquierdo.tipo === TIPO_DATO.BOOLEANO){
-                    if(opDerecho.valor === true){
-                        const resultadoFinal = 1 + Number(opDerecho.valor);
-                        return {
-                            valor: resultadoFinal,
-                            tipo: resultado,
-                            linea: _opIzquierdo.linea,
-                            columna: _opIzquierdo.columna,
-                        }
-                    }else{
-                        const resultadoFinal = 0 + Number(opDerecho.valor);
-                        return {
-                            valor: resultadoFinal,
-                            tipo: resultado,
-                            linea: _opIzquierdo.linea,
-                            columna: _opIzquierdo.columna,
-                        }
-                    }
-                } else if(opDerecho.tipo === TIPO_DATO.BOOLEANO){
-                    if(opDerecho.valor === true){
-                        const resultadoFinal = Number(opIzquierdo.valor) + 1;
-                        return {
-                            valor: resultadoFinal,
-                            tipo: resultado,
-                            linea: _opIzquierdo.linea,
-                            columna: _opIzquierdo.columna,
-                        }
-                    }else{
-                        const resultadoFinal = Number(opIzquierdo.valor) + 0;
-                        return {
-                           valor: resultadoFinal,
-                            tipo: resultado,
-                            linea: _opIzquierdo.linea,
-                            columna: _opIzquierdo.columna,
-                            }
-                        }
-                    }
-                }else if(opIzquierdo.tipo === TIPO_DATO.CHAR || opDerecho.tipo === TIPO_DATO.CHAR){
-                    if(opIzquierdo===TIPO_DATO.CHAR){
-                        const resultadoFinal = Number((opIzquierdo.valor).chrCodeAt(0)) + Number(opDerecho.valor);
-                        return {
-                            valor: resultadoFinal,
-                            tipo: resultado,
-                            linea: _opIzquierdo.linea,
-                            columna: _opIzquierdo.columna,
-                        }
-                    }else if (opDerecho.tipo === TIPO_DATO.CHAR){
-                        const resultadoFinal = Number(opIzquierdo.valor) + Number((opDerecho.valor).chrCodeAt(0));
-                        return {
-                            valor: resultadoFinal,
-                            tipo: resultado,
-                            linea: _opIzquierdo.linea,
-                            columna: _opIzquierdo.columna,
-                        }
-                    }
-                }else {
-                    const resultadoFinal = Number(opIzquierdo.valor) + Number(opDerecho.valor);
-                    return {
-                        valor: resultadoFinal,
-                        tipo: resultado,
-                        linea: _opIzquierdo.linea,
-                        columna: _opIzquierdo.columna,
-                    }
-                }
-            if(resultado === TIPO_DATO.CADENA){
-                const resultadoFinal = opIzquierdo.valor.toString() + opDerecho.valor.toString();
-                return {
-                    valor: resultadoFinal,
-                    tipo: resultado,
-                    linea: _opIzquierdo.linea,
-                    columna: _opIzquierdo.columna,
-                }
-            }
-        }
-}
-    
-/*terminar de analizar el resto de las operaciones*/
 
 module.exports = Aritmetica;
+
+// const TIPO_DATO = require("../Enums/TipoDato");
+// const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion");
+// const TIPO_OPERACION = require("../Enums/TipoOperacion");
+// const TIPO_VALOR = require("../Enums/TipoValor");
+// const tipoResultado = require("../Operaciones/TipoResultado");
+// const ValorExpresion = require("./ValorExpresion");
+
+// function Aritmetica(_expresion, _ambito){
+//     if(_expresion.tipo === TIPO_VALOR.ENTERO
+//         || _expresion.tipo === TIPO_VALOR.DECIMAL
+//         || _expresion.tipo === TIPO_VALOR.BOOLEANO
+//         || _expresion.tipo === TIPO_VALOR.CHAR
+//         || _expresion.tipo === TIPO_VALOR.CADENA
+//         || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR
+//         || _expresion.tipo === TIPO_INSTRUCCION.LLAMADA_METODO){
+//             return ValorExpresion(_expresion, _ambito);
+//     }else if(_expresion.tipo === TIPO_OPERACION.SUMA){
+//         return suma(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
+//     }else if(_expresion.tipo === TIPO_OPERACION.RESTA){
+//         return resta(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
+//     }else if(_expresion.tipo === TIPO_OPERACION.MULTIPLICACION){
+//         return multiplicacion(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
+//     }else if(_expresion.tipo === TIPO_OPERACION.DIVISION){
+//         return division(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
+//     }else if(_expresion.tipo === TIPO_OPERACION.MODULO){
+//         return modulo(_expresion.opIzquierdo, _expresion.opDerecho, _ambito);
+//     }
+// }
+
+// function suma(_opIzquierdo, _opDerecho, _ambito){
+//     const resultado = tipoResultado(_opIzquierdo.tipo, _opDerecho.tipo);
+    
+//     const opIzquierdo = Aritmetica(_opIzquierdo, _ambito);
+//     const opDerecho = Aritmetica(_opDerecho, _ambito);
+
+//     if(resultado != null){
+//         if(resultado === TIPO_DATO.ENTERO
+//             || resultado === TIPO_DATO.DECIMAL){
+//                 if(opIzquierdo.tipo === TIPO_DATO.BOOLEANO){
+//                     if(opDerecho.valor === true){
+//                         const resultadoFinal = 1 + Number(opDerecho.valor);
+//                         return {
+//                             valor: resultadoFinal,
+//                             tipo: resultado,
+//                             linea: _opIzquierdo.linea,
+//                             columna: _opIzquierdo.columna,
+//                         }
+//                     }else{
+//                         const resultadoFinal = 0 + Number(opDerecho.valor);
+//                         return {
+//                             valor: resultadoFinal,
+//                             tipo: resultado,
+//                             linea: _opIzquierdo.linea,
+//                             columna: _opIzquierdo.columna,
+//                         }
+//                     }
+//                 } else if(opDerecho.tipo === TIPO_DATO.BOOLEANO){
+//                     if(opDerecho.valor === true){
+//                         const resultadoFinal = Number(opIzquierdo.valor) + 1;
+//                         return {
+//                             valor: resultadoFinal,
+//                             tipo: resultado,
+//                             linea: _opIzquierdo.linea,
+//                             columna: _opIzquierdo.columna,
+//                         }
+//                     }else{
+//                         const resultadoFinal = Number(opIzquierdo.valor) + 0;
+//                         return {
+//                            valor: resultadoFinal,
+//                             tipo: resultado,
+//                             linea: _opIzquierdo.linea,
+//                             columna: _opIzquierdo.columna,
+//                             }
+//                         }
+//                     }
+//                 }else if(opIzquierdo.tipo === TIPO_DATO.CHAR || opDerecho.tipo === TIPO_DATO.CHAR){
+//                     if(opIzquierdo===TIPO_DATO.CHAR){
+//                         const resultadoFinal = Number((opIzquierdo.valor).chrCodeAt(0)) + Number(opDerecho.valor);
+//                         return {
+//                             valor: resultadoFinal,
+//                             tipo: resultado,
+//                             linea: _opIzquierdo.linea,
+//                             columna: _opIzquierdo.columna,
+//                         }
+//                     }else if (opDerecho.tipo === TIPO_DATO.CHAR){
+//                         const resultadoFinal = Number(opIzquierdo.valor) + Number((opDerecho.valor).chrCodeAt(0));
+//                         return {
+//                             valor: resultadoFinal,
+//                             tipo: resultado,
+//                             linea: _opIzquierdo.linea,
+//                             columna: _opIzquierdo.columna,
+//                         }
+//                     }
+//                 }else {
+//                     const resultadoFinal = Number(opIzquierdo.valor) + Number(opDerecho.valor);
+//                     return {
+//                         valor: resultadoFinal,
+//                         tipo: resultado,
+//                         linea: _opIzquierdo.linea,
+//                         columna: _opIzquierdo.columna,
+//                     }
+//                 }
+//             if(resultado === TIPO_DATO.CADENA){
+//                 const resultadoFinal = opIzquierdo.valor.toString() + opDerecho.valor.toString();
+//                 return {
+//                     valor: resultadoFinal,
+//                     tipo: resultado,
+//                     linea: _opIzquierdo.linea,
+//                     columna: _opIzquierdo.columna,
+//                 }
+//             }
+//         }
+// }
+    
+// /*terminar de analizar el resto de las operaciones*/
+
+// module.exports = Aritmetica;

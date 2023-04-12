@@ -1,132 +1,87 @@
-/* Definición Léxica */
-
+/* lexical grammar */
 %lex
 %options case-insensitive
-%x string
 %%
 
+\s+                   /* skip whitespace */
+"//".*                 //comentario lineal
+[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/] // comentario multiple líneas   
 
-\s+ /*salto de espacios en blanco*/
-"//".*             /*comentario lineal*/
-[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]   /*comentario multilinea*/
-[ \r\t]+           
-\n                 
-(\/\/).* 
-
-
-
-"int"               return 'Rint';
-"double"            return 'Rdouble';
-"boolean"           return 'Rboolean';
-"char"              return 'Rchar';
-"string"            return 'Rstring';
-"if"                return 'Rif';
-"else"              return 'Relse';
-"switch"            return 'Rswitch';
-"case"              return 'Rcase';
-"default"           return 'Rdefault';
-"void"              return 'Rvoid';
-"print"		        return 'Rprint';
-"return"            return 'Rretorno';
-"continue"          return 'Rcontinue';
-"toString"          return 'RtoString';
-"toLower"           return 'RtoLower';
-"toUpper"           return 'RtoUpper';
-"round"             return 'Rround';
-"truncate"          return 'Rtruncate';
-"while"             return 'Rwhile';
-"break"             return 'Rbreak';
-"for"               return 'Rfor';
-"new"               return 'Rnew';
-"list"              return 'Rlist';
-"add"               return 'Radd';
-"exec"              return 'Rexec';
-"length"            return 'Rlength';
-"typeof"            return 'Rtypeof';
-"do"                return 'Rdo';
-"toCharArray"       return 'Rtochar';
-"true"              return 'Rtrue';
-"false"             return 'Rfalse';
-"main"              return 'Rmain';
+"int"                   return 'Rint'
+"double"                return 'Rdouble'
+"boolean"               return 'Rboolean'
+"char"                  return 'Rchar'
+"string"                return 'Rstring'
+"if"                    return 'Rif'
+"else"                  return 'Relse'
+"void"                  return 'Rvoid'
+"print"                 return 'Rprint'
+"true"                  return 'Rtrue'
+"false"                 return 'Rfalse'
+"main"                  return 'Rmain'
 
 
+"."                     return 'punto'
+"=="                   return 'igualigual'       
+"!="                  return 'diferente'
+"<="                    return 'menorIgual'
+"<"                   return 'menor'
+">="                  return 'mayorIgual'
+"="                     return 'igual'
+">"                   return 'mayor'
+","                   return 'coma'
+";"                   return 'ptcoma'
+":"                   return 'dospuntos'
+"||"                  return 'or'
+"&&"                  return 'and'
+"{"                   return 'llaveA'
+"}"                   return 'llaveC'
+"*"                   return 'multi'
+"/"                   return 'div'
+"--"                  return 'menosmenos'
+"++"                  return 'masmas'   
+"-"                   return 'menos'
+"+"                   return 'suma'
+"^"                   return 'exponente'
+"!"                   return 'not'
+"%"                   return 'modulo'
+"("                   return 'parA'
+")"                   return 'parC'
+"["                   return 'corchA'
+"]"                   return 'corchC'
 
-"."                 return 'PUNTO';
-":"                 return 'DPUNTOS'
-";"                 return 'PTCOMA';
-","                 return 'COMA';
-"("                 return 'PARIZQ';
-")"                 return 'PARDER';
-"["                 return 'CORIZR';
-"]"                 return 'CORDER';
-"{"                 return 'LLAVEIZQ';
-"}"                 return 'LLAVEDER';
+[0-9]+\b                                return 'entero'
+[0-9]+("."[0-9]+)\b                     return 'decimal'
+([a-zA-Z])([a-zA-Z0-9_])*               return 'identificador'
+["\""]([^"\""])*["\""]                  return 'string'
+["\'"]([^"\'"])*["\'"]                  return 'char'
 
-
-
-"++"                return 'INCRE';
-"--"                return 'DECRE';
-">="                return 'MAYORI';
-"<="                return 'MENORI';
-"=="                return 'IGUALDAD';
-"!="                return 'DIFERENTE';
-"="                 return 'IGUAL';
-"+"                 return 'MAS';
-"-"                 return 'MENOS';
-"*"                 return 'POR';
-"/"                 return 'DIV';
-"%"                 return 'MOD';
-"^"                 return 'POT'; //exponente
-"?"                 return 'TERNARIO'; //RTER
-">"                 return 'MAYOR';
-"<"                 return 'MENOR';
-"&&"                return 'AND';
-"||"                return 'OR';
-"!"                 return 'NOT';
-
-[a-zA-Z][a-zA-Z0-9_]*   return 'IDENTIFICADOR';
-[0-9]+\b                return 'ENTERO'; 
-[0-9]+("."[0-9]+)+\b    return 'DECIMAL';
-["\""]([^"\""])*["\""]  return 'STRING'
-["\'"]([^"\'"])*["\'"]  return 'CHAR'
-
-["]                             {cadena="";this.begin("string");}
-<string>[^"\\]+                 {cadena+=yytext;}
-<string>"\\\""                  {cadena+="\"";}
-<string>"\\n"                   {cadena+="\n";}
-<string>"\\t"                   {cadena+="\t";}
-<string>"\\\\"                  {cadena+="\\";}
-<string>"\\\'"                  {cadena+="\'";}
-<string>["]                     {yytext=cadena; this.popState(); return 'Cadena';}
-
-<<EOF>>             return'EOF'
-.                   {
-                        console.log('Este es un error léxico: ' + yytext + ', en la linea: '+ yylloc.first_line + ', en la columna: ' + yylloc.first_column);
-                    }
-
+<<EOF>>               return 'EOF'
+.                     {
+        
+        console.error('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column);
+}
 /lex
 %{
-const TIPO_DATO = require("../Enums/TipoDato");
-const INSTRUCCION = require("../controladores/Instrucciones/Instruccion");
-const TIPO_OPERACION = require("../Enums/TipoOperacion");
-const TIPO_VALOR = require("../Enums/TipoValor");
+       const TIPO_OPERACION= require('./controladores/Enums/TipoOperacion');
+        const TIPO_VALOR = require('./controladores/Enums/TipoValor');
+        const TIPO_DATO= require('./controladores/Enums/TipoDato');
+        const INSTRUCCION = require('./controladores/Instruccion/Instruccion');
+    
 %}
 
-/* Asociación de operadores y precedencia */
-%left JError
-%left 'OR'
-%left 'AND'
-%right 'NOT'
-%right 'FCAST'
-%left 'IGUALDAD' 'MENOR' 'MENORI' 'MAYOR' MAYORI' 'DIFERENTE'
-%left 'MAS' 'MENOS' 
-%left 'POR' 'DIV' 'MOD'
-%left 'POT'
-%left UMENOS
+/* operator associations and precedence */
+%left 'or'
+%left 'and'
+%right 'not'
+%left 'igualigual' 'menor' 'menorIgual' 'mayor' 'mayorIgual' 'diferente'
+%left 'suma' 'menos'
+%left 'multi' 'div' 'modulo' 
+%nonassoc 'exponente'
+%left umenos 
 
 %start INICIO
-
-%% /* Definición de la gramática */
+%% /* language grammar */
 
 INICIO: OPCIONESCUERPO EOF{return $1;}
 ;
@@ -149,11 +104,12 @@ MAIN: Rmain identificador parA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, null,
        
 ;
 DEC_VAR: TIPO identificador  {$$= INSTRUCCION.nuevaDeclaracion($2,null, $1,this._$.first_line, this._$.first_column+1)}
-        |TIPO identificador IGUAL EXPRESION  {$$= INSTRUCCION.nuevaDeclaracion($2, $4, $1,this._$.first_line, this._$.first_column+1);
+        |TIPO identificador igual EXPRESION  {$$= INSTRUCCION.nuevaDeclaracion($2, $4, $1,this._$.first_line, this._$.first_column+1);
+
         }
 
 ;
-ASIG_VAR: identificador IGUAL EXPRESION {$$ = INSTRUCCION.nuevaAsignacion($1, $3,this._$.first_line, this._$.first_column+1)}
+ASIG_VAR: identificador igual EXPRESION {$$ = INSTRUCCION.nuevaAsignacion($1, $3,this._$.first_line, this._$.first_column+1)}
         
 ;
 TIPO: Rint{$$= TIPO_DATO.ENTERO}
@@ -189,7 +145,7 @@ EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3,
          | menos EXPRESION %prec umenos {$$= INSTRUCCION.nuevaOperacionUnaria($2, TIPO_OPERACION.UNARIA,this._$.first_line, this._$.first_column+1);}
          | not EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria(null,$2, TIPO_OPERACION.NOT,this._$.first_line, this._$.first_column+1);}
          | parA EXPRESION parC {$$=$2}
-         | EXPRESION IGUALDAD EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.IGUALDAD,this._$.first_line, this._$.first_column+1);}
+         | EXPRESION igualigual EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.IGUALIGUAL,this._$.first_line, this._$.first_column+1);}
          | decimal {$$= INSTRUCCION.nuevoValor(Number($1),TIPO_VALOR.DECIMAL,this._$.first_line, this._$.first_column+1);}
          | entero {$$= INSTRUCCION.nuevoValor(Number($1),TIPO_VALOR.ENTERO,this._$.first_line, this._$.first_column+1);}
          | Rtrue {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.BOOL,this._$.first_line, this._$.first_column+1);}

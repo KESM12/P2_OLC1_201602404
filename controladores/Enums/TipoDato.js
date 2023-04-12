@@ -1,9 +1,18 @@
-const TIPO_DATO = {
-    ENTERO: "ENTERO",
-    DECIMAL: "DECIMAL",
-    CADENA: "CADENA",
-    BOOLEANO: "BOOLEANO",
-    CARACTER: "CARACTER",
+const TIPO_DATO={
+    DECIMAL: 'DECIMAL',
+    CADENA: 'CADENA',
+    ENTERO: 'ENTERO',
+    BOOL: 'BOLEANO',
+    CHAR: 'CHAR',
 }
+module.exports= TIPO_DATO
 
-module.exports = TIPO_DATO;
+// const TIPO_DATO = {
+//     ENTERO: "ENTERO",
+//     DECIMAL: "DECIMAL",
+//     CADENA: "CADENA",
+//     BOOLEANO: "BOOLEANO",
+//     CARACTER: "CARACTER",
+// }
+
+// module.exports = TIPO_DATO;

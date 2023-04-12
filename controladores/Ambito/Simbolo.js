@@ -1,11 +1,22 @@
 class Simbolo{
-    constructor(_tipo, _id, _valor, _fila, _columna){
-        this.tipo = _tipo;
+    constructor(_id, _valor, _tipo, _linea, _columna){
         this.id = _id;
         this.valor = _valor;
-        this.fila = _fila;
+        this.tipo = _tipo;
+        this.linea = _linea;
         this.columna = _columna;
     }
 }
+module.exports = Simbolo
 
-module.exports = Simbolo;
+// class Simbolo{
+//     constructor(_tipo, _id, _valor, _fila, _columna){
+//         this.tipo = _tipo;
+//         this.id = _id;
+//         this.valor = _valor;
+//         this.fila = _fila;
+//         this.columna = _columna;
+//     }
+// }
+
+// module.exports = Simbolo;

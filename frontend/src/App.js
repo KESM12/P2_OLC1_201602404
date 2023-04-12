@@ -4,13 +4,14 @@ import MonacoEditor from 'react-monaco-editor';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+
 function App() {
   const [code, setCode] = useState('');
   const [resultado, setResultado] = useState('');
   function analizar(){
-    axios.post('http://localhost:5000/analizar', {
+    axios.post('http://localhost:5000/analizar', JSON.stringify({
       entrada: code
-    })
+    }),{headers:{"Content-Type" : "application/json"}})
     .then(function (response) {
       console.log(response);
       setResultado(response.data.resultado);
@@ -47,7 +48,7 @@ function App() {
           </div>
         </div>
           <div>
-            <Button variant="primary" classname="boton" onClick={()=>{analizar()} }>Analizar</Button>
+            <Button variant="primary" className="boton" onClick={()=>{analizar()} }>Analizar</Button>
           </div>
         </div>
       </header>
@@ -56,3 +57,6 @@ function App() {
 }
 
 export default App;
+
+
+//aqui es donde se jala todo el codigo de react y se muestra en el navegador para poder usar el backend

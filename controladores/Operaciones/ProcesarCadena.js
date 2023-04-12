@@ -1,9 +1,16 @@
-const Operacion = require('../Operaciones/Operacion');
+const Operacion = require("./Operacion")
 
-function procesarCadena (_expresion, _ambito){
-    return Operacion(_expresion, _ambito);
+function procesarCadena(_expresion, _ambito){
+    return Operacion(_expresion, _ambito)
 }
+module.exports= procesarCadena
 
-module.exports = procesarCadena;
+// const Operacion = require('../Operaciones/Operacion');
 
-//terminar bien Operacion.js
+// function procesarCadena (_expresion, _ambito){
+//     return Operacion(_expresion, _ambito);
+// }
+
+// module.exports = procesarCadena;
+
+// //terminar bien Operacion.js
