@@ -11,29 +11,48 @@ function Relacional(_expresion,_ambito){
         return ValorExpresion(_expresion, _ambito)
     }
     else if (_expresion.tipo === TIPO_OPERACION.SUMA || _expresion.tipo === TIPO_OPERACION.RESTA || _expresion.tipo === TIPO_OPERACION.DIVISION
-        || _expresion.tipo === TIPO_OPERACION.POTENCIA || _expresion.tipo === TIPO_OPERACION.MODULO || _expresion.tipo === TIPO_OPERACION.UNARIA || _expresion.tipo === TIPO_OPERACION.MULTIPLICACION
-    ) {
+        || _expresion.tipo === TIPO_OPERACION.POTENCIA || _expresion.tipo === TIPO_OPERACION.MODULO || _expresion.tipo === TIPO_OPERACION.UNARIA || _expresion.tipo === TIPO_OPERACION.MULTIPLICACION) 
+        {
         return Aritmetica(_expresion, _ambito)
-    }
-    else if (_expresion.tipo === TIPO_OPERACION.IGUALIGUAL) {
+    }else if (_expresion.tipo === TIPO_OPERACION.IGUALIGUAL) {
         return igualigual(_expresion.opIzq, _expresion.opDer, _ambito)
+    }else if(_expresion.tipo === TIPO_OPERACION.DIFERENTE){
+        return diferente(_expresion.opIzq, _expresion.opDer, _ambito)
+    }else if(_expresion.tipo === TIPO_OPERACION.MENOR) {
+        return menor(_expresion.opIzq, _expresion.opDer, _ambito)
+    }else if(_expresion.tipo === TIPO_OPERACION.MENORIGUAL){
+        return menorigual(_expresion.opIzq, _expresion.opDer, _ambito)
+    }else if(_expresion.tipo === TIPO_OPERACION.MAYOR){
+        return mayor(_expresion.opIzq, _expresion.opDer, _ambito)
+    }else if(_expresion.tipo === TIPO_OPERACION.MAYORIGUAL){
+        return mayorigual(_expresion.opIzq, _expresion.opDer, _ambito)
     }
 }
+/*/_expresion.tipo === TIPO_OPERACION.IGUALIGUAL || _expresion.tipo === TIPO_OPERACION.DIFERENTE ||
+_expresion.tipo === TIPO_OPERACION.MENOR || _expresion.tipo === TIPO_OPERACION.MAYOR||_expresion.tipo === TIPO_OPERACION.MAYORIGUAL
+||_expresion.tipo === TIPO_OPERACION.MENORIGUAL*/
 
 function igualigual(_opIzq, _opDer, _ambito) {
-    const opIzq = Relacional(_opIzq, _ambito)
-    const opDer = Relacional(_opDer, _ambito)
-    // console.log(opIzq.tipo,opDer.tipo)
+    var opIzq = Relacional(_opIzq, _ambito)
+    var opDer = Relacional(_opDer, _ambito)
     if ((opIzq.tipo == TIPO_DATO.CADENA && opDer.tipo == TIPO_DATO.CADENA) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.ENTERO)
         || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.CHAR)
         || (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.ENTERO) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.ENTERO)
         || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.CHAR) ||
         (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.DECIMAL)) {
         var resultado = false
+        if (opIzq.tipo === TIPO_DATO.CHAR){
+            opIzq.valor = opIzq.valor.charCodeAt(0)
+            //console.log(opIzq.valor, "izquierdo")
+        } else if(opDer.tipo === TIPO_DATO.CHAR){
+            opDer.valor = opDer.valor.charCodeAt(0)
+            //console.log(opDer.valor, "derecho")
+        }
         if (opIzq.valor == opDer.valor) {
+            //console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = true
         }
-        //console.log(resultado)
+        console.log(resultado)
         return {
             valor: resultado,
             tipo: TIPO_DATO.BOOL,
@@ -41,10 +60,164 @@ function igualigual(_opIzq, _opDer, _ambito) {
             columna: _opIzq.columna
         }
     }
-    
-   
 }
+
+function diferente(_opIzq, _opDer, _ambito){
+    var opIzq = Relacional(_opIzq, _ambito)
+    var opDer = Relacional(_opDer, _ambito)
+    if ((opIzq.tipo == TIPO_DATO.CADENA && opDer.tipo == TIPO_DATO.CADENA) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.CHAR)
+        || (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.ENTERO) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.CHAR) ||
+        (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.DECIMAL)) {
+        var resultado = true
+        if (opIzq.tipo === TIPO_DATO.CHAR){
+            opIzq.valor = opIzq.valor.charCodeAt(0)
+            //console.log(opIzq.valor, "izquierdo")
+        } else if(opDer.tipo === TIPO_DATO.CHAR){
+            opDer.valor = opDer.valor.charCodeAt(0)
+            //console.log(opDer.valor, "derecho")
+        }
+        if (opIzq.valor == opDer.valor) {
+           // console.log(opIzq.valor, opDer.valor, "ultimo if")
+            resultado = false
+        }
+        console.log(resultado)
+        return {
+            valor: resultado,
+            tipo: TIPO_DATO.BOOL,
+            linea: _opIzq.linea,
+            columna: _opIzq.columna
+        }
+    }
+}
+
+function menor(_opIzq, _opDer, _ambito){
+    var opIzq = Relacional(_opIzq, _ambito)
+    var opDer = Relacional(_opDer, _ambito)
+    if ((opIzq.tipo == TIPO_DATO.CADENA && opDer.tipo == TIPO_DATO.CADENA) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.CHAR)
+        || (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.ENTERO) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.CHAR) ||
+        (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.DECIMAL)) {
+        var resultado = false
+        if (opIzq.tipo === TIPO_DATO.CHAR){
+            opIzq.valor = opIzq.valor.charCodeAt(0)
+            //console.log(opIzq.valor, "izquierdo")
+        } else if(opDer.tipo === TIPO_DATO.CHAR){
+            opDer.valor = opDer.valor.charCodeAt(0)
+            //console.log(opDer.valor, "derecho")
+        }
+        if (opIzq.valor < opDer.valor) {
+           // console.log(opIzq.valor, opDer.valor, "ultimo if")
+            resultado = true
+        }
+        console.log(resultado)
+        return {
+            valor: resultado,
+            tipo: TIPO_DATO.BOOL,
+            linea: _opIzq.linea,
+            columna: _opIzq.columna
+        }
+    }
+}
+
+function menorigual(_opIzq, _opDer, _ambito){
+    var opIzq = Relacional(_opIzq, _ambito)
+    var opDer = Relacional(_opDer, _ambito)
+    if ((opIzq.tipo == TIPO_DATO.CADENA && opDer.tipo == TIPO_DATO.CADENA) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.CHAR)
+        || (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.ENTERO) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.CHAR) ||
+        (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.DECIMAL)) {
+        var resultado = false
+        if (opIzq.tipo === TIPO_DATO.CHAR){
+            opIzq.valor = opIzq.valor.charCodeAt(0)
+            //console.log(opIzq.valor, "izquierdo")
+        } else if(opDer.tipo === TIPO_DATO.CHAR){
+            opDer.valor = opDer.valor.charCodeAt(0)
+            //console.log(opDer.valor, "derecho")
+        }
+        if (opIzq.valor <= opDer.valor) {
+            //console.log(opIzq.valor, opDer.valor, "ultimo if")
+            resultado = true
+        }
+        console.log(resultado)
+        return {
+            valor: resultado,
+            tipo: TIPO_DATO.BOOL,
+            linea: _opIzq.linea,
+            columna: _opIzq.columna
+        }
+    }
+}
+
+function mayor(_opIzq, _opDer, _ambito){
+    var opIzq = Relacional(_opIzq, _ambito)
+    var opDer = Relacional(_opDer, _ambito)
+    if ((opIzq.tipo == TIPO_DATO.CADENA && opDer.tipo == TIPO_DATO.CADENA) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.CHAR)
+        || (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.ENTERO) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.CHAR) ||
+        (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.DECIMAL)) {
+        var resultado = false
+        if (opIzq.tipo === TIPO_DATO.CHAR){
+            opIzq.valor = opIzq.valor.charCodeAt(0)
+            //console.log(opIzq.valor, "izquierdo")
+        } else if(opDer.tipo === TIPO_DATO.CHAR){
+            opDer.valor = opDer.valor.charCodeAt(0)
+            //console.log(opDer.valor, "derecho")
+        }
+        if (opIzq.valor > opDer.valor) {
+            //console.log(opIzq.valor, opDer.valor, "ultimo if")
+            resultado = true
+        }
+        console.log(resultado)
+        return {
+            valor: resultado,
+            tipo: TIPO_DATO.BOOL,
+            linea: _opIzq.linea,
+            columna: _opIzq.columna
+        }
+    }
+}
+
+function mayorigual(_opIzq, _opDer, _ambito){
+    var opIzq = Relacional(_opIzq, _ambito)
+    var opDer = Relacional(_opDer, _ambito)
+    var opIzq = Relacional(_opIzq, _ambito)
+    var opDer = Relacional(_opDer, _ambito)
+    if ((opIzq.tipo == TIPO_DATO.CADENA && opDer.tipo == TIPO_DATO.CADENA) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.ENTERO && opDer.tipo == TIPO_DATO.CHAR)
+        || (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.ENTERO) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.ENTERO)
+        || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.DECIMAL) || (opIzq.tipo == TIPO_DATO.CHAR && opDer.tipo == TIPO_DATO.CHAR) ||
+        (opIzq.tipo == TIPO_DATO.DECIMAL && opDer.tipo == TIPO_DATO.DECIMAL)) {
+        var resultado = false
+        if (opIzq.tipo === TIPO_DATO.CHAR){
+            opIzq.valor = opIzq.valor.charCodeAt(0)
+            //console.log(opIzq.valor, "izquierdo")
+        } else if(opDer.tipo === TIPO_DATO.CHAR){
+            opDer.valor = opDer.valor.charCodeAt(0)
+            //console.log(opDer.valor, "derecho")
+        }
+        if (opIzq.valor >= opDer.valor) {
+            console.log(opIzq.valor, opDer.valor, "ultimo if")
+            resultado = true
+        }
+        console.log(resultado)
+        return {
+            valor: resultado,
+            tipo: TIPO_DATO.BOOL,
+            linea: _opIzq.linea,
+            columna: _opIzq.columna
+        }
+    }
+}
+
 module.exports = Relacional;
+
+
+//terminado pero no se donde poner el operador ternario
 
 // const TIPO_DATO = require("../Enums/TipoDato");
 // const TIPO_OPERACION = require("../Enums/TipoOperacion");

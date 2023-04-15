@@ -14,13 +14,16 @@ function Operacion(_expresion,_ambito){
         _expresion.tipo === TIPO_VALOR.CADENA || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR || _expresion.tipo === TIPO_VALOR.CHAR||_expresion.tipo===TIPO_INSTRUCCION.LLAMADA_METODO){
             return ValorExpresion(_expresion,_ambito);
     }
-    else if(_expresion.tipo === TIPO_OPERACION.SUMA || _expresion.tipo === TIPO_OPERACION.RESTA || _expresion.tipo===TIPO_OPERACION.MULTIPLICACION){
+    else if(_expresion.tipo === TIPO_OPERACION.SUMA || _expresion.tipo === TIPO_OPERACION.RESTA || _expresion.tipo===TIPO_OPERACION.MULTIPLICACION 
+        ||_expresion.tipo===TIPO_OPERACION.DIVISION || _expresion.tipo === TIPO_OPERACION.MODULO || _expresion.tipo === TIPO_OPERACION.UNARIA
+        || _expresion.tipo === TIPO_OPERACION.POTENCIA){
         // console.log("entro a operacion")
-        // console.log(_expresion.tipo)
+        //console.log(_expresion.tipo)
         return Aritmetica(_expresion,_ambito);
     }else if(_expresion.tipo === TIPO_OPERACION.IGUALIGUAL || _expresion.tipo === TIPO_OPERACION.DIFERENTE ||
         _expresion.tipo === TIPO_OPERACION.MENOR || _expresion.tipo === TIPO_OPERACION.MAYOR||_expresion.tipo === TIPO_OPERACION.MAYORIGUAL
         ||_expresion.tipo === TIPO_OPERACION.MENORIGUAL){
+            //console.log(_expresion.tipo)
         return Relacional(_expresion, _ambito)
     }else if(_expresion.tipo === TIPO_OPERACION.AND || _expresion.tipo === TIPO_OPERACION.OR || _expresion.tipo === TIPO_OPERACION.NOT){
         return Logica(_expresion, _ambito)

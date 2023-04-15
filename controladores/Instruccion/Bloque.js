@@ -2,6 +2,7 @@ const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion");
 const Print = require("./Print");
 const Asignacion = require("./Asignacion");
 const Declaracion = require("./Declaracion");
+const SentenciaIf = require("./If");
 function Bloque(_instrucciones,_ambito){
     var cadena=""
     
@@ -17,6 +18,11 @@ function Bloque(_instrucciones,_ambito){
         } else if (instruccion.tipo === TIPO_INSTRUCCION.ASIGNACION) {
             var mensaje = Asignacion(instruccion, _ambito)
             if (mensaje != null) {
+                cadena += mensaje
+            }
+        } else if (instruccion.tipo === TIPO_INSTRUCCION.IF) {
+            var ejec = SentenciaIf(instruccion, _ambito)
+            if( mensaje != null){
                 cadena += mensaje
             }
         }
