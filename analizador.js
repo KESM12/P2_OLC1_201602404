@@ -722,65 +722,65 @@ case 13:return 49
 break;
 case 14:return 19
 break;
-case 15:return 46
+case 15:return 'punto'
 break;
-case 16:return 'punto'
+case 16:return 45       
 break;
-case 17:return 47
+case 17:return 41
 break;
-case 18:return 45       
+case 18:return 39
 break;
-case 19:return 41
+case 19:return 37
 break;
-case 20:return 39
+case 20:return 40
 break;
-case 21:return 37
+case 21:return 21
 break;
-case 22:return 40
+case 22:return 38
 break;
-case 23:return 21
+case 23:return 'coma'
 break;
-case 24:return 38
+case 24:return 8
 break;
-case 25:return 'coma'
+case 25:return 'dospuntos'
 break;
-case 26:return 8
+case 26:return 43
 break;
-case 27:return 'dospuntos'
+case 27:return 42
 break;
-case 28:return 43
+case 28:return 16
 break;
-case 29:return 42
+case 29:return 18
 break;
-case 30:return 16
+case 30:return 33
 break;
-case 31:return 18
+case 31:return 34
 break;
-case 32:return 33
+case 32:return 'menosmenos'
 break;
-case 33:return 34
+case 33:return 'masmas'   
 break;
-case 34:return 'menosmenos'
+case 34:return 32
 break;
-case 35:return 'masmas'   
+case 35:return 31
 break;
-case 36:return 32
+case 36:return 35
 break;
-case 37:return 31
+case 37:return 44
 break;
-case 38:return 35
+case 38:return 36
 break;
-case 39:return 44
+case 39:return 14
 break;
-case 40:return 36
+case 40:return 15
 break;
-case 41:return 14
+case 41:return 'corchA'
 break;
-case 42:return 15
+case 42:return 'corchC'
 break;
-case 43:return 'corchA'
+case 43:return 47
 break;
-case 44:return 'corchC'
+case 44:return 46
 break;
 case 45:return 13
 break;
@@ -797,7 +797,7 @@ case 49:
 break;
 }
 },
-rules: [/^(?:\s+)/i,/^(?:\/\/.*)/i,/^(?:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/])/i,/^(?:int\b)/i,/^(?:double\b)/i,/^(?:boolean\b)/i,/^(?:char\b)/i,/^(?:string\b)/i,/^(?:if\b)/i,/^(?:else\b)/i,/^(?:void\b)/i,/^(?:print\b)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:main\b)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:\.)/i,/^(?:[0-9]+\b)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:<=)/i,/^(?:<)/i,/^(?:>=)/i,/^(?:=)/i,/^(?:>)/i,/^(?:,)/i,/^(?:;)/i,/^(?::)/i,/^(?:\|\|)/i,/^(?:&&)/i,/^(?:\{)/i,/^(?:\})/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:--)/i,/^(?:\+\+)/i,/^(?:-)/i,/^(?:\+)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:%)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:([a-zA-Z])([a-zA-Z0-9_])*)/i,/^(?:["\""]([^"\""])*["\""])/i,/^(?:["\'"]([^"\'"])*["\'"])/i,/^(?:$)/i,/^(?:.)/i],
+rules: [/^(?:\s+)/i,/^(?:\/\/.*)/i,/^(?:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/])/i,/^(?:int\b)/i,/^(?:double\b)/i,/^(?:boolean\b)/i,/^(?:char\b)/i,/^(?:string\b)/i,/^(?:if\b)/i,/^(?:else\b)/i,/^(?:void\b)/i,/^(?:print\b)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:main\b)/i,/^(?:\.)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:<=)/i,/^(?:<)/i,/^(?:>=)/i,/^(?:=)/i,/^(?:>)/i,/^(?:,)/i,/^(?:;)/i,/^(?::)/i,/^(?:\|\|)/i,/^(?:&&)/i,/^(?:\{)/i,/^(?:\})/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:--)/i,/^(?:\+\+)/i,/^(?:-)/i,/^(?:\+)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:%)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:[0-9]+\b)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:([a-zA-Z])([a-zA-Z0-9_])*)/i,/^(?:["\""]([^"\""])*["\""])/i,/^(?:["\'"]([^"\'"])*["\'"])/i,/^(?:$)/i,/^(?:.)/i],
 conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49],"inclusive":true}}
 });
 return lexer;
