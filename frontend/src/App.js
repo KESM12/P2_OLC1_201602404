@@ -20,6 +20,17 @@ function App() {
       console.log(error);
     });
   }
+
+  function crearAst(){
+    axios.get('http://localhost:5000/CrearAST')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -49,6 +60,7 @@ function App() {
         </div>
           <div>
             <Button variant="primary" className="boton" onClick={()=>{analizar()} }>Analizar</Button>
+            <Button variant="primary" className="boton" onClick={()=>{crearAst()} }>CrearAST</Button>
           </div>
         </div>
       </header>

@@ -1,0 +1,53 @@
+digraph G {
+node [shape="box"]Nodo0[label="RAIZ"];
+Nodo1[label="DECLARACION"];
+Nodo0->Nodo1;
+Nodo2[label="TIPO
+ ENTERO"];
+Nodo1->Nodo2;
+Nodo3[label="ID
+ x"];
+Nodo1->Nodo3;
+Nodo4[label="MULTIPLICACION
+ *"];
+Nodo1->Nodo4;
+Nodo5[label="VAL_ENTERO
+ 4"];
+Nodo4->Nodo5;
+Nodo6[label="VAL_ENTERO
+ 4"];
+Nodo4->Nodo6;
+Nodo7[label="DEC_METODO"];
+Nodo0->Nodo7;
+Nodo8[label="METODO
+ P"];
+Nodo7->Nodo8;
+Nodo9[label="INSTRUCCIONES"];
+Nodo7->Nodo9;
+Nodo10[label="Print"];
+Nodo9->Nodo10;
+Nodo11[label="VAL_CADENA
+ \"HOLA\""];
+Nodo10->Nodo11;
+Nodo12[label="Print"];
+Nodo9->Nodo12;
+Nodo13[label="SUMA
+ +"];
+Nodo12->Nodo13;
+Nodo14[label="VAL_CADENA
+ \"ya salio compi\""];
+Nodo13->Nodo14;
+Nodo15[label="VAL_ENTERO
+ 1"];
+Nodo13->Nodo15;
+Nodo16[label="Print"];
+Nodo9->Nodo16;
+Nodo17[label="VAL_IDENTIFICADOR
+ x"];
+Nodo16->Nodo17;
+Nodo18[label="MAIN"];
+Nodo0->Nodo18;
+Nodo19[label="LLAMADA 
+ P"];
+Nodo18->Nodo19;
+}
