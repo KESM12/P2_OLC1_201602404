@@ -49,13 +49,7 @@ class Graficador {
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarMetodo(instruccion, nombreHijo)
             }
-            else if(instruccion.tipo === TIPO_INSTRUCCION.PRINT){
-                var nombreHijo = "Nodo" + this.contador
-                this.contador++;
-                this.grafo += nombreHijo + "[label=\"PRINT\"];\n"
-                this.grafo += _padre + "->" + nombreHijo + ";\n"
-                this.graficarPrint(instruccion, nombreHijo)
-            }
+
             //vectores
             //listas
             //funciones (print, length, truncate, round, typeof, toString, toCharArray)
@@ -84,8 +78,14 @@ class Graficador {
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
             //verificación de if, while, for, switch o sea haces uno de graficarOperacion cono el de tipoinstrucción print pero para todos los demás
-
-        }   
+            }else if(instruccion.tipo === TIPO_INSTRUCCION.IF){
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"IF\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.graficarOperacion(instruccion.expresion, nombreHijo)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
+            }
         });
         }
         
@@ -218,4 +218,3 @@ class Graficador {
 
 module.exports = Graficador;
         
-

@@ -20,8 +20,9 @@
 "false"                 return 'Rfalse'
 "main"                  return 'Rmain'
 
-
+[0-9]+("."[0-9]+)\b    return 'decimal'
 "."                     return 'punto'
+[0-9]+\b                return 'entero'
 "=="                   return 'igualigual'       
 "!="                  return 'diferente'
 "<="                    return 'menorIgual'
@@ -50,8 +51,6 @@
 "["                   return 'corchA'
 "]"                   return 'corchC'
 
-[0-9]+\b                                return 'entero'
-[0-9]+("."[0-9]+)\b                     return 'decimal'
 ([a-zA-Z])([a-zA-Z0-9_])*               return 'identificador'
 ["\""]([^"\""])*["\""]                  return 'string'
 ["\'"]([^"\'"])*["\'"]                  return 'char'
@@ -125,13 +124,16 @@ INSTRUCCIONES: INSTRUCCIONES INSTRUCCION {$$ = $1; $1.push($2);}
 INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           //DECLARACION DE CADA COMPONENTE DEL CUERPO DE MANERA RECURSIVA
         |ASIG_VAR ptcoma {$$=$1;}
         |PRINT {$$=$1;}
+        |IF {$$=$1;}
+        |ELSE {$$=$1;}
 
 ;
 PRINT: Rprint parA EXPRESION parC ptcoma {$$ = INSTRUCCION.nuevoPrint($3, this._$.first_line,this._$.first_column+1)}
 ;
-
-/*IF: //falta agregarlo pero mira el video con 1 hora y 20 minutos */
-
+IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoIf($3, $6, this._$.first_line,this._$.first_column+1)}
+;
+ELSE: Relse llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoElse($3, this._$.first_line,this._$.first_column+1)}
+;
 EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.SUMA,this._$.first_line, this._$.first_column+1);}
          | EXPRESION menos EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.RESTA,this._$.first_line, this._$.first_column+1);}
          | EXPRESION multi EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MULTIPLICACION,this._$.first_line, this._$.first_column+1);}

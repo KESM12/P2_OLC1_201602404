@@ -73,10 +73,17 @@ const Instruccion ={
             linea: _linea,
             columna: _columna
         }
-    }, nuevoIf: function (_condicion, _instrucciones, _linea, _columna) {
+    }, nuevoIf: function (_expresion, _instrucciones, _linea, _columna) {
         return {
             tipo: TIPO_INSTRUCCION.IF,
-            condicion: _condicion,
+            expresion: _expresion,
+            instrucciones: _instrucciones,
+            linea: _linea,
+            columna: _columna
+        }
+    }, nuevoElse: function (_instrucciones, _linea, _columna) {
+        return {
+            tipo: TIPO_INSTRUCCION.ELSE,
             instrucciones: _instrucciones,
             linea: _linea,
             columna: _columna

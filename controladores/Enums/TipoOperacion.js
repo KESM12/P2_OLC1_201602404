@@ -19,24 +19,3 @@ const TIPO_OPERACION={
 }
 module.exports=TIPO_OPERACION;
 
-// const TIPO_INSTRUCCION = {
-//     SUMA: 'SUMA',
-//     RESTA: 'RESTA',
-//     MULTIPLICACION: 'MULTIPLICACION',
-//     DIVISION: 'DIVISION',
-//     POTENCIA: 'POTENCIA',
-//     MODULO: 'MODULO',
-//     UNARIA: 'UNARIA',
-//     NEGACION: 'NEGACION',
-//     IGUALDAD: 'IGUALDAD',
-//     DIFERENTE: 'DIFERENTE',
-//     MENOR: 'MENOR',
-//     MAYOR: 'MAYOR',
-//     MENOR_IGUAL: 'MENOR_IGUAL',
-//     MAYOR_IGUAL: 'MAYOR_IGUAL',
-//     AND: 'AND',
-//     OR: 'OR',
-//     NOT: 'NOT',
-// }
-
-// module.exports= TIPO_INSTRUCCION;

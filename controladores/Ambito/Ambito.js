@@ -50,7 +50,7 @@ class Ambito{
     addMetodo(_s, _metodo){ //agregar metodo
         this.tablaMetodos.set(_s.toLowerCase(), _metodo)
     }
-    getMetodo(_s){ //(hola, clase simbolo)
+    getMetodo(_s){ 
         for(let e=this; e!=null; e=e.anterior){
             var encontrado = e.tablaMetodos.get(_s.toLowerCase()) //hola<=>HoLA
             if(encontrado!=null){

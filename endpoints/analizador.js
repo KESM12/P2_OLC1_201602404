@@ -12,11 +12,11 @@ module.exports=(parser, app)=>{
     var grafica;
     app.post('/analizar',(req,res)=>{
          prueba = req.body.entrada
-             ast = parser.parse(prueba)
-            grafica = new Graficador(ast)
+            ast = parser.parse(prueba);
+            grafica = new Graficador(ast);
             //console.log(ast)
             const AmbitoGlobal= new Ambito(null,"Global")
-            var cadena =Global(ast, AmbitoGlobal)
+            var cadena = Global(ast, AmbitoGlobal)
 
             var resultado= {
                 arbol: ast,
@@ -27,7 +27,7 @@ module.exports=(parser, app)=>{
             
             res.send(resultado)
         
-    })
+    });
 
     app.get('/CrearAST',(req,res)=>{
         dot = grafica.graficar()
@@ -49,29 +49,7 @@ module.exports=(parser, app)=>{
                     console.log(`stderr: ${stderr}`);
                 }
             });
-    })
+    });
 }
        
     
-    
-
-
-// const Ambito = require("../controladores/Ambito/Ambito");
-// const Global = require("../controladores/Instrucciones/Global");
-
-// module.exports = (parse, app ) => {
-//     var prueba;
-//     var ast;
-//     app.post('/analizador', (req, res) => {
-//         prueba = req.body,entrada;
-//         ast = parse(prueba);
-//         const AmbitoGlobal = new Ambito(null, "Global");
-//         var cadana = Global(ast, AmbitoGlobal);
-//         var resultado = {
-//             arbol: ast, 
-//             resultado: cadana
-//         }
-
-//         res.send(resultado);
-//     })
-// }

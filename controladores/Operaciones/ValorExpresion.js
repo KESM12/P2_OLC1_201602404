@@ -4,7 +4,7 @@ const TIPO_VALOR = require("../Enums/TipoValor");
 function ValorExpresion(_expresion,_ambito) {
     if(_expresion.tipo===TIPO_VALOR.DECIMAL){
         return{
-            valor:Number(_expresion.valor),
+            valor: Number(_expresion.valor),
             tipo:TIPO_DATO.DECIMAL,
             linea:_expresion.linea,
             columna:_expresion.columna

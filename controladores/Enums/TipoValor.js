@@ -9,13 +9,3 @@ const TIPO_VALOR={
 }
 module.exports=TIPO_VALOR;
 
-// const TIPO_VALOR = {
-//     ENTERO: 'VAL_ENTERO',
-//     DECIMAL: 'VAL_DECIMAL',
-//     CADENA: 'VAL_CADENA',
-//     BOOLEANO: 'VAL_BOOLEANO',
-//     IDENTIFICADOR: 'VAL_IDENTIFICADOR',
-//     UNARIO: 'VAL_UNARIO', // -1, -2, -3, -4, -5, -6, -7, -8, -9, -10
-//     CHAR: 'VAL_CHAR',
-// }
-// module.exports= TIPO_VALOR;
