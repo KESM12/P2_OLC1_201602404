@@ -2,20 +2,16 @@ const Ambito = require("../Ambito/Ambito")
 const TIPO_DATO = require("../Enums/TipoDato");
 const Operacion = require("../Operaciones/Operacion");
 
-function SentenciaIf(_instruccion, _ambito){
+function SentenciaElseIf(_instruccion, _ambito){
     var mensaje = "";
     var operacion = Operacion (_instruccion.expresion, _ambito);
     if(operacion.tipo == TIPO_DATO.BOOL){
-        //console.log(operacion.valor, "valor de la operacion")
         if(operacion.valor != null){
-           //console.log("entro al if ya despues", operacion.valor)
-            var nuevoAmbito = new Ambito(_ambito, "If")
+            var nuevoAmbito = new Ambito(_ambito, "ElseIf")
             const Bloque = require ("./Bloque");
             var ejec = Bloque(_instruccion.instrucciones, nuevoAmbito)
-            //console.log(ejec, "ejeadsfadfc")
             mensaje += ejec.cadena
             valor = operacion.valor
-            //console.log(valor, "mensaje111")
         }
         return {
             cadena: mensaje,
@@ -26,8 +22,4 @@ function SentenciaIf(_instruccion, _ambito){
     }
 }
 
-module.exports = SentenciaIf;
-
-
-
-// //este ya esta :v
+module.exports = SentenciaElseIf;

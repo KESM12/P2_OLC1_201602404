@@ -12,6 +12,7 @@ module.exports=(parser, app)=>{
     var grafica;
     app.post('/analizar',(req,res)=>{
          prueba = req.body.entrada
+            //console.log(prueba)
             ast = parser.parse(prueba);
             grafica = new Graficador(ast);
             //console.log(ast)

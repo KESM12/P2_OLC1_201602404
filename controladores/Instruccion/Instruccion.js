@@ -88,7 +88,33 @@ const Instruccion ={
             linea: _linea,
             columna: _columna
         }
-    }, nuevotoLower: function(_expresion, _linea, _columna){
+    },nuevoElseif: function (_expresion, _instrucciones, _linea, _columna) {
+        return {
+            tipo: TIPO_INSTRUCCION.ELSEIF,
+            expresion: _expresion,
+            instrucciones: _instrucciones,
+            linea: _linea,
+            columna: _columna
+        }
+    },nuevoSwitch: function (_expresion, _casos, _instrucciones, _default, _linea, _columna) {
+        return{
+            tipo: TIPO_INSTRUCCION.SWITCH,
+            expresion: _expresion,
+            instrucciones: _instrucciones,
+            linea: _linea,
+            columna: _columna
+        }
+    }, nuevoWhile: function (_expresion, _instrucciones, _linea, _columna) {
+        return {
+            tipo: TIPO_INSTRUCCION.WHILE,
+            expresion: _expresion,
+            instrucciones: _instrucciones,
+            linea: _linea,
+            columna: _columna
+        }
+    },
+    
+    nuevotoLower: function(_expresion, _linea, _columna){
         return{
             tipo: TIPO_INSTRUCCION.TOLOWER,
             expresion: _expresion,

@@ -14,6 +14,9 @@
 "string"                return 'Rstring'
 "if"                    return 'Rif'
 "else"                  return 'Relse'
+"elseif"                return 'Relseif'
+"switch"                return 'Rswitch'
+"while"                 return 'Rwhile'
 "void"                  return 'Rvoid'
 "print"                 return 'Rprint'
 "true"                  return 'Rtrue'
@@ -126,6 +129,12 @@ INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           /
         |PRINT {$$=$1;}
         |IF {$$=$1;}
         |ELSE {$$=$1;}
+        |ELSEIF {$$=$1;}
+        |SWITCH {$$=$1;}
+        |CASE {$$=$1;}
+        |BREAK {$$=$1;}
+        |DEFAULT {$$=$1;}
+        |WHILE {$$=$1;}
 
 ;
 PRINT: Rprint parA EXPRESION parC ptcoma {$$ = INSTRUCCION.nuevoPrint($3, this._$.first_line,this._$.first_column+1)}
@@ -134,6 +143,14 @@ IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoI
 ;
 ELSE: Relse llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoElse($3, this._$.first_line,this._$.first_column+1)}
 ;
+ELSEIF: Relseif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoElseif($3, $6, this._$.first_line,this._$.first_column+1)}
+;
+SWITCH: Rswitch parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoSwitch($3, $6, this._$.first_line,this._$.first_column+1)}
+;
+
+WHILE: Rwhile parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoWhile($3, $6, this._$.first_line,this._$.first_column+1)}
+;
+
 EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.SUMA,this._$.first_line, this._$.first_column+1);}
          | EXPRESION menos EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.RESTA,this._$.first_line, this._$.first_column+1);}
          | EXPRESION multi EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MULTIPLICACION,this._$.first_line, this._$.first_column+1);}

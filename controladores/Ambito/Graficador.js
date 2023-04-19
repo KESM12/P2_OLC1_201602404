@@ -85,6 +85,20 @@ class Graficador {
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
+            }else if(instruccion.tipo === TIPO_INSTRUCCION.ELSE){
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"ELSE\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
+            }else if(instruccion.tipo === TIPO_INSTRUCCION.ELSEIF){
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"ELSEIF\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.graficarOperacion(instruccion.expresion, nombreHijo)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
+                
             }
         });
         }

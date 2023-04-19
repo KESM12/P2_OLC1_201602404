@@ -201,7 +201,7 @@ function mayorigual(_opIzq, _opDer, _ambito){
             //console.log(opDer.valor, "derecho")
         }
         if (opIzq.valor >= opDer.valor) {
-            console.log(opIzq.valor, opDer.valor, "ultimo if")
+           // console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = true
         }
         console.log(resultado)
