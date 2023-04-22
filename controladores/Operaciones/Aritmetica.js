@@ -464,7 +464,7 @@ function modular(_opizq, _opDer, _ambito){
                 if(opDer.tipo === TIPO_DATO.ENTERO){
                     
                     const resultado = opIzq.valor % opDer.valor;
-                    console.log(resultado);
+                    //console.log(resultado);
                     return {
                         valor: resultado,
                         tipo: tipores,
@@ -473,7 +473,7 @@ function modular(_opizq, _opDer, _ambito){
                     }
                 } else if (opDer.tipo === TIPO_DATO.DECIMAL) {
                     const resultado = opIzq.valor % opDer.valor;
-                    console.log(resultado);
+                    //console.log(resultado);
                     return {
                         valor: resultado,
                         tipo: tipores,

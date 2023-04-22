@@ -21,6 +21,7 @@ class Graficador {
 
     recorrerAST(_padre, _hijo){
         _hijo.forEach(instruccion => {
+            if(instruccion){
             if(instruccion.tipo === TIPO_INSTRUCCION.DECLARACION){
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
@@ -35,30 +36,32 @@ class Graficador {
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarMain(instruccion, nombreHijo)
             }
-            else if(instruccion.tipo === TIPO_INSTRUCCION.ASIGNACION){
-                var nombreHijo = "Nodo" + this.contador
-                this.contador++;
-                this.grafo += nombreHijo + "[label=\"ASIGNACION\"];\n"
-                this.grafo += _padre + "->" + nombreHijo + ";\n"
-                this.graficarAsignacion(instruccion, nombreHijo)
-            }
+            
             else if(instruccion.tipo === TIPO_INSTRUCCION.DEC_METODO){
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
                 this.grafo += nombreHijo + "[label=\"DEC_METODO\"];\n"
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarMetodo(instruccion, nombreHijo)
+            } else if(instruccion.tipo === TIPO_INSTRUCCION.ASIGNACION){
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"ASIGNACION\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.graficarAsignacion(instruccion, nombreHijo)
             }
 
             //vectores
             //listas
-            //funciones (print, length, truncate, round, typeof, toString, toCharArray)
+                }        //funciones (print, length, truncate, round, typeof, toString, toCharArray)
         });
 
-    }
+    
+}
 
     recorrerInstrucciones(_padre, _hijo){
         _hijo.forEach(instruccion => {
+            console.log(instruccion.tipo, "instrucciona al inicio del recorrerInstrucciones")
             if(instruccion.tipo === TIPO_INSTRUCCION.DECLARACION){
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
@@ -66,6 +69,8 @@ class Graficador {
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarDeclaracion(instruccion, nombreHijo)
             }else if(instruccion.tipo === TIPO_INSTRUCCION.ASIGNACION){
+                console.log("entro al asignacion", instruccion.tipo)
+                console.log(instruccion, "instruccion asignacion")
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
                 this.grafo += nombreHijo + "[label=\"ASIGNACION\"];\n"
@@ -79,27 +84,51 @@ class Graficador {
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
             //verificación de if, while, for, switch o sea haces uno de graficarOperacion cono el de tipoinstrucción print pero para todos los demás
             }else if(instruccion.tipo === TIPO_INSTRUCCION.IF){
+                console.log("entro al if")
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
                 this.grafo += nombreHijo + "[label=\"IF\"];\n"
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
-            }else if(instruccion.tipo === TIPO_INSTRUCCION.ELSE){
+            }else if(instruccion.tipo === TIPO_INSTRUCCION.IFCE){
+                console.log("entro al IFCE")
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
-                this.grafo += nombreHijo + "[label=\"ELSE\"];\n"
-                this.grafo += _padre + "->" + nombreHijo + ";\n"
-                this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
-            }else if(instruccion.tipo === TIPO_INSTRUCCION.ELSEIF){
-                var nombreHijo = "Nodo" + this.contador
-                this.contador++;
-                this.grafo += nombreHijo + "[label=\"ELSEIF\"];\n"
+                this.grafo += nombreHijo + "[label=\"IF ELSE\"];\n"
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesIf)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesElse)
+            }else if(instruccion.tipo === TIPO_INSTRUCCION.ELSEIF){
+                console.log("Entro al ELSEIF")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"ELSE IF\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.graficarOperacion(instruccion.expresion, nombreHijo)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesElseIf)
+            }else if(instruccion.tipo === TIPO_INSTRUCCION.IFCEIF){
+                console.log("Entro al IFCEIF")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"IF ELSE-IF\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.graficarOperacion(instruccion.expresion, nombreHijo)
+                //this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesIf)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesElse)
+                this.recorrerInstrucciones(nombreHijo, instruccion.lista_elseif)
+            }else if(instruccion.tipo === TIPO_INSTRUCCION.WHILE){
+                console.log(instruccion.instrucciones, "expresion while1")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"WHILE\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                console.log(nombreHijo, "nombreHijo")
+                this.graficarOperacion(instruccion.expresion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
-                
             }
+           
         });
         }
         
@@ -120,6 +149,8 @@ class Graficador {
         graficarOperacion(_expresion, _padre){
             if(_expresion.tipo === TIPO_VALOR.DECIMAL || _expresion.tipo === TIPO_VALOR.BOOL || _expresion.tipo === TIPO_VALOR.ENTERO ||
                 _expresion.tipo === TIPO_VALOR.CADENA || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR || _expresion.tipo === TIPO_VALOR.CHAR){
+                    console.log(_expresion.tipo, "valor")
+                    console.log(_expresion, "expresion")
                     var exp = _expresion.valor.toString()
                     exp = exp.replace(/\"/gi, '\\\"') //reemplaza las comillas dobles por \"
                     var value = `Nodo${this.contador}`
@@ -205,7 +236,7 @@ class Graficador {
                 this.grafo += tipoVar + `[label=\"ASIGNACION\n ${_instruccion.id}\"];\n`;
                 this.grafo += _padre + "->"  + tipoVar + ";\n" ;
                 this.contador++;
-                this.graficarOperacion(_instruccion.valor, _padre)
+                this.graficarOperacion(_instruccion, _padre)
             }
 
             graficarMetodo(_instruccion, _padre){

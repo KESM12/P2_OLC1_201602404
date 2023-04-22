@@ -128,8 +128,6 @@ INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           /
         |ASIG_VAR ptcoma {$$=$1;}
         |PRINT {$$=$1;}
         |IF {$$=$1;}
-        |ELSE {$$=$1;}
-        |ELSEIF {$$=$1;}
         |SWITCH {$$=$1;}
         |CASE {$$=$1;}
         |BREAK {$$=$1;}
@@ -139,11 +137,15 @@ INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           /
 ;
 PRINT: Rprint parA EXPRESION parC ptcoma {$$ = INSTRUCCION.nuevoPrint($3, this._$.first_line,this._$.first_column+1)}
 ;
-IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoIf($3, $6, this._$.first_line,this._$.first_column+1)}
+IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC {$$ = new INSTRUCCION.nuevoIf($3, $6 , this._$.first_line,this._$.first_column+1)}
+        |Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC Relse llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoIfElse($3, $6, $10 , this._$.first_line,this._$.first_column+1)}
+        | Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC ELSEIF  {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, null, this._$.first_line,this._$.first_column+1)}
+        | Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC ELSEIF Relse llaveA INSTRUCCIONES llaveC {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, $11, this._$.first_line,this._$.first_column+1)}
 ;
-ELSE: Relse llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoElse($3, this._$.first_line,this._$.first_column+1)}
-;
-ELSEIF: Relseif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoElseif($3, $6, this._$.first_line,this._$.first_column+1)}
+ELSEIF:ELSEIF CONEIF {$1.push($2); $$=$1;}
+      | CONEIF {$$=[$1];}
+; 
+CONEIF: Relse Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoElseIf($4, $7 , this._$.first_line,this._$.first_column+1) }
 ;
 SWITCH: Rswitch parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoSwitch($3, $6, this._$.first_line,this._$.first_column+1)}
 ;

@@ -52,7 +52,7 @@ function igualigual(_opIzq, _opDer, _ambito) {
             //console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = true
         }
-        console.log(resultado)
+        //console.log(resultado)
         return {
             valor: resultado,
             tipo: TIPO_DATO.BOOL,
@@ -142,7 +142,7 @@ function menorigual(_opIzq, _opDer, _ambito){
             //console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = true
         }
-        console.log(resultado)
+        //console.log(resultado)
         return {
             valor: resultado,
             tipo: TIPO_DATO.BOOL,
@@ -172,7 +172,7 @@ function mayor(_opIzq, _opDer, _ambito){
             //console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = true
         }
-        console.log(resultado)
+        //console.log(resultado)
         return {
             valor: resultado,
             tipo: TIPO_DATO.BOOL,
@@ -204,7 +204,7 @@ function mayorigual(_opIzq, _opDer, _ambito){
            // console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = true
         }
-        console.log(resultado)
+        //console.log(resultado)
         return {
             valor: resultado,
             tipo: TIPO_DATO.BOOL,

@@ -9,175 +9,94 @@ Nodo3[label="ID
  a"];
 Nodo1->Nodo3;
 Nodo4[label="VAL_ENTERO
- 1"];
+ 6"];
 Nodo1->Nodo4;
-Nodo5[label="DECLARACION"];
+Nodo5[label="DEC_METODO"];
 Nodo0->Nodo5;
-Nodo6[label="TIPO
- ENTERO"];
+Nodo6[label="METODO
+ P"];
 Nodo5->Nodo6;
-Nodo7[label="ID
- b"];
+Nodo7[label="INSTRUCCIONES"];
 Nodo5->Nodo7;
-Nodo8[label="VAL_ENTERO
- 2"];
-Nodo5->Nodo8;
-Nodo9[label="DECLARACION"];
-Nodo0->Nodo9;
-Nodo10[label="TIPO
- ENTERO"];
-Nodo9->Nodo10;
-Nodo11[label="ID
- c"];
-Nodo9->Nodo11;
-Nodo12[label="SUMA
- +"];
-Nodo9->Nodo12;
-Nodo13[label="VAL_IDENTIFICADOR
+Nodo8[label="WHILE"];
+Nodo7->Nodo8;
+Nodo9[label="MENORIGUAL
+ <="];
+Nodo8->Nodo9;
+Nodo10[label="VAL_IDENTIFICADOR
  a"];
+Nodo9->Nodo10;
+Nodo11[label="VAL_ENTERO
+ 6"];
+Nodo9->Nodo11;
+Nodo12[label="IF ELSE-IF"];
+Nodo8->Nodo12;
+Nodo13[label="IGUALIGUAL
+ =="];
 Nodo12->Nodo13;
 Nodo14[label="VAL_IDENTIFICADOR
- b"];
-Nodo12->Nodo14;
-Nodo15[label="DECLARACION"];
-Nodo0->Nodo15;
-Nodo16[label="TIPO
- ENTERO"];
-Nodo15->Nodo16;
-Nodo17[label="ID
- d"];
-Nodo15->Nodo17;
-Nodo18[label="RESTA
- -"];
-Nodo15->Nodo18;
-Nodo19[label="VAL_IDENTIFICADOR
  a"];
-Nodo18->Nodo19;
-Nodo20[label="VAL_IDENTIFICADOR
- b"];
-Nodo18->Nodo20;
-Nodo21[label="DECLARACION"];
-Nodo0->Nodo21;
-Nodo22[label="TIPO
- ENTERO"];
-Nodo21->Nodo22;
-Nodo23[label="ID
- e"];
-Nodo21->Nodo23;
-Nodo24[label="MULTIPLICACION
- *"];
-Nodo21->Nodo24;
-Nodo25[label="VAL_IDENTIFICADOR
- a"];
-Nodo24->Nodo25;
-Nodo26[label="VAL_IDENTIFICADOR
- b"];
-Nodo24->Nodo26;
-Nodo27[label="DECLARACION"];
-Nodo0->Nodo27;
-Nodo28[label="TIPO
- ENTERO"];
-Nodo27->Nodo28;
-Nodo29[label="ID
- x"];
-Nodo27->Nodo29;
-Nodo30[label="VAL_ENTERO
- 50"];
-Nodo27->Nodo30;
-Nodo31[label="DEC_METODO"];
-Nodo0->Nodo31;
-Nodo32[label="METODO
- Pure"];
-Nodo31->Nodo32;
-Nodo33[label="INSTRUCCIONES"];
-Nodo31->Nodo33;
-Nodo34[label="IF"];
-Nodo33->Nodo34;
-Nodo35[label="IGUALIGUAL
- =="];
-Nodo34->Nodo35;
-Nodo36[label="VAL_IDENTIFICADOR
- a"];
-Nodo35->Nodo36;
-Nodo37[label="VAL_ENTERO
+Nodo13->Nodo14;
+Nodo15[label="VAL_ENTERO
  2"];
-Nodo35->Nodo37;
-Nodo38[label="Print"];
-Nodo34->Nodo38;
-Nodo39[label="SUMA
- +"];
-Nodo38->Nodo39;
-Nodo40[label="VAL_IDENTIFICADOR
- c"];
-Nodo39->Nodo40;
-Nodo41[label="VAL_CADENA
- \" c\""];
-Nodo39->Nodo41;
-Nodo42[label="Print"];
-Nodo34->Nodo42;
-Nodo43[label="SUMA
- +"];
-Nodo42->Nodo43;
-Nodo44[label="VAL_IDENTIFICADOR
- d"];
-Nodo43->Nodo44;
-Nodo45[label="VAL_CADENA
- \" d\""];
-Nodo43->Nodo45;
-Nodo46[label="Print"];
-Nodo34->Nodo46;
-Nodo47[label="SUMA
- +"];
-Nodo46->Nodo47;
-Nodo48[label="VAL_IDENTIFICADOR
- e"];
-Nodo47->Nodo48;
-Nodo49[label="VAL_CADENA
- \" CADENA DENTRO DEL IF\""];
-Nodo47->Nodo49;
-Nodo50[label="ELSEIF"];
-Nodo33->Nodo50;
-Nodo51[label="AND
- &&"];
-Nodo50->Nodo51;
-Nodo52[label="MENORIGUAL
- <="];
-Nodo51->Nodo52;
-Nodo53[label="VAL_IDENTIFICADOR
- x"];
-Nodo52->Nodo53;
-Nodo54[label="VAL_ENTERO
- 50"];
-Nodo52->Nodo54;
-Nodo55[label="MAYOR
- >"];
-Nodo51->Nodo55;
-Nodo56[label="VAL_IDENTIFICADOR
- x"];
-Nodo55->Nodo56;
-Nodo57[label="VAL_ENTERO
- 0"];
-Nodo55->Nodo57;
-Nodo58[label="Print"];
-Nodo50->Nodo58;
-Nodo59[label="VAL_CADENA
- \"CADENA DENTRO DEL ELSEIF\""];
-Nodo58->Nodo59;
-Nodo60[label="ELSE"];
-Nodo33->Nodo60;
-Nodo61[label="Print"];
-Nodo60->Nodo61;
-Nodo62[label="VAL_CADENA
+Nodo13->Nodo15;
+Nodo16[label="Print"];
+Nodo12->Nodo16;
+Nodo17[label="VAL_CADENA
  \"CADENA DENTRO DEL ELSE\""];
-Nodo61->Nodo62;
-Nodo63[label="Print"];
-Nodo33->Nodo63;
-Nodo64[label="VAL_CADENA
- \"hi\""];
-Nodo63->Nodo64;
-Nodo65[label="MAIN"];
-Nodo0->Nodo65;
-Nodo66[label="LLAMADA 
- Pure"];
-Nodo65->Nodo66;
+Nodo16->Nodo17;
+Nodo18[label="ELSE IF"];
+Nodo12->Nodo18;
+Nodo19[label="AND
+ &&"];
+Nodo18->Nodo19;
+Nodo20[label="MENORIGUAL
+ <="];
+Nodo19->Nodo20;
+Nodo21[label="VAL_IDENTIFICADOR
+ a"];
+Nodo20->Nodo21;
+Nodo22[label="VAL_ENTERO
+ 4"];
+Nodo20->Nodo22;
+Nodo23[label="MAYOR
+ >"];
+Nodo19->Nodo23;
+Nodo24[label="VAL_IDENTIFICADOR
+ a"];
+Nodo23->Nodo24;
+Nodo25[label="VAL_ENTERO
+ 0"];
+Nodo23->Nodo25;
+Nodo26[label="Print"];
+Nodo18->Nodo26;
+Nodo27[label="VAL_CADENA
+ \"CADENA DENTRO DEL ELSEIF\""];
+Nodo26->Nodo27;
+Nodo28[label="Print"];
+Nodo8->Nodo28;
+Nodo29[label="SUMA
+ +"];
+Nodo28->Nodo29;
+Nodo30[label="VAL_IDENTIFICADOR
+ a"];
+Nodo29->Nodo30;
+Nodo31[label="VAL_CADENA
+ \" fuera de los if pero dentro del while\""];
+Nodo29->Nodo31;
+Nodo32[label="ASIGNACION"];
+Nodo8->Nodo32;
+Nodo33[label="ASIGNACION
+ a"];
+Nodo32->Nodo33;
+Nodo34[label="Print"];
+Nodo7->Nodo34;
+Nodo35[label="VAL_CADENA
+ \"fuera\""];
+Nodo34->Nodo35;
+Nodo36[label="MAIN"];
+Nodo0->Nodo36;
+Nodo37[label="LLAMADA 
+ P"];
+Nodo36->Nodo37;
 }
