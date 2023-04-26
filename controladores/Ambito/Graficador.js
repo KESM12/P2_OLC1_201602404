@@ -95,7 +95,7 @@ class Graficador {
                 console.log("entro al IFCE")
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
-                this.grafo += nombreHijo + "[label=\"IF ELSE\"];\n"
+                this.grafo += nombreHijo + "[label=\"ELSE\"];\n"
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesIf)
@@ -109,7 +109,7 @@ class Graficador {
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesElseIf)
             }else if(instruccion.tipo === TIPO_INSTRUCCION.IFCEIF){
-                console.log("Entro al IFCEIF")
+                console.log(instruccion.instruccionesElse, "Entro al IFCEIF")
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
                 this.grafo += nombreHijo + "[label=\"IF ELSE-IF\"];\n"
@@ -119,14 +119,26 @@ class Graficador {
                 this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesElse)
                 this.recorrerInstrucciones(nombreHijo, instruccion.lista_elseif)
             }else if(instruccion.tipo === TIPO_INSTRUCCION.WHILE){
-                console.log(instruccion.instrucciones, "expresion while1")
+                //console.log(instruccion.instrucciones, "expresion while1")
                 var nombreHijo = "Nodo" + this.contador
                 this.contador++;
                 this.grafo += nombreHijo + "[label=\"WHILE\"];\n"
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
-                console.log(nombreHijo, "nombreHijo")
+                //console.log(nombreHijo, "nombreHijo")
                 this.graficarOperacion(instruccion.expresion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
+            } else if(instruccion.tipo === TIPO_INSTRUCCION.DOWHILE){
+                //console.log(instruccion, "entro al DOWHILE")
+                //console.log(instruccion.instrucciones, "expresion DOWHILE")
+                //console.log(instruccion.expresionWhile, "expresionWhile DOWHILE")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"DO WHILE\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                //console.log(nombreHijo, "nombreHijo")
+                this.graficarOperacion(instruccion.expresionWhile, nombreHijo)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
+            
             }
            
         });

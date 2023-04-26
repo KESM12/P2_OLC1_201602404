@@ -19,6 +19,17 @@ function nuevaUnaria(_opDer,_tipo, _linea, _columna){
         columna:_columna,
     }
 }
+
+function nuevoIncremento(_opizq,_tipo, _linea, _columna){
+    return{
+        opIzq:_opizq,
+        tipo:_tipo,
+        linea:_linea,
+        columna:_columna,
+    }
+}
+
+
 const Instruccion ={
     nuevoPrint: function (_expresion,_linea,_columna) {
         return {
@@ -38,7 +49,9 @@ const Instruccion ={
         return nuevaOperacion(_opizq,_opDer,_tipo, _linea, _columna);
     },nuevaOperacionUnaria: function (_opDer,_tipo, _linea, _columna) {
         return nuevaUnaria(_opDer,_tipo, _linea, _columna);
-    },nuevaAsignacion: function (_id, _expresion, _linea, _columna) {
+    },nuevaOperacionIncremento: function (_opizq,_tipo, _linea, _columna) {
+        return nuevoIncremento(_opizq,_tipo, _linea, _columna);
+    },nuevaAsignacion: function (_id, _expresion, _operador, _linea, _columna) {
         return {
             tipo: TIPO_INSTRUCCION.ASIGNACION,
             id: _id,
@@ -113,11 +126,12 @@ const Instruccion ={
             columna: _columna
 
         }
-    },nuevoSwitch: function (_expresion, _casos, _instrucciones, _default, _linea, _columna) {
+    },nuevoSwitch: function (_expresion, _instruccionesCasos, _default, _linea, _columna) {
         return{
             tipo: TIPO_INSTRUCCION.SWITCH,
             expresion: _expresion,
-            instrucciones: _instrucciones,
+            instrucciones: _instruccionesCasos,
+            default: _default,
             linea: _linea,
             columna: _columna
         }
@@ -129,12 +143,27 @@ const Instruccion ={
             linea: _linea,
             columna: _columna
         }
+    }, nuevoBreak: function(_linea, _columna){
+        return {
+            tipo: TIPO_INSTRUCCION.BREAK,
+            linea: _linea,
+            columna: _columna
+        }
     },
     
-    nuevotoLower: function(_expresion, _linea, _columna){
-        return{
-            tipo: TIPO_INSTRUCCION.TOLOWER,
-            expresion: _expresion,
+    nuevoDoWhile: function( _expresionWhile, _instrucciones, _linea, _columna){
+        return {
+            tipo: TIPO_INSTRUCCION.DOWHILE,
+            instrucciones: _instrucciones,
+            expresionWhile: _expresionWhile,
+            linea: _linea,
+            columna: _columna
+        }
+    }, nuevoFor: function (_instruccionesDentro, _instrucciones, _linea, _columna) {
+        return {
+            tipo: TIPO_INSTRUCCION.FOR,
+            instruccionesFor: _instruccionesDentro,
+            instrucciones: _instrucciones,
             linea: _linea,
             columna: _columna
         }

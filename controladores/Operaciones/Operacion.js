@@ -12,13 +12,14 @@ const ValorExpresion = require("./ValorExpresion");
 function Operacion(_expresion,_ambito){ 
     if(_expresion.tipo === TIPO_VALOR.DECIMAL || _expresion.tipo === TIPO_VALOR.BOOL || _expresion.tipo === TIPO_VALOR.ENTERO||
         _expresion.tipo === TIPO_VALOR.CADENA || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR || _expresion.tipo === TIPO_VALOR.CHAR||_expresion.tipo===TIPO_INSTRUCCION.LLAMADA_METODO){
+            //console.log(_expresion.tipo, "tipo operacion")
             return ValorExpresion(_expresion,_ambito);
     }
     else if(_expresion.tipo === TIPO_OPERACION.SUMA || _expresion.tipo === TIPO_OPERACION.RESTA || _expresion.tipo===TIPO_OPERACION.MULTIPLICACION 
         ||_expresion.tipo===TIPO_OPERACION.DIVISION || _expresion.tipo === TIPO_OPERACION.MODULO || _expresion.tipo === TIPO_OPERACION.UNARIA
-        || _expresion.tipo === TIPO_OPERACION.POTENCIA){
+        || _expresion.tipo === TIPO_OPERACION.POTENCIA || _expresion.tipo === TIPO_OPERACION.INCREMENTO){
         // console.log("entro a operacion")
-        //console.log(_expresion.tipo)
+        console.log(_expresion, "operacion en operacion")
         return Aritmetica(_expresion,_ambito);
     }else if(_expresion.tipo === TIPO_OPERACION.IGUALIGUAL || _expresion.tipo === TIPO_OPERACION.DIFERENTE ||
         _expresion.tipo === TIPO_OPERACION.MENOR || _expresion.tipo === TIPO_OPERACION.MAYOR||_expresion.tipo === TIPO_OPERACION.MAYORIGUAL

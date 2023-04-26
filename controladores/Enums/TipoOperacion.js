@@ -15,7 +15,8 @@ const TIPO_OPERACION={
     MAYORIGUAL:'MAYORIGUAL',
     OR:'OR',
     AND:'AND',
-    NOT:'NOT'
+    NOT:'NOT',
+    INCREMENTO: 'INCREMENTO',
 }
 module.exports=TIPO_OPERACION;
 

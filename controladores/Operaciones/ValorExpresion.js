@@ -2,6 +2,7 @@ const TIPO_DATO = require("../Enums/TipoDato");
 const TIPO_VALOR = require("../Enums/TipoValor");
 
 function ValorExpresion(_expresion,_ambito) {
+    //console.log(_expresion.tipo, "valorExpresion.")
     if(_expresion.tipo===TIPO_VALOR.DECIMAL){
         return{
             valor: Number(_expresion.valor),
@@ -26,6 +27,7 @@ function ValorExpresion(_expresion,_ambito) {
         }
     }
     else if(_expresion.tipo===TIPO_VALOR.ENTERO){
+        //console.log(_expresion.tipo, "tipo expresion")
         return {
             valor: Number(_expresion.valor),
             tipo: TIPO_DATO.ENTERO,

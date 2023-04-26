@@ -17,8 +17,11 @@
 "elseif"                return 'Relseif'
 "switch"                return 'Rswitch'
 "while"                 return 'Rwhile'
+"for"                   return 'Rfor'
+"do"                    return 'Rdo'
 "void"                  return 'Rvoid'
 "print"                 return 'Rprint'
+"break"                 return 'Rbreak'
 "true"                  return 'Rtrue'
 "false"                 return 'Rfalse'
 "main"                  return 'Rmain'
@@ -73,6 +76,7 @@
 %}
 
 /* operator associations and precedence */
+
 %left 'or'
 %left 'and'
 %right 'not'
@@ -97,21 +101,33 @@ CUERPO: DEC_VAR ptcoma {$$=$1;}                                           //DECL
 
         
 ;
-METODOS: Rvoid identificador parA parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoMetodo($2, null, $6, this._$.first_line,this._$.first_column+1)}
         
+METODOS: Rvoid identificador parA parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoMetodo($2, null, $6, this.$.first_line,this.$.first_column+1)}
+        | Rvoid identificador parA LIST_PARAMETROS parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoMetodo($2, $4, $7, this.$.first_line,this.$.first_column+1)}
+;
+LIST_PARAMETROS: LIST_PARAMETROS coma PARAMETROS {$1.push($3); $$=$1;}  
+        |PARAMETROS {$$=[$1];}
+;
+PARAMETROS: TIPO identificador {$$ = INSTRUCCION.nuevaDeclaracion($2, null, $1, this.$.first_line,this.$.first_column+1)}
 ;
 
-MAIN: Rmain identificador parA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, null, this._$.first_line,this._$.first_column+1)}
-      
-       
+
+MAIN: Rmain identificador parA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, null, this.$.first_line,this.$.first_column+1)}
+      |Rmain identificador parA PARAMETROS_LLAMADA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, $4, this.$.first_line,this.$.first_column+1)}      
+
 ;
-DEC_VAR: TIPO identificador  {$$= INSTRUCCION.nuevaDeclaracion($2,null, $1,this._$.first_line, this._$.first_column+1)}
-        |TIPO identificador igual EXPRESION  {$$= INSTRUCCION.nuevaDeclaracion($2, $4, $1,this._$.first_line, this._$.first_column+1);
+
+PARAMETROS_LLAMADA: PARAMETROS_LLAMADA coma EXPRESION {$$ = $1; $1.push($3);}
+                |EXPRESION {$$ = [$1];}
+;
+
+DEC_VAR: TIPO identificador  {$$= INSTRUCCION.nuevaDeclaracion($2,null, $1,this.$.first_line, this.$.first_column+1)}
+        |TIPO identificador igual EXPRESION  {$$= INSTRUCCION.nuevaDeclaracion($2, $4, $1,this.$.first_line, this.$.first_column+1);
 
         }
 
 ;
-ASIG_VAR: identificador igual EXPRESION {$$ = INSTRUCCION.nuevaAsignacion($1, $3,this._$.first_line, this._$.first_column+1)}
+ASIG_VAR: identificador igual EXPRESION {$$ = INSTRUCCION.nuevaAsignacion($1, $3,this.$.first_line, this.$.first_column+1)}
         
 ;
 TIPO: Rint{$$= TIPO_DATO.ENTERO}
@@ -133,14 +149,131 @@ INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           /
         |BREAK {$$=$1;}
         |DEFAULT {$$=$1;}
         |WHILE {$$=$1;}
+        |DOWHILE {$$=$1;}
+        |FOR {$$=$1;}
+
+
 
 ;
+PRINT: Rprint parA EXPRESION parC ptcoma {$$ = INSTRUCCION.nuevoPrint($3, this.$.first_line,this.$.first_column+1)}
+;
+IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC {$$ = new INSTRUCCION.nuevoIf($3, $6 , this.$.first_line,this.$.first_column+1)}
+        |Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC Relse llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoIfElse($3, $6, $10 , this.$.first_line,this.$.first_column+1)}
+        | Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC ELSEIF  {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, null, this.$.first_line,this.$.first_column+1)}
+        | Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC ELSEIF Relse llaveA INSTRUCCIONES llaveC {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, $11, this.$.first_line,this.$.first_column+1)}
+;
+ELSEIF:ELSEIF CONEIF {$1.push($2); $$=$1;}
+      | CONEIF {$$=[$1];}
+; 
+CONEIF: Relse Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoElseIf($4, $7 , this.$.first_line,this.$.first_column+1) }
+;
+SWITCH: Rswitch parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoSwitch($3, $6, this.$.first_line,this.$.first_column+1)}
+;
+
+WHILE: Rwhile parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoWhile($3, $5, this.$.first_line,this.$.first_column+1)}
+;
+
+DOWHILE: Rdo llaveA INSTRUCCIONES llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($7, $3, this.$.first_line,this.$.first_column+1)}
+        |Rdo llaveA llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($6, [] , this.$.first_line,(this.$.first_column+1));}
+;
+
+
+EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.SUMA,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION menos EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.RESTA,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION multi EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MULTIPLICACION,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION div EXPRESION   {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.DIVISION,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION exponente EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.POTENCIA,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION modulo EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MODULO,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION menor EXPRESION    {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MENOR,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION mayor EXPRESION    {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MAYOR,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION menorIgual EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MENORIGUAL,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION mayorIgual EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MAYORIGUAL,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION diferente EXPRESION  {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.DIFERENTE,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION and EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.AND,this.$.first_line, this.$.first_column+1);}
+         | EXPRESION or EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.OR,this.$.first_line, this.$.first_column+1);}
+         | menos EXPRESION %prec umenos {$$= INSTRUCCION.nuevaOperacionUnaria($2, TIPO_OPERACION.UNARIA,this.$.first_line, this.$.first_column+1);}
+         | not EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria(null,$2, TIPO_OPERACION.NOT,this.$.first_line, this.$.first_column+1);}
+         | parA EXPRESION parC {$$=$2}
+         | EXPRESION igualigual EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.IGUALIGUAL,this.$.first_line, this.$.first_column+1);}
+         | decimal {$$= INSTRUCCION.nuevoValor(Number($1),TIPO_VALOR.DECIMAL,this.$.first_line, this.$.first_column+1);}
+         | entero {$$= INSTRUCCION.nuevoValor(Number($1),TIPO_VALOR.ENTERO,this.$.first_line, this.$.first_column+1);}
+         | Rtrue {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.BOOL,this.$.first_line, this.$.first_column+1);}
+         | Rfalse {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.BOOL,this.$.first_line, this.$.first_column+1);}
+         | string {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.CADENA,this.$.first_line, this.$.first_column+1);}
+         | identificador{$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.IDENTIFICADOR,this.$.first_line, this.$.first_column+1);}
+         | char {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.CHAR,this.$.first_line, this.$.first_column+1);}
+;
+
+/*INICIO: OPCIONESCUERPO EOF{return $1;}
+;
+OPCIONESCUERPO: OPCIONESCUERPO CUERPO{$1.push($2); $$=$1;}
+            |CUERPO {$$=[$1];}
+;
+CUERPO: DEC_VAR ptcoma {$$=$1;}                                           //DECLARACION DE CADA COMPONENTE DEL CUERPO DE MANERA RECURSIVA
+        |ASIG_VAR ptcoma {$$=$1;}
+        |METODOS {$$=$1;}
+        |MAIN {$$=$1;} 
+
+        
+;
+
+METODOS: Rvoid identificador parA parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoMetodo($2, null, $6, this.$.first_line,this.$.first_column+1)}
+        | Rvoid identificador parA LIST_PARAMETROS parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoMetodo($2, $4, $7, this.$.first_line,this.$.first_column+1)}
+;
+LIST_PARAMETROS: LIST_PARAMETROS coma PARAMETROS {$1.push($3); $$=$1;}  
+        |PARAMETROS {$$=[$1];}
+;
+PARAMETROS: TIPO identificador {$$ = INSTRUCCION.nuevaDeclaracion($2, null, $1, this.$.first_line,this.$.first_column+1)}
+;
+MAIN: Rmain identificador parA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, null, this.$.first_line,this.$.first_column+1)}
+      |Rmain identificador parA PARAMETROS_LLAMADA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, $4, this.$.first_line,this.$.first_column+1)}      
+
+;
+
+PARAMETROS_LLAMADA: PARAMETROS_LLAMADA coma EXPRESION {$$ = $1; $1.push($3);}
+                |EXPRESION {$$ = [$1];}
+;
+
+DEC_VAR: TIPO identificador  {$$= INSTRUCCION.nuevaDeclaracion($2,null, $1,this._$.first_line, this._$.first_column+1)}
+        |TIPO identificador igual EXPRESION  {$$= INSTRUCCION.nuevaDeclaracion($2, $4, $1,this._$.first_line, this._$.first_column+1);}
+
+;
+ASIG_VAR: identificador igual EXPRESION {$$ = INSTRUCCION.nuevaAsignacion($1, $3,this._$.first_line, this._$.first_column+1)}
+          //|identificador masmas {$$ = INSTRUCCION.nuevaOperacion($1, $3, this._$.first_line, this._$.first_column+1)}
+          //|identificador menosmenos {$$ = INSTRUCCION.nuevaAsignacion($1, null, this._$.first_line, this._$.first_column+1)}
+;
+
+TIPO: Rint{$$= TIPO_DATO.ENTERO}
+    |Rdouble{$$= TIPO_DATO.DECIMAL}
+    |Rchar {$$= TIPO_DATO.CHAR}
+    |Rboolean{$$= TIPO_DATO.BOOL}
+    |Rstring {$$= TIPO_DATO.CADENA}
+;
+INSTRUCCIONES: INSTRUCCIONES INSTRUCCION {$$ = $1; $1.push($2);}
+            |INSTRUCCION {$$ = [$1];}
+
+;
+INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           //DECLARACION DE CADA COMPONENTE DEL CUERPO DE MANERA RECURSIVA
+        |ASIG_VAR ptcoma {$$=$1;}
+        |PRINT {$$=$1;}
+        |IF {$$=$1;}
+        |SWITCH {$$=$1;}
+        |CASE {$$=$1;}
+        |BREAK {$$=$1;}
+        |DEFAULT {$$=$1;}
+        |WHILE {$$=$1;}
+        |DOWHILE {$$=$1;}
+        |FOR {$$=$1;}
+
+;
+
 PRINT: Rprint parA EXPRESION parC ptcoma {$$ = INSTRUCCION.nuevoPrint($3, this._$.first_line,this._$.first_column+1)}
 ;
+
 IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC {$$ = new INSTRUCCION.nuevoIf($3, $6 , this._$.first_line,this._$.first_column+1)}
         |Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC Relse llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoIfElse($3, $6, $10 , this._$.first_line,this._$.first_column+1)}
-        | Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC ELSEIF  {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, null, this._$.first_line,this._$.first_column+1)}
-        | Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC ELSEIF Relse llaveA INSTRUCCIONES llaveC {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, $11, this._$.first_line,this._$.first_column+1)}
+        |Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC ELSEIF  {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, null, this._$.first_line,this._$.first_column+1)}
+        |Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC ELSEIF Relse llaveA INSTRUCCIONES llaveC {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, $11, this._$.first_line,this._$.first_column+1)}
 ;
 ELSEIF:ELSEIF CONEIF {$1.push($2); $$=$1;}
       | CONEIF {$$=[$1];}
@@ -150,7 +283,17 @@ CONEIF: Relse Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = new INST
 SWITCH: Rswitch parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoSwitch($3, $6, this._$.first_line,this._$.first_column+1)}
 ;
 
-WHILE: Rwhile parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoWhile($3, $6, this._$.first_line,this._$.first_column+1)}
+WHILE: Rwhile parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoWhile($3, $5, this._$.first_line,this._$.first_column+1)}
+;
+
+DOWHILE: Rdo llaveA INSTRUCCIONES llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($7, $3, this._$.first_line,this._$.first_column+1)}
+        |Rdo llaveA llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($6, [] , this._$.first_line,(this._$.first_column+1));}
+;
+
+BREAK: Rbreak ptcoma {$$ = new INSTRUCCION.nuevoBreak(this.$.first_line,this.$.first_column+1)}
+;
+
+FOR: Rfor parA DEC_VAR ptcoma EXPRESION ptcoma ASIG_VAR parC llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoFor([$3, $5, $7], $10, this._$.first_line,this._$.first_column+1)}
 ;
 
 EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.SUMA,this._$.first_line, this._$.first_column+1);}
@@ -177,4 +320,4 @@ EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3,
          | string {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.CADENA,this._$.first_line, this._$.first_column+1);}
          | identificador{$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.IDENTIFICADOR,this._$.first_line, this._$.first_column+1);}
          | char {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.CHAR,this._$.first_line, this._$.first_column+1);}
-;
+;*/

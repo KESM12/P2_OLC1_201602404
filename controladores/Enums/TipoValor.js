@@ -1,3 +1,5 @@
+const { INCREMENTO } = require("./TipoInstruccion");
+
 const TIPO_VALOR={
     DECIMAL: 'VAL_DECIMAL',
     CADENA: 'VAL_CADENA',
@@ -5,7 +7,8 @@ const TIPO_VALOR={
     BOOL: 'VAL_BOLEANO',
     CHAR: 'VAL_CHAR',
     UNARIA:'VAL_UNARIA', 
-    IDENTIFICADOR: 'VAL_IDENTIFICADOR'
+    IDENTIFICADOR: 'VAL_IDENTIFICADOR',
+    INCREMENTO: 'VAL_INCREMENTO'
 }
 module.exports=TIPO_VALOR;
 
