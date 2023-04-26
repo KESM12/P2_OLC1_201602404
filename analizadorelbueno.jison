@@ -86,7 +86,7 @@
 %start INICIO
 %% /* language grammar */
 
-INICIO: OPCIONESCUERPO EOF{return $1;}
+/*INICIO: OPCIONESCUERPO EOF{return $1;}
 ;
 OPCIONESCUERPO: OPCIONESCUERPO CUERPO{$1.push($2); $$=$1;}
             |CUERPO {$$=[$1];}
@@ -124,7 +124,59 @@ TIPO: Rint{$$= TIPO_DATO.ENTERO}
 INSTRUCCIONES: INSTRUCCIONES INSTRUCCION {$$ = $1; $1.push($2);}
             |INSTRUCCION {$$ = [$1];}
 
+;*/
+
+INICIO: OPCIONESCUERPO EOF{return $1;}
 ;
+OPCIONESCUERPO: OPCIONESCUERPO CUERPO{$1.push($2); $$=$1;}
+            |CUERPO {$$=[$1];}
+;
+CUERPO: DEC_VAR ptcoma {$$=$1;}                                           //DECLARACION DE CADA COMPONENTE DEL CUERPO DE MANERA RECURSIVA
+        |ASIG_VAR ptcoma {$$=$1;}
+        |METODOS {$$=$1;}
+        |MAIN {$$=$1;} 
+
+        
+;
+METODOS: Rvoid identificador parA parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoMetodo($2, null, $6, this.$.first_line,this.$.first_column+1)}
+        | Rvoid identificador parA LIST_PARAMETROS parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoMetodo($2, $4, $7, this.$.first_line,this.$.first_column+1)}
+;
+LIST_PARAMETROS: LIST_PARAMETROS coma PARAMETROS {$1.push($3); $$=$1;}  
+        |PARAMETROS {$$=[$1];}
+;
+PARAMETROS: TIPO identificador {$$ = INSTRUCCION.nuevaDeclaracion($2, null, $1, this.$.first_line,this.$.first_column+1)}
+;
+
+
+MAIN: Rmain identificador parA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, null, this.$.first_line,this.$.first_column+1)}
+      |Rmain identificador parA PARAMETROS_LLAMADA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, $4, this.$.first_line,this.$.first_column+1)}      
+
+;
+
+PARAMETROS_LLAMADA: PARAMETROS_LLAMADA coma EXPRESION {$$ = $1; $1.push($3);}
+                |EXPRESION {$$ = [$1];}
+;
+
+DEC_VAR: TIPO identificador  {$$= INSTRUCCION.nuevaDeclaracion($2,null, $1,this.$.first_line, this.$.first_column+1)}
+        |TIPO identificador igual EXPRESION  {$$= INSTRUCCION.nuevaDeclaracion($2, $4, $1,this.$.first_line, this.$.first_column+1);
+
+        }
+
+;
+ASIG_VAR: identificador igual EXPRESION {$$ = INSTRUCCION.nuevaAsignacion($1, $3,this.$.first_line, this.$.first_column+1)}
+        
+;
+TIPO: Rint{$$= TIPO_DATO.ENTERO}
+    |Rdouble{$$= TIPO_DATO.DECIMAL}
+    |Rchar {$$= TIPO_DATO.CHAR}
+    |Rboolean{$$= TIPO_DATO.BOOL}
+    |Rstring {$$= TIPO_DATO.CADENA}
+;
+INSTRUCCIONES: INSTRUCCIONES INSTRUCCION {$$ = $1; $1.push($2);}
+            |INSTRUCCION {$$ = [$1];}
+
+;
+
 INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           //DECLARACION DE CADA COMPONENTE DEL CUERPO DE MANERA RECURSIVA
         |ASIG_VAR ptcoma {$$=$1;}
         |PRINT {$$=$1;}
@@ -152,12 +204,14 @@ CONEIF: Relse Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = new INST
 SWITCH: Rswitch parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoSwitch($3, $6, this._$.first_line,this._$.first_column+1)}
 ;
 
-WHILE: Rwhile parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoWhile($3, $6, this._$.first_line,this._$.first_column+1)}
+WHILE: Rwhile parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoWhile($3, $5, this.$.first_line,this.$.first_column+1)}
 ;
 
-DOWHILE: Rdo llaveA INSTRUCCIONES llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($7, $3, this._$.first_line,this._$.first_column+1)}
-        |Rdo llaveA llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($6, [] , this._$.first_line,(this._$.first_column+1));}
+DOWHILE: Rdo llaveA INSTRUCCIONES llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($7, $3, this.$.first_line,this.$.first_column+1)}
+        |Rdo llaveA llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($6, [] , this.$.first_line,(this.$.first_column+1));}
 ;
+
+
 
 EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.SUMA,this._$.first_line, this._$.first_column+1);}
          | EXPRESION menos EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.RESTA,this._$.first_line, this._$.first_column+1);}

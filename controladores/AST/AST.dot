@@ -1,0 +1,69 @@
+digraph G {
+node [shape="box"]Nodo0[label="RAIZ"];
+Nodo1[label="DEC_METODO"];
+Nodo0->Nodo1;
+Nodo2[label="METODO
+ Hola"];
+Nodo1->Nodo2;
+Nodo3[label="PARAMETROS"];
+Nodo1->Nodo3;
+Nodo4[label="TIPO
+ ENTERO"];
+Nodo3->Nodo4;
+Nodo5[label="ID
+ x"];
+Nodo3->Nodo5;
+Nodo6[label="TIPO
+ CADENA"];
+Nodo3->Nodo6;
+Nodo7[label="ID
+ y"];
+Nodo3->Nodo7;
+Nodo8[label="INSTRUCCIONES"];
+Nodo1->Nodo8;
+Nodo9[label="Print"];
+Nodo8->Nodo9;
+Nodo10[label="SUMA
+ +"];
+Nodo9->Nodo10;
+Nodo11[label="VAL_IDENTIFICADOR
+ y"];
+Nodo10->Nodo11;
+Nodo12[label="VAL_IDENTIFICADOR
+ x"];
+Nodo10->Nodo12;
+Nodo13[label="ELSE"];
+Nodo8->Nodo13;
+Nodo14[label="IGUALIGUAL
+ =="];
+Nodo13->Nodo14;
+Nodo15[label="VAL_ENTERO
+ 2"];
+Nodo14->Nodo15;
+Nodo16[label="VAL_ENTERO
+ 2"];
+Nodo14->Nodo16;
+Nodo17[label="Print"];
+Nodo13->Nodo17;
+Nodo18[label="VAL_CADENA
+ \"puto\""];
+Nodo17->Nodo18;
+Nodo19[label="Print"];
+Nodo13->Nodo19;
+Nodo20[label="VAL_CADENA
+ \"else\""];
+Nodo19->Nodo20;
+Nodo21[label="MAIN"];
+Nodo0->Nodo21;
+Nodo22[label="LLAMADA 
+ Hola"];
+Nodo21->Nodo22;
+Nodo23[label="PARAMETROS"];
+Nodo21->Nodo23;
+Nodo24[label="VAL_ENTERO
+ 1"];
+Nodo23->Nodo24;
+Nodo25[label="VAL_CADENA
+ \"ya salio compi \""];
+Nodo23->Nodo25;
+}

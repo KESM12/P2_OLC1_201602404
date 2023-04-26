@@ -7,7 +7,6 @@ const SentenciaIfElse = require("./IfElse");
 const SentenciaIfElseIf = require("./ifElseIf");
 const SentenciaWhile = require("./While");
 const SentenciaDoWhile = require("./doWhile");
-const SentenciaFor = require("./For");
 
 
 function Bloque(_instrucciones, _ambito) {
@@ -29,7 +28,7 @@ function Bloque(_instrucciones, _ambito) {
             if (mensaje != null) {
                 cadena += mensaje
             }
-        }          else if (instruccion.tipo === TIPO_INSTRUCCION.IF) {
+        }else if (instruccion.tipo === TIPO_INSTRUCCION.IF) {
             var ejec = SentenciaIf(instruccion, _ambito)
             var mensaje = ejec.cadena
 
@@ -51,7 +50,7 @@ function Bloque(_instrucciones, _ambito) {
                 cadena+=mensaje
             }
         }else if (instruccion.tipo === TIPO_INSTRUCCION.WHILE) {
-            //console.log(instruccion, "instruccionbloquezzsadfasdafasz")
+            console.log(instruccion, "instruccionbloquezzsadfasdafasz")
             var ejec = SentenciaWhile(instruccion, _ambito)
             var mensaje = ejec.cadena
             // console.log(mensaje, "mensaje en el bloque")
@@ -66,12 +65,6 @@ function Bloque(_instrucciones, _ambito) {
             }
         }else if(instruccion.tipo === TIPO_INSTRUCCION.BREAK){
             var ejec = SentenciaBreak(instruccion, _ambito)
-            var mensaje = ejec.cadena
-            if (mensaje != null) {
-                cadena += mensaje
-            }
-        } else if(instruccion.tipo === TIPO_INSTRUCCION.FOR){
-            var ejec = SentenciaFor(instruccion, _ambito)
             var mensaje = ejec.cadena
             if (mensaje != null) {
                 cadena += mensaje

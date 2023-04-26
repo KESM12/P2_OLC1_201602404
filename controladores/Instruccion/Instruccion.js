@@ -150,7 +150,6 @@ const Instruccion ={
             columna: _columna
         }
     },
-    
     nuevoDoWhile: function( _expresionWhile, _instrucciones, _linea, _columna){
         return {
             tipo: TIPO_INSTRUCCION.DOWHILE,
@@ -159,15 +158,7 @@ const Instruccion ={
             linea: _linea,
             columna: _columna
         }
-    }, nuevoFor: function (_instruccionesDentro, _instrucciones, _linea, _columna) {
-        return {
-            tipo: TIPO_INSTRUCCION.FOR,
-            instruccionesFor: _instruccionesDentro,
-            instrucciones: _instrucciones,
-            linea: _linea,
-            columna: _columna
-        }
-    }
+    },
 
 }
 module.exports = Instruccion;

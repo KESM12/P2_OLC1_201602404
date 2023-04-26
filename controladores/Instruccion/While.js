@@ -28,4 +28,3 @@ function SentenciaWhile(_instruccion, _ambito) {
   
 
 module.exports = SentenciaWhile;
-

@@ -14,6 +14,10 @@
 "string"                return 'Rstring'
 "if"                    return 'Rif'
 "else"                  return 'Relse'
+"elseif"                return 'Relseif'
+"switch"                return 'Rswitch'
+"while"                 return 'Rwhile'
+"do"                    return 'Rdo'
 "void"                  return 'Rvoid'
 "print"                 return 'Rprint'
 "true"                  return 'Rtrue'
@@ -121,19 +125,44 @@ INSTRUCCIONES: INSTRUCCIONES INSTRUCCION {$$ = $1; $1.push($2);}
             |INSTRUCCION {$$ = [$1];}
 
 ;
+
+
 INSTRUCCION: DEC_VAR ptcoma {$$=$1;}                                           //DECLARACION DE CADA COMPONENTE DEL CUERPO DE MANERA RECURSIVA
         |ASIG_VAR ptcoma {$$=$1;}
         |PRINT {$$=$1;}
         |IF {$$=$1;}
-        |ELSE {$$=$1;}
+        |SWITCH {$$=$1;}
+        |CASE {$$=$1;}
+        |BREAK {$$=$1;}
+        |DEFAULT {$$=$1;}
+        |WHILE {$$=$1;}
+        |DOWHILE {$$=$1;}
 
 ;
 PRINT: Rprint parA EXPRESION parC ptcoma {$$ = INSTRUCCION.nuevoPrint($3, this._$.first_line,this._$.first_column+1)}
 ;
-IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoIf($3, $6, this._$.first_line,this._$.first_column+1)}
+IF: Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC {$$ = new INSTRUCCION.nuevoIf($3, $6 , this._$.first_line,this._$.first_column+1)}
+        |Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC Relse llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoIfElse($3, $6, $10 , this._$.first_line,this._$.first_column+1)}
+        | Rif parA EXPRESION parC llaveA INSTRUCCIONES  llaveC ELSEIF  {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, null, this._$.first_line,this._$.first_column+1)}
+        | Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC ELSEIF Relse llaveA INSTRUCCIONES llaveC {$$= new INSTRUCCION.nuevoIfConElseIf($3, $6, $8, $11, this._$.first_line,this._$.first_column+1)}
 ;
-ELSE: Relse llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoElse($3, this._$.first_line,this._$.first_column+1)}
+ELSEIF:ELSEIF CONEIF {$1.push($2); $$=$1;}
+      | CONEIF {$$=[$1];}
+; 
+CONEIF: Relse Rif parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = new INSTRUCCION.nuevoElseIf($4, $7 , this._$.first_line,this._$.first_column+1) }
 ;
+SWITCH: Rswitch parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoSwitch($3, $6, this._$.first_line,this._$.first_column+1)}
+;
+
+WHILE: Rwhile parA EXPRESION parC llaveA INSTRUCCIONES llaveC {$$ = INSTRUCCION.nuevoWhile($3, $5, this.$.first_line,this.$.first_column+1)}
+;
+
+DOWHILE: Rdo llaveA INSTRUCCIONES llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($7, $3, this.$.first_line,this.$.first_column+1)}
+        |Rdo llaveA llaveC Rwhile parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($6, [] , this.$.first_line,(this.$.first_column+1));}
+;
+
+
+
 EXPRESION: EXPRESION suma EXPRESION{$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.SUMA,this._$.first_line, this._$.first_column+1);}
          | EXPRESION menos EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.RESTA,this._$.first_line, this._$.first_column+1);}
          | EXPRESION multi EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3, TIPO_OPERACION.MULTIPLICACION,this._$.first_line, this._$.first_column+1);}
