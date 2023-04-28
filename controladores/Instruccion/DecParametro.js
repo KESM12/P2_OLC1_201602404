@@ -1,15 +1,15 @@
 const Simbolo = require("../Ambito/Simbolo");
 const TIPO_DATO = require("../Enums/TipoDato")
-
+const Operacion = require("../Operaciones/Operacion");
 
 function DecParametro(_instruccion, _ambito) {
     if (_instruccion.tipo_dato === TIPO_DATO.DECIMAL) {
 
         var valor = 0.0
         if (_instruccion.valor != null) {
-            const Operacion = require("../Operaciones/Operacion")
+            //const Operacion = require("../Operaciones/Operacion")
             var op = Operacion(_instruccion.valor, _ambito.anterior)
-
+            console.log(op)
             tipo = op.tipo;
             if (tipo === TIPO_DATO.DECIMAL) {
                 valor = op.valor;
@@ -27,7 +27,7 @@ function DecParametro(_instruccion, _ambito) {
     } else if (_instruccion.tipo_dato === TIPO_DATO.ENTERO) {
         var valor = 0
         if (_instruccion.valor != null) {
-            const Operacion = require("../Operaciones/Operacion")
+            //const Operacion = require("../Operaciones/Operacion")
             var op = Operacion(_instruccion.valor, _ambito.anterior)
             tipo = op.tipo;
             if (tipo === TIPO_DATO.ENTERO) {
