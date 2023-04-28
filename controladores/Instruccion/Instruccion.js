@@ -1,4 +1,3 @@
-
 const TIPO_INSTRUCCION = require("../Enums/TipoInstruccion");
 
 
@@ -19,17 +18,6 @@ function nuevaUnaria(_opDer,_tipo, _linea, _columna){
         columna:_columna,
     }
 }
-
-function nuevoIncremento(_opizq,_tipo, _linea, _columna){
-    return{
-        opIzq:_opizq,
-        tipo:_tipo,
-        linea:_linea,
-        columna:_columna,
-    }
-}
-
-
 const Instruccion ={
     nuevoPrint: function (_expresion,_linea,_columna) {
         return {
@@ -49,9 +37,7 @@ const Instruccion ={
         return nuevaOperacion(_opizq,_opDer,_tipo, _linea, _columna);
     },nuevaOperacionUnaria: function (_opDer,_tipo, _linea, _columna) {
         return nuevaUnaria(_opDer,_tipo, _linea, _columna);
-    },nuevaOperacionIncremento: function (_opizq,_tipo, _linea, _columna) {
-        return nuevoIncremento(_opizq,_tipo, _linea, _columna);
-    },nuevaAsignacion: function (_id, _expresion, _operador, _linea, _columna) {
+    },nuevaAsignacion: function (_id, _expresion, _linea, _columna) {
         return {
             tipo: TIPO_INSTRUCCION.ASIGNACION,
             id: _id,
@@ -77,6 +63,14 @@ const Instruccion ={
             linea: _linea,
             columna: _columna
         }
+    },nuevaLlamada: function(_nombre, _lista_valores, _linea, _columna){
+            return{
+                tipo: TIPO_INSTRUCCION.LLAMADA_METODO,
+                nombre: _nombre,
+                lista_valores: _lista_valores,
+                linea: _linea,
+                columna: _columna
+            }
     },nuevoMetodo: function (_nombre, _lista_parametros, _instrucciones, _linea, _columna) {
         return {
             tipo: TIPO_INSTRUCCION.DEC_METODO,
@@ -86,7 +80,7 @@ const Instruccion ={
             linea: _linea,
             columna: _columna
         }
-    }, nuevoIf: function (_expresion, _instrucciones, _linea, _columna) {
+    },nuevoIf: function (_expresion, _instrucciones, _linea, _columna) {
         return {
             tipo: TIPO_INSTRUCCION.IF,
             expresion: _expresion,
@@ -126,16 +120,7 @@ const Instruccion ={
             columna: _columna
 
         }
-    },nuevoSwitch: function (_expresion, _instruccionesCasos, _default, _linea, _columna) {
-        return{
-            tipo: TIPO_INSTRUCCION.SWITCH,
-            expresion: _expresion,
-            instrucciones: _instruccionesCasos,
-            default: _default,
-            linea: _linea,
-            columna: _columna
-        }
-    }, nuevoWhile: function (_expresion, _instrucciones, _linea, _columna) {
+    },nuevoWhile: function (_expresion, _instrucciones, _linea, _columna) {
         return {
             tipo: TIPO_INSTRUCCION.WHILE,
             expresion: _expresion,
@@ -143,25 +128,75 @@ const Instruccion ={
             linea: _linea,
             columna: _columna
         }
-    }, nuevoBreak: function(_linea, _columna){
+    },nuevoDoWhile: function (_expresion, _instrucciones, _linea, _columna) {
+        return {
+            tipo: TIPO_INSTRUCCION.DOWHILE,
+            expresion: _expresion,
+            instrucciones: _instrucciones,
+            linea: _linea,
+            columna: _columna
+        }
+    },
+    nuevoFor: function(_expresion, _condicion, _actualizacion, _instrucciones, _linea, _columna){
+        return {
+            tipo: TIPO_INSTRUCCION.FOR,
+            expresion: _expresion,
+            condicion: _condicion,
+            actualizacion: _actualizacion,
+            instrucciones: _instrucciones,
+            linea: _linea,
+            columna: _columna
+        }
+    },
+    nuevoBreak: function(_linea, _columna){
         return {
             tipo: TIPO_INSTRUCCION.BREAK,
             linea: _linea,
             columna: _columna
         }
     },
-    nuevoDoWhile: function( _expresionWhile, _instrucciones, _linea, _columna){
+    nuevoContinue: function(_linea, _columna){
         return {
-            tipo: TIPO_INSTRUCCION.DOWHILE,
-            instrucciones: _instrucciones,
-            expresionWhile: _expresionWhile,
+            tipo: TIPO_INSTRUCCION.CONTINUE,
             linea: _linea,
             columna: _columna
         }
     },
-
+    nuevoIncremento: function(_id, _linea, _columna){
+        return {
+            tipo: TIPO_INSTRUCCION.INCREMENTO,
+            id: _id,
+            linea: _linea,
+            columna: _columna
+        }
+    },
+    nuevoDecremento: function(_id, _linea, _columna){
+        return {
+            tipo: TIPO_INSTRUCCION.DECREMENTO,
+            id: _id,
+            linea: _linea,
+            columna: _columna
+        }
+    }, nuevaFuncion: function(_tipo, _nombre, _lista_parametros, _instrucciones, _retorno, _linea, _columna){
+        return {
+            tipo: TIPO_INSTRUCCION.DEC_FUNCION,
+            tipof: _tipo,
+            nombre: _nombre,
+            lista_parametros: _lista_parametros,
+            instrucciones: _instrucciones,
+            retorno: _retorno,
+            linea: _linea,
+            columna: _columna
+        }
+    },
+    nuevaLlamadaFuncion: function(_nombre, _lista_valores, _linea, _columna){
+        return{
+            tipo: TIPO_INSTRUCCION.LLAMADA_FUNCION,
+            nombre: _nombre,
+            lista_valores: _lista_valores,
+            linea: _linea,
+            columna: _columna
+        }
+    }
 }
 module.exports = Instruccion;
-
-//aqui si falta terminar
-

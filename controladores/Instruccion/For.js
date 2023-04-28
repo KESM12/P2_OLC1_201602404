@@ -1,6 +1,6 @@
 const Ambito = require("../Ambito/Ambito")
 const TIPO_DATO = require("../Enums/TipoDato")
-const Operacion = require("../Operaciones/Operacion");
+const Operacion = require("../Operaciones/Operacion")
 const Declaracion = require("./Declaracion");
 const Asignacion = require("./Asignacion");
 const Incremento = require("./Incremento");

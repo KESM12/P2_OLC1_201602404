@@ -4,17 +4,31 @@ const Asignacion = require("./Asignacion");
 const Declaracion = require("./Declaracion");
 const SentenciaIf = require("./If");
 const SentenciaIfElse = require("./IfElse");
-const SentenciaIfElseIf = require("./ifElseIf");
+const SentenciaIfElseIf = require("./IfElseIf");
 const SentenciaWhile = require("./While");
 const SentenciaDoWhile = require("./doWhile");
+const Incremento = require("./Incremento")
+const Decremento = require("./Decremento")
 
 
 function Bloque(_instrucciones, _ambito) {
     var cadena = ""
-    var valorIf = false;
-    var valorElseIf = false;
+    var hayBreak = false
+    var hayContinue = false
 
     _instrucciones.forEach(instruccion => {
+        if (hayBreak) {
+            return {
+                hayBreak: hayBreak,
+                cadena: cadena
+            }
+        }
+        if (hayContinue) {
+            return {
+                hayContinue: hayContinue,
+                cadena: cadena
+            }
+        }
         if (instruccion.tipo === TIPO_INSTRUCCION.PRINT) {
             cadena += Print(instruccion, _ambito) + "\n"
         } else if (instruccion.tipo === TIPO_INSTRUCCION.DECLARACION) {
@@ -28,52 +42,92 @@ function Bloque(_instrucciones, _ambito) {
             if (mensaje != null) {
                 cadena += mensaje
             }
-        }else if (instruccion.tipo === TIPO_INSTRUCCION.IF) {
+        } else if (instruccion.tipo === TIPO_INSTRUCCION.IF) {
             var ejec = SentenciaIf(instruccion, _ambito)
             var mensaje = ejec.cadena
-
+            hayBreak = ejec.hayBreak
+            hayContinue = ejec.hayContinue
             if (mensaje != null) {
                 cadena += mensaje
             }
-        }else if (instruccion.tipo === TIPO_INSTRUCCION.IFCE) {
+        } else if (instruccion.tipo === TIPO_INSTRUCCION.IFCE) {
             var ejec = SentenciaIfElse(instruccion, _ambito)
             var mensaje = ejec.cadena
-            
+            hayBreak = ejec.hayBreak
+            hayContinue = ejec.hayContinue
             if (mensaje != null) {
                 cadena += mensaje
             }
-        } else if(instruccion.tipo === TIPO_INSTRUCCION.IFCEIF){
+        } else if (instruccion.tipo === TIPO_INSTRUCCION.IFCEIF) {
             var ejec = SentenciaIfElseIf(instruccion, _ambito)
             var mensaje = ejec.cadena
-            
-            if(mensaje!=null){
-                cadena+=mensaje
-            }
-        }else if (instruccion.tipo === TIPO_INSTRUCCION.WHILE) {
-            console.log(instruccion, "instruccionbloquezzsadfasdafasz")
-            var ejec = SentenciaWhile(instruccion, _ambito)
-            var mensaje = ejec.cadena
-            // console.log(mensaje, "mensaje en el bloque")
+            hayBreak = ejec.hayBreak
+            hayContinue = ejec.hayContinue
             if (mensaje != null) {
                 cadena += mensaje
             }
-        } else if(instruccion.tipo === TIPO_INSTRUCCION.DOWHILE){
+        } else if (instruccion.tipo === TIPO_INSTRUCCION.WHILE) {
+            var ejec = SentenciaWhile(instruccion, _ambito)
+            var mensaje = ejec.cadena
+            if (mensaje != null) {
+                cadena += mensaje
+            }
+        } else if (instruccion.tipo === TIPO_INSTRUCCION.DOWHILE) {
             var ejec = SentenciaDoWhile(instruccion, _ambito)
             var mensaje = ejec.cadena
             if (mensaje != null) {
                 cadena += mensaje
             }
         }else if(instruccion.tipo === TIPO_INSTRUCCION.BREAK){
-            var ejec = SentenciaBreak(instruccion, _ambito)
-            var mensaje = ejec.cadena
-            if (mensaje != null) {
-                cadena += mensaje
+            hayBreak = true
+            return {
+                hayBreak: hayBreak,
+                cadena: cadena
+            }
+        } else if(instruccion.tipo === TIPO_INSTRUCCION.CONTINUE){
+            hayContinue = true
+            return {
+                hayContinue: hayContinue,
+                cadena: cadena
+            }
+        } else if(instruccion.tipo === TIPO_INSTRUCCION.INCREMENTO){
+            //ASTdiagrama.push('Incremento')
+            var mensaje = Incremento(instruccion, _ambito)
+            if(mensaje!=null){
+                cadena+=mensaje
+            }
+        } else if(instruccion.tipo === TIPO_INSTRUCCION.DECREMENTO){
+            //ASTdiagrama.push('Decremento')
+            var mensaje = Decremento(instruccion, _ambito)
+            if(mensaje!=null){
+                cadena+=mensaje
+            }
+        }else if(instruccion.tipo === TIPO_INSTRUCCION.LLAMADA_METODO){
+            //ASTdiagrama.push('Llamada metodo')
+            //console.log("Llamada metodo")
+            const Exec = require("./Main");
+            var mensaje = Exec(instruccion, _ambito)
+            if(mensaje!=null){
+                cadena+=mensaje
             }
         }
-        });
+        else if(instruccion.tipo === TIPO_INSTRUCCION.LLAMADA_FUNCION){
+            //ASTdiagrama.push('Llamada funcion')
+            //console.log("Llamada metodo")
+            const Exec = require("./Main");
+            var mensaje = Exec(instruccion, _ambito)
+            if(mensaje!=null){
+                cadena+=mensaje
+            }
+        }
+    });
     return {
+        hayBreak: hayBreak,
+        hayContinue: hayContinue,
         cadena: cadena
     }
 
 }
 module.exports = Bloque
+
+

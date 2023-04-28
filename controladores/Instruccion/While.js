@@ -13,10 +13,15 @@ function SentenciaWhile(_instruccion, _ambito) {
       const Bloque = require("./Bloque");
       var ejec = Bloque(_instruccion.instrucciones, nuevoAmbito);
       mensaje += ejec.cadena;
+      if(ejec.hayBreak){
+        return mensaje
+    }
+    if(ejec.hayContinue){
+        operacion = Operacion(_instruccion.expresion, _ambito)
+    }
       //console.log(mensaje, "mensaje dentro del while");
       operacion = Operacion(_instruccion.expresion, _ambito);
       //console.log(operacion, "operacion fuera del while");
-      
     }
     mensajeC += mensaje;
     console.log(mensajeC, "mensajeC");
