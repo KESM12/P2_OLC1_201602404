@@ -9,6 +9,7 @@ const SentenciaWhile = require("./While");
 const SentenciaDoWhile = require("./doWhile");
 const Incremento = require("./Incremento")
 const Decremento = require("./Decremento")
+const SentenciaFor = require("./For")
 
 
 function Bloque(_instrucciones, _ambito) {
@@ -105,8 +106,8 @@ function Bloque(_instrucciones, _ambito) {
         }else if(instruccion.tipo === TIPO_INSTRUCCION.LLAMADA_METODO){
             //ASTdiagrama.push('Llamada metodo')
             //console.log("Llamada metodo")
-            const Exec = require("./Main");
-            var mensaje = Exec(instruccion, _ambito)
+            const Main = require("./Main");
+            var mensaje = Main(instruccion, _ambito)
             if(mensaje!=null){
                 cadena+=mensaje
             }
@@ -114,12 +115,21 @@ function Bloque(_instrucciones, _ambito) {
         else if(instruccion.tipo === TIPO_INSTRUCCION.LLAMADA_FUNCION){
             //ASTdiagrama.push('Llamada funcion')
             //console.log("Llamada metodo")
-            const Exec = require("./Main");
-            var mensaje = Exec(instruccion, _ambito)
+            const Main = require("./Main");
+            var mensaje = Main(instruccion, _ambito)
             if(mensaje!=null){
                 cadena+=mensaje
             }
         }
+        else if(instruccion.tipo === TIPO_INSTRUCCION.FOR){
+            var ejec = SentenciaFor(instruccion, _ambito)
+            //console.log(ejec)
+            var mensaje = ejec.cadena
+            if (mensaje != null) {
+                cadena += mensaje
+            }
+        }
+
     });
     return {
         hayBreak: hayBreak,

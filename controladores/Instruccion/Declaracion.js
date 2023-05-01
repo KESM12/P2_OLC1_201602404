@@ -3,10 +3,12 @@ const TIPO_DATO = require("../Enums/TipoDato");
 const Operacion = require("../Operaciones/Operacion")
 
 function Declaracion(_instruccion, _ambito){
+    console.log(_instruccion, "declaracion")
     if (_instruccion.tipo_dato === TIPO_DATO.DECIMAL) { 
         var valor = 0.0;
         if (_instruccion.valor != null) {
             var op = Operacion(_instruccion.valor, _ambito)
+            //console.log(op, "op en declaracion")
             tipo = op.tipo;
             if (tipo === TIPO_DATO.DECIMAL) {
                 valor = op.valor;
@@ -21,10 +23,12 @@ function Declaracion(_instruccion, _ambito){
         // console.log(_ambito)
         return null
     }else if (_instruccion.tipo_dato === TIPO_DATO.ENTERO) {
-
+        console.log(_instruccion.tipo, "entero")
         var valor = 0
         if (_instruccion.valor != null) { 
+            console.log(_instruccion.valor, "op en declaracionaaaa")
             var op = Operacion(_instruccion.valor, _ambito)
+            
             tipo = op.tipo;
             if (tipo === TIPO_DATO.ENTERO) {
                 valor = op.valor;

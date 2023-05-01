@@ -2,7 +2,7 @@ const TIPO_DATO = require("../Enums/TipoDato");
 const TIPO_VALOR = require("../Enums/TipoValor");
 
 function ValorExpresion(_expresion,_ambito) {
-    //console.log(_expresion.tipo, "valorExpresion.")
+    //console.log(_expresion, "valorExpresion.")
     if(_expresion.tipo===TIPO_VALOR.DECIMAL){
         return{
             valor: Number(_expresion.valor),
@@ -42,6 +42,7 @@ function ValorExpresion(_expresion,_ambito) {
             columna: _expresion.columna
         }
     }else if(_expresion.tipo===TIPO_VALOR.IDENTIFICADOR){
+        //console.log(_expresion, "identificador en valor expresion")
         const simbolo= _ambito.getSimbolo(_expresion.valor) 
         if(simbolo!=null){
             return{

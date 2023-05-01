@@ -1,56 +1,32 @@
 const Ambito = require("../Ambito/Ambito")
-const TIPO_DATO = require("../Enums/TipoDato")
 const Operacion = require("../Operaciones/Operacion")
-const Declaracion = require("./Declaracion");
-const Asignacion = require("./Asignacion");
-const Incremento = require("./Incremento");
-const Decremento = require("./Decremento");
 
-function SentenciaFor(_instruccion, _ambito){  
-    //console.log(_instruccion)
+function SentenciaFor(_instruccion, _ambito) {
+    console.log(_instruccion, "for")
     var mensaje = ""
-    //console.log(_instruccion)
-    //console.log(_instruccion.expresion.tipo)
-    if(_instruccion.expresion.tipo == 'DECLARACION'){
-        Declaracion(_instruccion.expresion, _ambito)
-    }else if(_instruccion.expresion.tipo == 'ASIGNACION'){
-        Asignacion(_instruccion.expresion, _ambito)
-    }
-
-    //console.log(_instruccion.condicion)
-    var operacion = Operacion(_instruccion.condicion, _ambito)
-    //console.log(operacion)
-
-    if(operacion.tipo === TIPO_DATO.BANDERA){
-        
-        while(operacion.valor){
-            var nuevoAmbito = new Ambito(_ambito)
-            const Bloque = require('./Bloque')
-            var ejec =Bloque(_instruccion.instrucciones, nuevoAmbito)
-            //mensaje+=Bloque(_instruccion.instrucciones, nuevoAmbito)
-            mensaje+=ejec.cadena
-
-            if(ejec.hayBreak){
-                return mensaje
-            }
-            //actualizamos
-            //console.log(_instruccion.actualizacion)
-            if(_instruccion.actualizacion.tipo == 'INCREMENTO'){
-                inc = Incremento(_instruccion.actualizacion, _ambito)
-            }else if(_instruccion.actualizacion.tipo == 'DECREMENTO'){
-                inc = Decremento(_instruccion.actualizacion, _ambito)
-            }else if(_instruccion.actualizacion.tipo == 'ASIGNACION'){
-                inc = Asignacion(_instruccion.actualizacion, _ambito)
-            }
-            
-            operacion = Operacion(_instruccion.condicion, _ambito)
-            //console.log(operacion)
+    var mensajeC = "";
+    var operacion = Operacion(_instruccion.condicion, _ambito);
+    for (var i = 1; i <= _instruccion.condicion.opDer.valor; i++) {
+        var nuevoAmbito = new Ambito(_ambito, "For");
+        const Bloque = require("./Bloque");
+        var ejec = Bloque(_instruccion.instrucciones, nuevoAmbito);
+        mensaje += ejec.cadena;
+        if (ejec.hayBreak) {
+            return mensaje
         }
-        return mensaje
+        if (ejec.hayContinue) {
+            operacion = Operacion(_instruccion.expresion, _ambito)
+        }
+        //console.log(mensaje, "mensaje dentro del while");
+        operacion = Operacion(_instruccion.condicion, _ambito);
+        //console.log(operacion, "operacion fuera del while");
     }
-    return `\n Error: No es una expresion de tipo BANDERA en la condicion... Linea: ${_instruccion.linea} Columna: ${_instruccion.columna}`
-    
+    mensajeC += mensaje;
+    console.log(mensajeC, "mensajeC");
 
+    return {
+        cadena: mensajeC
+    };
 }
 
 module.exports = SentenciaFor;

@@ -5,6 +5,7 @@ const Relacional = require("./Relacional")
 const ValorExpresion = require("./ValorExpresion")
 
 function Logica(_expresion, _ambito) {
+    
     //true || false
     if (_expresion.tipo === TIPO_VALOR.DECIMAL || _expresion.tipo === TIPO_VALOR.BOOL || _expresion.tipo === TIPO_VALOR.ENTERO ||
         _expresion.tipo === TIPO_VALOR.CADENA || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR || _expresion.tipo === TIPO_VALOR.CHAR) {
@@ -68,7 +69,7 @@ function and(_opIzq, _opDer, _ambito) {
 
 function not(_expresion, _ambito) {
     var opDer = Logica(_expresion.opDer, _ambito)
-    //console.log(opDer)
+    console.log(opDer)
     if (opDer.tipo === TIPO_DATO.BOOL) {
         if(opDer.valor === true){
             return {

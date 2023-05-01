@@ -139,10 +139,36 @@ class Graficador {
                 this.graficarOperacion(instruccion.expresionWhile, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
             
+            } else if ( instruccion.tipo === TIPO_INSTRUCCION.FOR){
+                console.log(instruccion, "entro al FOR")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"FOR\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.graficarDeclaracion(instruccion.expresion, nombreHijo)
+                this.graficarOperacion(instruccion.condicion, nombreHijo)
+                this.graficarInst(instruccion.actualizacion, nombreHijo)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
             }
            
         });
         }
+
+        graficarInst(_instruccion, _padre){
+            console.log(_instruccion, "hillakdñjf")
+            var tipoVar = `Nodo${this.contador}`
+            this.grafo += tipoVar + `[label=\"TIPO\n ${_instruccion.tipo}\"];\n`;
+            this.grafo += _padre + "->"  + tipoVar + ";\n" ;
+            this.contador++;
+            var nombreVar = `Nodo${this.contador}`
+            this.grafo += nombreVar + `[label=\"ID\n ${_instruccion.id}\"];\n`;
+            this.grafo += tipoVar + "->" + nombreVar + ";\n";
+            this.contador++;
+            if(_instruccion.valor != null){ 
+                this.graficarOperacion(_instruccion.valor, _padre)
+            }
+        }
+
         
         graficarDeclaracion(_instruccion, _padre){
             var tipoVar = `Nodo${this.contador}`
