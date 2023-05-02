@@ -10,6 +10,7 @@ const SentenciaDoWhile = require("./doWhile");
 const Incremento = require("./Incremento")
 const Decremento = require("./Decremento")
 const SentenciaFor = require("./For")
+const SentenciaSwitch = require("./Switch")
 
 
 function Bloque(_instrucciones, _ambito) {
@@ -127,6 +128,15 @@ function Bloque(_instrucciones, _ambito) {
             var mensaje = ejec.cadena
             if (mensaje != null) {
                 cadena += mensaje
+            }
+        }
+        else if(instruccion.tipo === TIPO_INSTRUCCION.SWITCH){
+            var ejec = SentenciaSwitch(instruccion, _ambito)
+            var mensaje = ejec.cadena
+            hayBreak = false
+            hayContinue = ejec.hayContinue
+            if(mensaje!=null){
+                cadena+=mensaje
             }
         }
 

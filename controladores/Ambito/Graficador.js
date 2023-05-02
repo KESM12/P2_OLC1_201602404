@@ -149,13 +149,43 @@ class Graficador {
                 this.graficarOperacion(instruccion.condicion, nombreHijo)
                 this.graficarInst(instruccion.actualizacion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
+            } else if (instruccion.tipo === TIPO_INSTRUCCION.SWITCH){
+                console.log(instruccion, "entro al SWITCH")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"SWITCH\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.recorrerInstrucciones(nombreHijo, instruccion.lista_case)
+                this.graficarDefault( instruccion.instruccionesDefault, nombreHijo)
+            } else if (instruccion.tipo === TIPO_INSTRUCCION.CASE){
+                console.log(instruccion, "entro al CASE")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"CASE\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
+                this.graficarOperacion(instruccion.expresion, nombreHijo)
+                this.recorrerInstrucciones(nombreHijo, instruccion.instruccionesCase)
+            } else if( instruccion.tipo === TIPO_INSTRUCCION.BREAK){
+                console.log(instruccion, "entro al BREAK")
+                var nombreHijo = "Nodo" + this.contador
+                this.contador++;
+                this.grafo += nombreHijo + "[label=\"BREAK\"];\n"
+                this.grafo += _padre + "->" + nombreHijo + ";\n"
             }
-           
         });
         }
 
+        graficarDefault(_instruccion, _padre){
+            console.log(_instruccion, "entro al DEFAULT")
+            var nombreHijo = "Nodo" + this.contador
+            this.contador++;
+            this.grafo += nombreHijo + "[label=\"DEFAULT\"];\n"
+            this.grafo += _padre + "->" + nombreHijo + ";\n"
+            this.recorrerInstrucciones(nombreHijo, _instruccion)
+        }
+
         graficarInst(_instruccion, _padre){
-            console.log(_instruccion, "hillakdñjf")
+            //console.log(_instruccion, "hillakdñjf")
             var tipoVar = `Nodo${this.contador}`
             this.grafo += tipoVar + `[label=\"TIPO\n ${_instruccion.tipo}\"];\n`;
             this.grafo += _padre + "->"  + tipoVar + ";\n" ;

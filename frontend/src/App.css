@@ -1,16 +1,22 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .App {
   text-align: center;
 }
 
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0156ff;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(143, 93, 0);
 }
 .editores{
   display: flex;
@@ -18,8 +24,13 @@
   align-items: center;
   align-items: stretch;
 }
+
 .containerE{
   display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+ 
 }
 .editor1 {
   flex:1;
@@ -31,3 +42,22 @@
   text-align: left;
 }
 
+.opciones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: left;
+  background-color: #282c34;
+  padding: 10px;
+}
+
+.opciones button {
+  margin: 0 10px;
+}
+
+#json-file-input {
+	display: none;
+}

@@ -4,7 +4,6 @@ const Graficador = require("../controladores/Ambito/Graficador")
 var fs = require('fs');
 
 
-
 module.exports=(parser, app)=>{
 
     var prueba;
@@ -51,6 +50,7 @@ module.exports=(parser, app)=>{
                 }
             });
     });
+
 }
        
     

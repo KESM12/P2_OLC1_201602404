@@ -4,16 +4,11 @@ const Operacion = require("../Operaciones/Operacion");
 
 function SentenciaSwitch(_instruccion, _ambito) {
     var id = _instruccion.expresion.tipo
-    //console.log(_instruccion.expresion)
-    //console.log(id)
-    
     var mensaje = ""
     var operacion = Operacion(_instruccion.expresion, _ambito);
     var hayBreak = false
-
     //console.log(operacion)
     //console.log(operacion.valor)
-
     if (id === "VAL_IDENTIFICADOR") {
         if(_instruccion.lista_case != null){
         for (let i = 0; i < _instruccion.lista_case.length; i++) {
@@ -40,9 +35,7 @@ function SentenciaSwitch(_instruccion, _ambito) {
                     
                 }
             }
-            else {
-                mensaje += `Error: No es una condicion válida para el switch... Linea: ${_instruccion.lista_case[i].linea} Columna: ${_instruccion.lista_case[i].columna}`
-            }
+            
         }
 
         //console.log(_instruccion.instruccionesDefault)

@@ -11,6 +11,7 @@ function ValorExpresion(_expresion,_ambito) {
             columna:_expresion.columna
         }
     }else if(_expresion.tipo===TIPO_VALOR.BOOL){
+        //console.log(_expresion, "valor expresionaaa")
         return {
             valor: _expresion.valor.toLowerCase()==='true' ? true: false,
             tipo: TIPO_DATO.BOOL,

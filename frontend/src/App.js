@@ -31,10 +31,41 @@ function App() {
     });
   }
 
+  function SubirArchivo(){
+    var SubirArch = document.getElementById('btnSubArch');
+    var jsonFileInput = document.getElementById('json-file-input');
+
+    SubirArch.addEventListener('click', function () {
+      jsonFileInput.click();
+    });
+
+    jsonFileInput.addEventListener('change', function () {
+      var file = jsonFileInput.files[0];
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var fileContent = e.target.result;
+        // Hacer lo que necesites con el contenido del archivo
+        //console.log(fileContent,"hola");
+        setCode(fileContent);
+      };
+      reader.readAsText(file);
+      //console.log("hiloo", file);  
+    });
+    
+  }
+
   return (
     <div className="App">
       <header className="App-header">
       <div className='editores' >
+          <div className='opciones'>
+            <Button variant="primary" className="boton" onClick={() => { analizar() }}>Analizar</Button>
+            <Button variant="primary" className="boton" onClick={() => { crearAst() }}>CrearAST</Button>
+            <Button variant="primary" className="boton" onClick={() => { setCode('') }}>Limpiar</Button>
+            <Button variant="primary" className="boton" onClick={() => { setResultado('') }}>Limpiar Resultado</Button>
+            <Button variant="primary" className="boton" id="btnSubArch" onClick={() => { SubirArchivo()}}>Subir Archivo</Button>
+            <input type="file" id="json-file-input" accept=".tw"></input>
+          </div>
         <div className='containerE'>
           <div className="editor1">
             <MonacoEditor
@@ -58,10 +89,7 @@ function App() {
             />
           </div>
         </div>
-          <div>
-            <Button variant="primary" className="boton" onClick={()=>{analizar()} }>Analizar</Button>
-            <Button variant="primary" className="boton" onClick={()=>{crearAst()} }>CrearAST</Button>
-          </div>
+          
         </div>
       </header>
     </div>
