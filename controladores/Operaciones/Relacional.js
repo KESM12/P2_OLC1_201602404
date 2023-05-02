@@ -6,7 +6,7 @@ const Aritmetica = require("./Aritmetica");
 const ValorExpresion = require("./ValorExpresion");
 
 function Relacional(_expresion,_ambito){
-    console.log(_expresion, "expresion en relacional")
+    //console.log(_expresion, "expresion en relacional")
     if (_expresion.tipo === TIPO_VALOR.DECIMAL || _expresion.tipo === TIPO_VALOR.BOOL || _expresion.tipo === TIPO_VALOR.ENTERO ||
         _expresion.tipo === TIPO_VALOR.CADENA || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR || _expresion.tipo === TIPO_VALOR.CHAR||_expresion.tipo===TIPO_INSTRUCCION.LLAMADA_METODO) {
         return ValorExpresion(_expresion, _ambito)
@@ -83,7 +83,7 @@ function diferente(_opIzq, _opDer, _ambito){
            // console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = false
         }
-        console.log(resultado)
+        //console.log(resultado)
         return {
             valor: resultado,
             tipo: TIPO_DATO.BOOL,
@@ -113,7 +113,7 @@ function menor(_opIzq, _opDer, _ambito){
            // console.log(opIzq.valor, opDer.valor, "ultimo if")
             resultado = true
         }
-        console.log(resultado)
+        //console.log(resultado)
         return {
             valor: resultado,
             tipo: TIPO_DATO.BOOL,

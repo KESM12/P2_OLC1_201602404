@@ -68,7 +68,7 @@ function DecParametro(_instruccion, _ambito) {
         if (_instruccion.valor != null) {
             const Operacion = require("../Operaciones/Operacion")
             var op = Operacion(_instruccion.valor, _ambito.anterior)
-            console.log(op)
+            //console.log(op)
             tipo = op.tipo;
             if (tipo === TIPO_DATO.BOOL) {
                 valor = op.valor;

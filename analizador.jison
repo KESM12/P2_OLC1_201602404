@@ -35,7 +35,6 @@
 "writeline"           return 'writeline'
 "tolower"             return 'tolower'
 "toupper"             return 'toupper'
-"start"               return 'start'
 "with"                return 'with'
 "length"              return 'length'
 "truncate"            return 'truncate'
@@ -134,6 +133,10 @@ CUERPO: DEC_VAR {$$=$1}
 MAIN: Rmain identificador parA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, null, this._$.first_line,this._$.first_column+1)}
         |Rmain identificador parA PARAMETROS_LLAMADA parC ptcoma {$$ = INSTRUCCION.nuevoMain($2, $4, this._$.first_line,this._$.first_column+1)}
        
+;
+
+PARAMETROS_LLAMADA: PARAMETROS_LLAMADA coma EXPRESION {$$ = $1; $1.push($3);  }
+                |EXPRESION {$$ = [$1];}
 ;
 
 LLAMADA_METODO: identificador parA parC ptcoma {$$ = INSTRUCCION.nuevaLlamada($1, null, this._$.first_line,this._$.first_column+1)}
@@ -274,8 +277,10 @@ FOR : for parA DEC_VAR EXPRESION ptcoma INC_VAR parC llaveA OPCIONESMETODO llave
   | for parA AS_VAR ptcoma EXPRESION ptcoma AS_VAR parC llaveA OPCIONESMETODO llaveC {$$ = new INSTRUCCION.nuevoFor($3, $5, $7, $10, this._$.first_line,this._$.first_column+1)}
 ;
 
-DOWHILE: do llaveA OPCIONESMETODO llaveC while parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDowhile($3, $7 , this._$.first_line,this._$.first_column+1)}
+DOWHILE: do llaveA OPCIONESMETODO llaveC while parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($7, $3, this._$.first_line,this._$.first_column+1)}
+        | do llaveA llaveC while parA EXPRESION parC ptcoma {$$ = new INSTRUCCION.nuevoDoWhile($6, [] , this._$.first_line,(this._$.first_column+1));}
 ;
+
 
 IF: if parA EXPRESION parC llaveA OPCIONESMETODO llaveC {$$ = new INSTRUCCION.nuevoIf($3, $6 , this._$.first_line,this._$.first_column+1)}
   | if parA EXPRESION parC llaveA OPCIONESMETODO llaveC else llaveA OPCIONESMETODO llaveC {$$ = new INSTRUCCION.nuevoIfElse($3, $6, $10 , this._$.first_line,this._$.first_column+1)}

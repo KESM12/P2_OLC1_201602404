@@ -136,7 +136,7 @@ class Graficador {
                 this.grafo += nombreHijo + "[label=\"DO WHILE\"];\n"
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
                 //console.log(nombreHijo, "nombreHijo")
-                this.graficarOperacion(instruccion.expresionWhile, nombreHijo)
+                this.graficarOperacion(instruccion.expresion, nombreHijo)
                 this.recorrerInstrucciones(nombreHijo, instruccion.instrucciones)
             
             } else if ( instruccion.tipo === TIPO_INSTRUCCION.FOR){

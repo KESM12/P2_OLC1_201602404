@@ -6,14 +6,14 @@ function SentenciaDoWhile(_instruccion, _ambito) {
     var mensaje = "";
     var mensajeC = "";
     console.log(_instruccion, "instruccion en el do while");
-    var operacion = Operacion(_instruccion.expresionWhile, _ambito);
+    var operacion = Operacion(_instruccion.expresion, _ambito);
     do {
       var nuevoAmbito = new Ambito(_ambito, "While");
       const Bloque = require("./Bloque");
       var ejec = Bloque(_instruccion.instrucciones, nuevoAmbito);
       mensaje += ejec.cadena;
       //console.log(mensaje, "mensaje dentro del while");
-      operacion = Operacion(_instruccion.expresionWhile, _ambito);
+      operacion = Operacion(_instruccion.expresion, _ambito);
       console.log(operacion, "operacion dentro del do while");
     }   while (operacion.valor);
     mensaje += mensajeC;

@@ -1,330 +1,2178 @@
 digraph G {
 node [shape="box"]Nodo0[label="RAIZ"];
-Nodo1[label="DECLARACION"];
+Nodo1[label="DEC_METODO"];
 Nodo0->Nodo1;
-Nodo2[label="TIPO
- DECIMAL"];
+Nodo2[label="METODO
+ FactorialIterativo"];
 Nodo1->Nodo2;
-Nodo3[label="ID
- r_toRadians"];
+Nodo3[label="PARAMETROS"];
 Nodo1->Nodo3;
-Nodo4[label="DECLARACION"];
-Nodo0->Nodo4;
-Nodo5[label="TIPO
- DECIMAL"];
-Nodo4->Nodo5;
-Nodo6[label="ID
- r_sine"];
-Nodo4->Nodo6;
-Nodo7[label="DEC_METODO"];
-Nodo0->Nodo7;
-Nodo8[label="METODO
- toRadians"];
+Nodo4[label="TIPO
+ ENTERO"];
+Nodo3->Nodo4;
+Nodo5[label="ID
+ n2"];
+Nodo3->Nodo5;
+Nodo6[label="INSTRUCCIONES"];
+Nodo1->Nodo6;
+Nodo7[label="Print"];
+Nodo6->Nodo7;
+Nodo8[label="VAL_CADENA
+ \"==============Para Calificar Ciclos=============\""];
 Nodo7->Nodo8;
-Nodo9[label="PARAMETROS"];
-Nodo7->Nodo9;
-Nodo10[label="TIPO
- DECIMAL"];
+Nodo9[label="Print"];
+Nodo6->Nodo9;
+Nodo10[label="VAL_CADENA
+ \"----------------CICLO WHILE Y FOR---------------\""];
 Nodo9->Nodo10;
-Nodo11[label="ID
- angle"];
-Nodo9->Nodo11;
-Nodo12[label="INSTRUCCIONES"];
-Nodo7->Nodo12;
-Nodo13[label="ASIGNACION"];
-Nodo12->Nodo13;
-Nodo14[label="ASIGNACION
- r_toRadians"];
-Nodo13->Nodo14;
-Nodo15[label="DEC_METODO"];
-Nodo0->Nodo15;
-Nodo16[label="METODO
- sine"];
+Nodo11[label="DECLARACION"];
+Nodo6->Nodo11;
+Nodo12[label="TIPO
+ ENTERO"];
+Nodo11->Nodo12;
+Nodo13[label="ID
+ numeroFactorial"];
+Nodo11->Nodo13;
+Nodo14[label="VAL_IDENTIFICADOR
+ n2"];
+Nodo11->Nodo14;
+Nodo15[label="WHILE"];
+Nodo6->Nodo15;
+Nodo16[label="MAYOR
+ >"];
 Nodo15->Nodo16;
-Nodo17[label="PARAMETROS"];
-Nodo15->Nodo17;
-Nodo18[label="TIPO
- DECIMAL"];
-Nodo17->Nodo18;
-Nodo19[label="ID
- x"];
-Nodo17->Nodo19;
-Nodo20[label="INSTRUCCIONES"];
-Nodo15->Nodo20;
-Nodo21[label="DECLARACION"];
+Nodo17[label="VAL_IDENTIFICADOR
+ numeroFactorial"];
+Nodo16->Nodo17;
+Nodo18[label="Print"];
+Nodo6->Nodo18;
+Nodo19[label="VAL_CADENA
+ \"------------------------------------------------\""];
+Nodo18->Nodo19;
+Nodo20[label="Print"];
+Nodo6->Nodo20;
+Nodo21[label="VAL_CADENA
+ \"======================================\""];
 Nodo20->Nodo21;
-Nodo22[label="TIPO
- DECIMAL"];
-Nodo21->Nodo22;
-Nodo23[label="ID
- sin"];
-Nodo21->Nodo23;
-Nodo24[label="VAL_DECIMAL
- 0"];
-Nodo21->Nodo24;
-Nodo25[label="DECLARACION"];
-Nodo20->Nodo25;
-Nodo26[label="TIPO
+Nodo22[label="DEC_METODO"];
+Nodo0->Nodo22;
+Nodo23[label="METODO
+ Principal"];
+Nodo22->Nodo23;
+Nodo24[label="PARAMETROS"];
+Nodo22->Nodo24;
+Nodo25[label="TIPO
  ENTERO"];
-Nodo25->Nodo26;
-Nodo27[label="ID
- fact"];
-Nodo25->Nodo27;
-Nodo28[label="DECLARACION"];
-Nodo20->Nodo28;
-Nodo29[label="TIPO
- ENTERO"];
+Nodo24->Nodo25;
+Nodo26[label="ID
+ start"];
+Nodo24->Nodo26;
+Nodo27[label="INSTRUCCIONES"];
+Nodo22->Nodo27;
+Nodo28[label="Print"];
+Nodo27->Nodo28;
+Nodo29[label="VAL_CADENA
+ \"******ARCHIVO 2*****\""];
 Nodo28->Nodo29;
-Nodo30[label="ID
- i"];
-Nodo28->Nodo30;
-Nodo31[label="VAL_ENTERO
- 1"];
-Nodo28->Nodo31;
-Nodo32[label="WHILE"];
-Nodo20->Nodo32;
-Nodo33[label="MENORIGUAL
- <="];
+Nodo30[label="Print"];
+Nodo27->Nodo30;
+Nodo31[label="VAL_CADENA
+ \"VALOR: 15 PTS\""];
+Nodo30->Nodo31;
+Nodo32[label="Print"];
+Nodo27->Nodo32;
+Nodo33[label="VAL_CADENA
+ \"**************\""];
 Nodo32->Nodo33;
-Nodo34[label="VAL_IDENTIFICADOR
- i"];
-Nodo33->Nodo34;
-Nodo35[label="VAL_ENTERO
- 10"];
-Nodo33->Nodo35;
-Nodo36[label="ASIGNACION"];
-Nodo32->Nodo36;
-Nodo37[label="ASIGNACION
- fact"];
-Nodo36->Nodo37;
-Nodo38[label="DECLARACION"];
-Nodo32->Nodo38;
-Nodo39[label="TIPO
+Nodo34[label="DEC_METODO"];
+Nodo0->Nodo34;
+Nodo35[label="METODO
+ mostrarFactorial"];
+Nodo34->Nodo35;
+Nodo36[label="PARAMETROS"];
+Nodo34->Nodo36;
+Nodo37[label="TIPO
  ENTERO"];
-Nodo38->Nodo39;
-Nodo40[label="ID
- j"];
-Nodo38->Nodo40;
-Nodo41[label="VAL_ENTERO
- 1"];
-Nodo38->Nodo41;
-Nodo42[label="WHILE"];
-Nodo32->Nodo42;
-Nodo43[label="MENORIGUAL
- <="];
-Nodo42->Nodo43;
-Nodo44[label="VAL_IDENTIFICADOR
- j"];
-Nodo43->Nodo44;
-Nodo45[label="RESTA
- -"];
-Nodo43->Nodo45;
-Nodo46[label="MULTIPLICACION
- *"];
-Nodo45->Nodo46;
-Nodo47[label="VAL_ENTERO
- 2"];
-Nodo46->Nodo47;
-Nodo48[label="VAL_IDENTIFICADOR
- i"];
-Nodo46->Nodo48;
-Nodo49[label="VAL_ENTERO
- 1"];
-Nodo45->Nodo49;
-Nodo50[label="ASIGNACION"];
-Nodo42->Nodo50;
-Nodo51[label="ASIGNACION
+Nodo36->Nodo37;
+Nodo38[label="ID
+ n2"];
+Nodo36->Nodo38;
+Nodo39[label="INSTRUCCIONES"];
+Nodo34->Nodo39;
+Nodo40[label="DECLARACION"];
+Nodo39->Nodo40;
+Nodo41[label="TIPO
+ ENTERO"];
+Nodo40->Nodo41;
+Nodo42[label="ID
  fact"];
-Nodo50->Nodo51;
-Nodo52[label="ASIGNACION"];
-Nodo42->Nodo52;
-Nodo53[label="ASIGNACION
- j"];
+Nodo40->Nodo42;
+Nodo43[label="VAL_ENTERO
+ 1"];
+Nodo40->Nodo43;
+Nodo44[label="DECLARACION"];
+Nodo39->Nodo44;
+Nodo45[label="TIPO
+ CADENA"];
+Nodo44->Nodo45;
+Nodo46[label="ID
+ cadena1"];
+Nodo44->Nodo46;
+Nodo47[label="SUMA
+ +"];
+Nodo44->Nodo47;
+Nodo48[label="SUMA
+ +"];
+Nodo47->Nodo48;
+Nodo49[label="VAL_CADENA
+ \"El factorial de: \""];
+Nodo48->Nodo49;
+Nodo50[label="VAL_IDENTIFICADOR
+ n2"];
+Nodo48->Nodo50;
+Nodo51[label="VAL_CADENA
+ \" = \""];
+Nodo47->Nodo51;
+Nodo52[label="IF"];
+Nodo39->Nodo52;
+Nodo53[label="DIFERENTE
+ !="];
 Nodo52->Nodo53;
-Nodo54[label="ASIGNACION"];
-Nodo32->Nodo54;
-Nodo55[label="ASIGNACION
- sin"];
-Nodo54->Nodo55;
-Nodo56[label="ASIGNACION"];
-Nodo32->Nodo56;
-Nodo57[label="ASIGNACION
- i"];
+Nodo54[label="VAL_IDENTIFICADOR
+ n2"];
+Nodo53->Nodo54;
+Nodo55[label="VAL_ENTERO
+ 0"];
+Nodo53->Nodo55;
+Nodo56[label="FOR"];
+Nodo52->Nodo56;
+Nodo57[label="TIPO
+ ENTERO"];
 Nodo56->Nodo57;
-Nodo58[label="ASIGNACION"];
-Nodo20->Nodo58;
-Nodo59[label="ASIGNACION
- r_sine"];
-Nodo58->Nodo59;
-Nodo60[label="DEC_METODO"];
-Nodo0->Nodo60;
-Nodo61[label="METODO
- drawTree"];
+Nodo58[label="ID
+ i"];
+Nodo56->Nodo58;
+Nodo59[label="VAL_IDENTIFICADOR
+ n2"];
+Nodo56->Nodo59;
+Nodo60[label="MAYOR
+ >"];
+Nodo56->Nodo60;
+Nodo61[label="VAL_IDENTIFICADOR
+ i"];
 Nodo60->Nodo61;
-Nodo62[label="PARAMETROS"];
+Nodo62[label="VAL_ENTERO
+ 0"];
 Nodo60->Nodo62;
 Nodo63[label="TIPO
- DECIMAL"];
-Nodo62->Nodo63;
+ DECREMENTO"];
+Nodo56->Nodo63;
 Nodo64[label="ID
- x1"];
-Nodo62->Nodo64;
-Nodo65[label="TIPO
- DECIMAL"];
-Nodo62->Nodo65;
-Nodo66[label="ID
- y1"];
-Nodo62->Nodo66;
-Nodo67[label="TIPO
- DECIMAL"];
-Nodo62->Nodo67;
-Nodo68[label="ID
- angle"];
-Nodo62->Nodo68;
-Nodo69[label="TIPO
- ENTERO"];
-Nodo62->Nodo69;
-Nodo70[label="ID
- depth"];
-Nodo62->Nodo70;
-Nodo71[label="INSTRUCCIONES"];
-Nodo60->Nodo71;
-Nodo72[label="IF"];
-Nodo71->Nodo72;
-Nodo73[label="DIFERENTE
- !="];
-Nodo72->Nodo73;
-Nodo74[label="VAL_IDENTIFICADOR
- depth"];
+ i"];
+Nodo63->Nodo64;
+Nodo65[label="ASIGNACION"];
+Nodo56->Nodo65;
+Nodo66[label="ASIGNACION
+ fact"];
+Nodo65->Nodo66;
+Nodo67[label="ASIGNACION"];
+Nodo56->Nodo67;
+Nodo68[label="ASIGNACION
+ cadena1"];
+Nodo67->Nodo68;
+Nodo69[label="ELSE"];
+Nodo56->Nodo69;
+Nodo70[label="MAYOR
+ >"];
+Nodo69->Nodo70;
+Nodo71[label="VAL_IDENTIFICADOR
+ i"];
+Nodo70->Nodo71;
+Nodo72[label="VAL_ENTERO
+ 1"];
+Nodo70->Nodo72;
+Nodo73[label="ASIGNACION"];
+Nodo69->Nodo73;
+Nodo74[label="ASIGNACION
+ cadena1"];
 Nodo73->Nodo74;
-Nodo75[label="VAL_ENTERO
- 0"];
-Nodo73->Nodo75;
-Nodo76[label="DECLARACION"];
-Nodo72->Nodo76;
-Nodo77[label="TIPO
- DECIMAL"];
-Nodo76->Nodo77;
-Nodo78[label="ID
- x2"];
-Nodo76->Nodo78;
-Nodo79[label="SUMA
- +"];
-Nodo76->Nodo79;
+Nodo75[label="ASIGNACION"];
+Nodo69->Nodo75;
+Nodo76[label="ASIGNACION
+ cadena1"];
+Nodo75->Nodo76;
+Nodo77[label="ASIGNACION"];
+Nodo39->Nodo77;
+Nodo78[label="ASIGNACION
+ cadena1"];
+Nodo77->Nodo78;
+Nodo79[label="Print"];
+Nodo39->Nodo79;
 Nodo80[label="VAL_IDENTIFICADOR
- x1"];
+ cadena1"];
 Nodo79->Nodo80;
-Nodo81[label="MULTIPLICACION
- *"];
-Nodo79->Nodo81;
-Nodo82[label="MULTIPLICACION
- *"];
+Nodo81[label="DEC_METODO"];
+Nodo0->Nodo81;
+Nodo82[label="METODO
+ SentenciasAnidadas"];
 Nodo81->Nodo82;
-Nodo83[label="VAL_IDENTIFICADOR
- r_sine"];
-Nodo82->Nodo83;
-Nodo84[label="VAL_IDENTIFICADOR
- depth"];
-Nodo82->Nodo84;
-Nodo85[label="VAL_DECIMAL
- 10"];
-Nodo81->Nodo85;
+Nodo83[label="INSTRUCCIONES"];
+Nodo81->Nodo83;
+Nodo84[label="Print"];
+Nodo83->Nodo84;
+Nodo85[label="VAL_CADENA
+ \"-----------------CICLO DO WHILE-----------------\""];
+Nodo84->Nodo85;
 Nodo86[label="DECLARACION"];
-Nodo72->Nodo86;
+Nodo83->Nodo86;
 Nodo87[label="TIPO
- DECIMAL"];
+ ENTERO"];
 Nodo86->Nodo87;
 Nodo88[label="ID
- y2"];
+ numero1"];
 Nodo86->Nodo88;
-Nodo89[label="SUMA
- +"];
+Nodo89[label="VAL_ENTERO
+ 0"];
 Nodo86->Nodo89;
-Nodo90[label="VAL_IDENTIFICADOR
- y1"];
-Nodo89->Nodo90;
-Nodo91[label="MULTIPLICACION
- *"];
-Nodo89->Nodo91;
-Nodo92[label="MULTIPLICACION
- *"];
-Nodo91->Nodo92;
-Nodo93[label="VAL_IDENTIFICADOR
- r_sine"];
+Nodo90[label="Print"];
+Nodo83->Nodo90;
+Nodo91[label="VAL_CADENA
+ \"-------------------SWITCH CASE------------------\""];
+Nodo90->Nodo91;
+Nodo92[label="DO WHILE"];
+Nodo83->Nodo92;
+Nodo93[label="MENOR
+ <"];
 Nodo92->Nodo93;
 Nodo94[label="VAL_IDENTIFICADOR
- depth"];
-Nodo92->Nodo94;
-Nodo95[label="VAL_DECIMAL
- 10"];
-Nodo91->Nodo95;
-Nodo96[label="Print"];
-Nodo72->Nodo96;
-Nodo97[label="SUMA
- +"];
+ numero1"];
+Nodo93->Nodo94;
+Nodo95[label="VAL_ENTERO
+ 6"];
+Nodo93->Nodo95;
+Nodo96[label="SWITCH"];
+Nodo92->Nodo96;
+Nodo97[label="CASE"];
 Nodo96->Nodo97;
-Nodo98[label="SUMA
- +"];
+Nodo98[label="VAL_ENTERO
+ 0"];
 Nodo97->Nodo98;
-Nodo99[label="SUMA
- +"];
-Nodo98->Nodo99;
-Nodo100[label="SUMA
- +"];
-Nodo99->Nodo100;
-Nodo101[label="SUMA
- +"];
+Nodo99[label="BREAK"];
+Nodo97->Nodo99;
+Nodo100[label="CASE"];
+Nodo96->Nodo100;
+Nodo101[label="VAL_ENTERO
+ 1"];
 Nodo100->Nodo101;
-Nodo102[label="SUMA
- +"];
-Nodo101->Nodo102;
-Nodo103[label="SUMA
- +"];
-Nodo102->Nodo103;
-Nodo104[label="VAL_IDENTIFICADOR
- x1"];
+Nodo102[label="BREAK"];
+Nodo100->Nodo102;
+Nodo103[label="CASE"];
+Nodo96->Nodo103;
+Nodo104[label="VAL_ENTERO
+ 2"];
 Nodo103->Nodo104;
-Nodo105[label="VAL_CADENA
- \" \""];
+Nodo105[label="Print"];
 Nodo103->Nodo105;
-Nodo106[label="VAL_IDENTIFICADOR
- y1"];
-Nodo102->Nodo106;
-Nodo107[label="VAL_CADENA
- \" \""];
-Nodo101->Nodo107;
-Nodo108[label="VAL_IDENTIFICADOR
- x2"];
-Nodo100->Nodo108;
-Nodo109[label="VAL_CADENA
- \" \""];
-Nodo99->Nodo109;
-Nodo110[label="VAL_IDENTIFICADOR
- y2"];
-Nodo98->Nodo110;
+Nodo106[label="VAL_CADENA
+ \"\""];
+Nodo105->Nodo106;
+Nodo107[label="BREAK"];
+Nodo103->Nodo107;
+Nodo108[label="CASE"];
+Nodo96->Nodo108;
+Nodo109[label="VAL_ENTERO
+ 3"];
+Nodo108->Nodo109;
+Nodo110[label="Print"];
+Nodo108->Nodo110;
 Nodo111[label="VAL_CADENA
  \"\""];
-Nodo97->Nodo111;
-Nodo112[label="DEC_METODO"];
-Nodo0->Nodo112;
-Nodo113[label="METODO
- Principal"];
-Nodo112->Nodo113;
-Nodo114[label="INSTRUCCIONES"];
-Nodo112->Nodo114;
-Nodo115[label="Print"];
+Nodo110->Nodo111;
+Nodo112[label="BREAK"];
+Nodo108->Nodo112;
+Nodo113[label="DEFAULT"];
+Nodo96->Nodo113;
+Nodo114[label="Print"];
+Nodo113->Nodo114;
+Nodo115[label="VAL_CADENA
+ \"Esto se va a imprimir 2 veces :3\""];
 Nodo114->Nodo115;
-Nodo116[label="VAL_CADENA
- \"===============¿SI SALE?=================\""];
-Nodo115->Nodo116;
-Nodo117[label="Print"];
-Nodo114->Nodo117;
-Nodo118[label="VAL_CADENA
- \"================ FIN ====================\""];
-Nodo117->Nodo118;
-Nodo119[label="MAIN"];
-Nodo0->Nodo119;
-Nodo120[label="LLAMADA 
+Nodo116[label="ASIGNACION"];
+Nodo92->Nodo116;
+Nodo117[label="ASIGNACION
+ numero1"];
+Nodo116->Nodo117;
+Nodo118[label="Print"];
+Nodo83->Nodo118;
+Nodo119[label="VAL_CADENA
+ \"------------------------------------------------\""];
+Nodo118->Nodo119;
+Nodo120[label="DEC_METODO"];
+Nodo0->Nodo120;
+Nodo121[label="METODO
+ figura0"];
+Nodo120->Nodo121;
+Nodo122[label="PARAMETROS"];
+Nodo120->Nodo122;
+Nodo123[label="TIPO
+ ENTERO"];
+Nodo122->Nodo123;
+Nodo124[label="ID
+ numero"];
+Nodo122->Nodo124;
+Nodo125[label="INSTRUCCIONES"];
+Nodo120->Nodo125;
+Nodo126[label="Print"];
+Nodo125->Nodo126;
+Nodo127[label="VAL_CADENA
+ \"-----------------WHILE ANIDADO------------------\""];
+Nodo126->Nodo127;
+Nodo128[label="DECLARACION"];
+Nodo125->Nodo128;
+Nodo129[label="TIPO
+ ENTERO"];
+Nodo128->Nodo129;
+Nodo130[label="ID
+ i"];
+Nodo128->Nodo130;
+Nodo131[label="VAL_ENTERO
+ 0"];
+Nodo128->Nodo131;
+Nodo132[label="WHILE"];
+Nodo125->Nodo132;
+Nodo133[label="MENOR
+ <"];
+Nodo132->Nodo133;
+Nodo134[label="VAL_IDENTIFICADOR
+ i"];
+Nodo133->Nodo134;
+Nodo135[label="VAL_IDENTIFICADOR
+ numero"];
+Nodo133->Nodo135;
+Nodo136[label="DECLARACION"];
+Nodo132->Nodo136;
+Nodo137[label="TIPO
+ ENTERO"];
+Nodo136->Nodo137;
+Nodo138[label="ID
+ j"];
+Nodo136->Nodo138;
+Nodo139[label="VAL_ENTERO
+ 0"];
+Nodo136->Nodo139;
+Nodo140[label="DECLARACION"];
+Nodo132->Nodo140;
+Nodo141[label="TIPO
+ ENTERO"];
+Nodo140->Nodo141;
+Nodo142[label="ID
+ numeroMostrar"];
+Nodo140->Nodo142;
+Nodo143[label="VAL_ENTERO
+ 1"];
+Nodo140->Nodo143;
+Nodo144[label="DECLARACION"];
+Nodo132->Nodo144;
+Nodo145[label="TIPO
+ CADENA"];
+Nodo144->Nodo145;
+Nodo146[label="ID
+ unaFila"];
+Nodo144->Nodo146;
+Nodo147[label="VAL_CADENA
+ \"\""];
+Nodo144->Nodo147;
+Nodo148[label="WHILE"];
+Nodo132->Nodo148;
+Nodo149[label="MENORIGUAL
+ <="];
+Nodo148->Nodo149;
+Nodo150[label="VAL_IDENTIFICADOR
+ j"];
+Nodo149->Nodo150;
+Nodo151[label="VAL_IDENTIFICADOR
+ i"];
+Nodo149->Nodo151;
+Nodo152[label="ASIGNACION"];
+Nodo148->Nodo152;
+Nodo153[label="ASIGNACION
+ unaFila"];
+Nodo152->Nodo153;
+Nodo154[label="ASIGNACION"];
+Nodo148->Nodo154;
+Nodo155[label="ASIGNACION
+ numeroMostrar"];
+Nodo154->Nodo155;
+Nodo156[label="ASIGNACION"];
+Nodo148->Nodo156;
+Nodo157[label="ASIGNACION
+ j"];
+Nodo156->Nodo157;
+Nodo158[label="Print"];
+Nodo132->Nodo158;
+Nodo159[label="VAL_IDENTIFICADOR
+ unaFila"];
+Nodo158->Nodo159;
+Nodo160[label="ASIGNACION"];
+Nodo132->Nodo160;
+Nodo161[label="ASIGNACION
+ i"];
+Nodo160->Nodo161;
+Nodo162[label="Print"];
+Nodo125->Nodo162;
+Nodo163[label="VAL_CADENA
+ \"Si la figura es un triangulo de numeros + 5 :3\""];
+Nodo162->Nodo163;
+Nodo164[label="Print"];
+Nodo125->Nodo164;
+Nodo165[label="VAL_CADENA
+ \"------------------------------------------------\""];
+Nodo164->Nodo165;
+Nodo166[label="DEC_METODO"];
+Nodo0->Nodo166;
+Nodo167[label="METODO
+ figura1"];
+Nodo166->Nodo167;
+Nodo168[label="PARAMETROS"];
+Nodo166->Nodo168;
+Nodo169[label="TIPO
+ ENTERO"];
+Nodo168->Nodo169;
+Nodo170[label="ID
+ n"];
+Nodo168->Nodo170;
+Nodo171[label="INSTRUCCIONES"];
+Nodo166->Nodo171;
+Nodo172[label="DECLARACION"];
+Nodo171->Nodo172;
+Nodo173[label="TIPO
+ CADENA"];
+Nodo172->Nodo173;
+Nodo174[label="ID
+ cadenaFigura"];
+Nodo172->Nodo174;
+Nodo175[label="VAL_CADENA
+ \"\""];
+Nodo172->Nodo175;
+Nodo176[label="DECLARACION"];
+Nodo171->Nodo176;
+Nodo177[label="TIPO
+ DECIMAL"];
+Nodo176->Nodo177;
+Nodo178[label="ID
+ i"];
+Nodo176->Nodo178;
+Nodo179[label="FOR"];
+Nodo171->Nodo179;
+Nodo180[label="TIPO
+ undefined"];
+Nodo179->Nodo180;
+Nodo181[label="ID
+ i"];
+Nodo179->Nodo181;
+Nodo182[label="MENORIGUAL
+ <="];
+Nodo179->Nodo182;
+Nodo183[label="VAL_IDENTIFICADOR
+ i"];
+Nodo182->Nodo183;
+Nodo184[label="VAL_IDENTIFICADOR
+ n"];
+Nodo182->Nodo184;
+Nodo185[label="TIPO
+ INCREMENTO"];
+Nodo179->Nodo185;
+Nodo186[label="ID
+ i"];
+Nodo185->Nodo186;
+Nodo187[label="ASIGNACION"];
+Nodo179->Nodo187;
+Nodo188[label="ASIGNACION
+ cadenaFigura"];
+Nodo187->Nodo188;
+Nodo189[label="DECLARACION"];
+Nodo179->Nodo189;
+Nodo190[label="TIPO
+ DECIMAL"];
+Nodo189->Nodo190;
+Nodo191[label="ID
+ j"];
+Nodo189->Nodo191;
+Nodo192[label="FOR"];
+Nodo179->Nodo192;
+Nodo193[label="TIPO
+ undefined"];
+Nodo192->Nodo193;
+Nodo194[label="ID
+ j"];
+Nodo192->Nodo194;
+Nodo195[label="MENORIGUAL
+ <="];
+Nodo192->Nodo195;
+Nodo196[label="VAL_IDENTIFICADOR
+ j"];
+Nodo195->Nodo196;
+Nodo197[label="DIVISION
+ /"];
+Nodo195->Nodo197;
+Nodo198[label="MULTIPLICACION
+ *"];
+Nodo197->Nodo198;
+Nodo199[label="VAL_ENTERO
+ 3"];
+Nodo198->Nodo199;
+Nodo200[label="VAL_IDENTIFICADOR
+ n"];
+Nodo198->Nodo200;
+Nodo201[label="VAL_ENTERO
+ 2"];
+Nodo197->Nodo201;
+Nodo202[label="TIPO
+ INCREMENTO"];
+Nodo192->Nodo202;
+Nodo203[label="ID
+ j"];
+Nodo202->Nodo203;
+Nodo204[label="DECLARACION"];
+Nodo192->Nodo204;
+Nodo205[label="TIPO
+ DECIMAL"];
+Nodo204->Nodo205;
+Nodo206[label="ID
+ absolutoi"];
+Nodo204->Nodo206;
+Nodo207[label="ASIGNACION"];
+Nodo192->Nodo207;
+Nodo208[label="ASIGNACION
+ absolutoi"];
+Nodo207->Nodo208;
+Nodo209[label="DECLARACION"];
+Nodo192->Nodo209;
+Nodo210[label="TIPO
+ DECIMAL"];
+Nodo209->Nodo210;
+Nodo211[label="ID
+ absolutoj"];
+Nodo209->Nodo211;
+Nodo212[label="ASIGNACION"];
+Nodo192->Nodo212;
+Nodo213[label="ASIGNACION
+ absolutoj"];
+Nodo212->Nodo213;
+Nodo214[label="IF"];
+Nodo192->Nodo214;
+Nodo215[label="MENOR
+ <"];
+Nodo214->Nodo215;
+Nodo216[label="VAL_IDENTIFICADOR
+ i"];
+Nodo215->Nodo216;
+Nodo217[label="VAL_ENTERO
+ 0"];
+Nodo215->Nodo217;
+Nodo218[label="ASIGNACION"];
+Nodo214->Nodo218;
+Nodo219[label="ASIGNACION
+ absolutoi"];
+Nodo218->Nodo219;
+Nodo220[label="IF"];
+Nodo192->Nodo220;
+Nodo221[label="MENOR
+ <"];
+Nodo220->Nodo221;
+Nodo222[label="VAL_IDENTIFICADOR
+ j"];
+Nodo221->Nodo222;
+Nodo223[label="VAL_ENTERO
+ 0"];
+Nodo221->Nodo223;
+Nodo224[label="ASIGNACION"];
+Nodo220->Nodo224;
+Nodo225[label="ASIGNACION
+ absolutoj"];
+Nodo224->Nodo225;
+Nodo226[label="ELSE"];
+Nodo192->Nodo226;
+Nodo227[label="OR
+ ||"];
+Nodo226->Nodo227;
+Nodo228[label="OR
+ ||"];
+Nodo227->Nodo228;
+Nodo229[label="MENOR
+ <"];
+Nodo228->Nodo229;
+Nodo230[label="SUMA
+ +"];
+Nodo229->Nodo230;
+Nodo231[label="VAL_IDENTIFICADOR
+ absolutoi"];
+Nodo230->Nodo231;
+Nodo232[label="VAL_IDENTIFICADOR
+ absolutoj"];
+Nodo230->Nodo232;
+Nodo233[label="VAL_IDENTIFICADOR
+ n"];
+Nodo229->Nodo233;
+Nodo234[label="MENORIGUAL
+ <="];
+Nodo228->Nodo234;
+Nodo235[label="SUMA
+ +"];
+Nodo234->Nodo235;
+Nodo236[label="MULTIPLICACION
+ *"];
+Nodo235->Nodo236;
+Nodo237[label="RESTA
+ -"];
+Nodo236->Nodo237;
+Nodo238[label="DIVISION
+ /"];
+Nodo237->Nodo238;
+Nodo239[label="VAL_ENTERO
+ 2"];
+Nodo238->Nodo239;
+Nodo240[label="VAL_IDENTIFICADOR
+ i"];
+Nodo237->Nodo240;
+Nodo241[label="RESTA
+ -"];
+Nodo236->Nodo241;
+Nodo242[label="DIVISION
+ /"];
+Nodo241->Nodo242;
+Nodo243[label="VAL_ENTERO
+ 2"];
+Nodo242->Nodo243;
+Nodo244[label="VAL_IDENTIFICADOR
+ i"];
+Nodo241->Nodo244;
+Nodo245[label="MULTIPLICACION
+ *"];
+Nodo235->Nodo245;
+Nodo246[label="RESTA
+ -"];
+Nodo245->Nodo246;
+Nodo247[label="DIVISION
+ /"];
+Nodo246->Nodo247;
+Nodo248[label="VAL_IDENTIFICADOR
+ n"];
+Nodo247->Nodo248;
+Nodo249[label="VAL_ENTERO
+ 2"];
+Nodo247->Nodo249;
+Nodo250[label="VAL_IDENTIFICADOR
+ j"];
+Nodo246->Nodo250;
+Nodo251[label="RESTA
+ -"];
+Nodo245->Nodo251;
+Nodo252[label="DIVISION
+ /"];
+Nodo251->Nodo252;
+Nodo253[label="VAL_IDENTIFICADOR
+ n"];
+Nodo252->Nodo253;
+Nodo254[label="VAL_ENTERO
+ 2"];
+Nodo252->Nodo254;
+Nodo255[label="VAL_IDENTIFICADOR
+ j"];
+Nodo251->Nodo255;
+Nodo256[label="DIVISION
+ /"];
+Nodo234->Nodo256;
+Nodo257[label="MULTIPLICACION
+ *"];
+Nodo256->Nodo257;
+Nodo258[label="VAL_IDENTIFICADOR
+ n"];
+Nodo257->Nodo258;
+Nodo259[label="VAL_IDENTIFICADOR
+ n"];
+Nodo257->Nodo259;
+Nodo260[label="VAL_ENTERO
+ 2"];
+Nodo256->Nodo260;
+Nodo261[label="MENORIGUAL
+ <="];
+Nodo227->Nodo261;
+Nodo262[label="SUMA
+ +"];
+Nodo261->Nodo262;
+Nodo263[label="MULTIPLICACION
+ *"];
+Nodo262->Nodo263;
+Nodo264[label="RESTA
+ -"];
+Nodo263->Nodo264;
+Nodo265[label="DIVISION
+ /"];
+Nodo264->Nodo265;
+Nodo266[label="VAL_ENTERO
+ 2"];
+Nodo265->Nodo266;
+Nodo267[label="VAL_IDENTIFICADOR
+ i"];
+Nodo264->Nodo267;
+Nodo268[label="RESTA
+ -"];
+Nodo263->Nodo268;
+Nodo269[label="DIVISION
+ /"];
+Nodo268->Nodo269;
+Nodo270[label="VAL_ENTERO
+ 2"];
+Nodo269->Nodo270;
+Nodo271[label="VAL_IDENTIFICADOR
+ i"];
+Nodo268->Nodo271;
+Nodo272[label="MULTIPLICACION
+ *"];
+Nodo262->Nodo272;
+Nodo273[label="RESTA
+ -"];
+Nodo272->Nodo273;
+Nodo274[label="DIVISION
+ /"];
+Nodo273->Nodo274;
+Nodo275[label="VAL_ENTERO
+ 2"];
+Nodo274->Nodo275;
+Nodo276[label="VAL_IDENTIFICADOR
+ j"];
+Nodo273->Nodo276;
+Nodo277[label="RESTA
+ -"];
+Nodo272->Nodo277;
+Nodo278[label="DIVISION
+ /"];
+Nodo277->Nodo278;
+Nodo279[label="VAL_ENTERO
+ 2"];
+Nodo278->Nodo279;
+Nodo280[label="VAL_IDENTIFICADOR
+ j"];
+Nodo277->Nodo280;
+Nodo281[label="DIVISION
+ /"];
+Nodo261->Nodo281;
+Nodo282[label="MULTIPLICACION
+ *"];
+Nodo281->Nodo282;
+Nodo283[label="VAL_IDENTIFICADOR
+ n"];
+Nodo282->Nodo283;
+Nodo284[label="VAL_IDENTIFICADOR
+ n"];
+Nodo282->Nodo284;
+Nodo285[label="VAL_ENTERO
+ 2"];
+Nodo281->Nodo285;
+Nodo286[label="ASIGNACION"];
+Nodo226->Nodo286;
+Nodo287[label="ASIGNACION
+ cadenaFigura"];
+Nodo286->Nodo287;
+Nodo288[label="ASIGNACION"];
+Nodo226->Nodo288;
+Nodo289[label="ASIGNACION
+ cadenaFigura"];
+Nodo288->Nodo289;
+Nodo290[label="Print"];
+Nodo179->Nodo290;
+Nodo291[label="VAL_IDENTIFICADOR
+ cadenaFigura"];
+Nodo290->Nodo291;
+Nodo292[label="Print"];
+Nodo171->Nodo292;
+Nodo293[label="VAL_CADENA
+ \"Si la figura es un corazon +10 <3\""];
+Nodo292->Nodo293;
+Nodo294[label="DEC_METODO"];
+Nodo0->Nodo294;
+Nodo295[label="METODO
+ figura2"];
+Nodo294->Nodo295;
+Nodo296[label="INSTRUCCIONES"];
+Nodo294->Nodo296;
+Nodo297[label="DECLARACION"];
+Nodo296->Nodo297;
+Nodo298[label="TIPO
+ CADENA"];
+Nodo297->Nodo298;
+Nodo299[label="ID
+ cadenaFigura"];
+Nodo297->Nodo299;
+Nodo300[label="VAL_CADENA
+ \"\""];
+Nodo297->Nodo300;
+Nodo301[label="DECLARACION"];
+Nodo296->Nodo301;
+Nodo302[label="TIPO
+ CADENA"];
+Nodo301->Nodo302;
+Nodo303[label="ID
+ c"];
+Nodo301->Nodo303;
+Nodo304[label="VAL_CADENA
+ \"* \""];
+Nodo301->Nodo304;
+Nodo305[label="DECLARACION"];
+Nodo296->Nodo305;
+Nodo306[label="TIPO
+ CADENA"];
+Nodo305->Nodo306;
+Nodo307[label="ID
+ b"];
+Nodo305->Nodo307;
+Nodo308[label="VAL_CADENA
+ \"  \""];
+Nodo305->Nodo308;
+Nodo309[label="DECLARACION"];
+Nodo296->Nodo309;
+Nodo310[label="TIPO
+ ENTERO"];
+Nodo309->Nodo310;
+Nodo311[label="ID
+ altura"];
+Nodo309->Nodo311;
+Nodo312[label="VAL_ENTERO
+ 10"];
+Nodo309->Nodo312;
+Nodo313[label="DECLARACION"];
+Nodo296->Nodo313;
+Nodo314[label="TIPO
+ ENTERO"];
+Nodo313->Nodo314;
+Nodo315[label="ID
+ ancho"];
+Nodo313->Nodo315;
+Nodo316[label="VAL_ENTERO
+ 1"];
+Nodo313->Nodo316;
+Nodo317[label="FOR"];
+Nodo296->Nodo317;
+Nodo318[label="TIPO
+ ENTERO"];
+Nodo317->Nodo318;
+Nodo319[label="ID
+ i"];
+Nodo317->Nodo319;
+Nodo320[label="VAL_ENTERO
+ 0"];
+Nodo317->Nodo320;
+Nodo321[label="MENOR
+ <"];
+Nodo317->Nodo321;
+Nodo322[label="VAL_IDENTIFICADOR
+ i"];
+Nodo321->Nodo322;
+Nodo323[label="DIVISION
+ /"];
+Nodo321->Nodo323;
+Nodo324[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo323->Nodo324;
+Nodo325[label="VAL_ENTERO
+ 4"];
+Nodo323->Nodo325;
+Nodo326[label="TIPO
+ INCREMENTO"];
+Nodo317->Nodo326;
+Nodo327[label="ID
+ i"];
+Nodo326->Nodo327;
+Nodo328[label="FOR"];
+Nodo317->Nodo328;
+Nodo329[label="TIPO
+ ENTERO"];
+Nodo328->Nodo329;
+Nodo330[label="ID
+ k"];
+Nodo328->Nodo330;
+Nodo331[label="VAL_ENTERO
+ 0"];
+Nodo328->Nodo331;
+Nodo332[label="MENOR
+ <"];
+Nodo328->Nodo332;
+Nodo333[label="VAL_IDENTIFICADOR
+ k"];
+Nodo332->Nodo333;
+Nodo334[label="RESTA
+ -"];
+Nodo332->Nodo334;
+Nodo335[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo334->Nodo335;
+Nodo336[label="VAL_IDENTIFICADOR
+ i"];
+Nodo334->Nodo336;
+Nodo337[label="TIPO
+ INCREMENTO"];
+Nodo328->Nodo337;
+Nodo338[label="ID
+ k"];
+Nodo337->Nodo338;
+Nodo339[label="ASIGNACION"];
+Nodo328->Nodo339;
+Nodo340[label="ASIGNACION
+ cadenaFigura"];
+Nodo339->Nodo340;
+Nodo341[label="FOR"];
+Nodo317->Nodo341;
+Nodo342[label="TIPO
+ ENTERO"];
+Nodo341->Nodo342;
+Nodo343[label="ID
+ j"];
+Nodo341->Nodo343;
+Nodo344[label="VAL_ENTERO
+ 0"];
+Nodo341->Nodo344;
+Nodo345[label="MENOR
+ <"];
+Nodo341->Nodo345;
+Nodo346[label="VAL_IDENTIFICADOR
+ j"];
+Nodo345->Nodo346;
+Nodo347[label="SUMA
+ +"];
+Nodo345->Nodo347;
+Nodo348[label="MULTIPLICACION
+ *"];
+Nodo347->Nodo348;
+Nodo349[label="VAL_IDENTIFICADOR
+ i"];
+Nodo348->Nodo349;
+Nodo350[label="VAL_ENTERO
+ 2"];
+Nodo348->Nodo350;
+Nodo351[label="VAL_IDENTIFICADOR
+ ancho"];
+Nodo347->Nodo351;
+Nodo352[label="TIPO
+ INCREMENTO"];
+Nodo341->Nodo352;
+Nodo353[label="ID
+ j"];
+Nodo352->Nodo353;
+Nodo354[label="ASIGNACION"];
+Nodo341->Nodo354;
+Nodo355[label="ASIGNACION
+ cadenaFigura"];
+Nodo354->Nodo355;
+Nodo356[label="Print"];
+Nodo317->Nodo356;
+Nodo357[label="VAL_IDENTIFICADOR
+ cadenaFigura"];
+Nodo356->Nodo357;
+Nodo358[label="ASIGNACION"];
+Nodo317->Nodo358;
+Nodo359[label="ASIGNACION
+ cadenaFigura"];
+Nodo358->Nodo359;
+Nodo360[label="ASIGNACION"];
+Nodo296->Nodo360;
+Nodo361[label="ASIGNACION
+ cadenaFigura"];
+Nodo360->Nodo361;
+Nodo362[label="FOR"];
+Nodo296->Nodo362;
+Nodo363[label="TIPO
+ ENTERO"];
+Nodo362->Nodo363;
+Nodo364[label="ID
+ i"];
+Nodo362->Nodo364;
+Nodo365[label="VAL_ENTERO
+ 0"];
+Nodo362->Nodo365;
+Nodo366[label="MENOR
+ <"];
+Nodo362->Nodo366;
+Nodo367[label="VAL_IDENTIFICADOR
+ i"];
+Nodo366->Nodo367;
+Nodo368[label="DIVISION
+ /"];
+Nodo366->Nodo368;
+Nodo369[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo368->Nodo369;
+Nodo370[label="VAL_ENTERO
+ 4"];
+Nodo368->Nodo370;
+Nodo371[label="TIPO
+ INCREMENTO"];
+Nodo362->Nodo371;
+Nodo372[label="ID
+ i"];
+Nodo371->Nodo372;
+Nodo373[label="FOR"];
+Nodo362->Nodo373;
+Nodo374[label="TIPO
+ ENTERO"];
+Nodo373->Nodo374;
+Nodo375[label="ID
+ k"];
+Nodo373->Nodo375;
+Nodo376[label="VAL_ENTERO
+ 0"];
+Nodo373->Nodo376;
+Nodo377[label="MENOR
+ <"];
+Nodo373->Nodo377;
+Nodo378[label="VAL_IDENTIFICADOR
+ k"];
+Nodo377->Nodo378;
+Nodo379[label="RESTA
+ -"];
+Nodo377->Nodo379;
+Nodo380[label="RESTA
+ -"];
+Nodo379->Nodo380;
+Nodo381[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo380->Nodo381;
+Nodo382[label="VAL_IDENTIFICADOR
+ i"];
+Nodo380->Nodo382;
+Nodo383[label="VAL_ENTERO
+ 2"];
+Nodo379->Nodo383;
+Nodo384[label="TIPO
+ INCREMENTO"];
+Nodo373->Nodo384;
+Nodo385[label="ID
+ k"];
+Nodo384->Nodo385;
+Nodo386[label="ASIGNACION"];
+Nodo373->Nodo386;
+Nodo387[label="ASIGNACION
+ cadenaFigura"];
+Nodo386->Nodo387;
+Nodo388[label="FOR"];
+Nodo362->Nodo388;
+Nodo389[label="TIPO
+ ENTERO"];
+Nodo388->Nodo389;
+Nodo390[label="ID
+ j"];
+Nodo388->Nodo390;
+Nodo391[label="VAL_ENTERO
+ 0"];
+Nodo388->Nodo391;
+Nodo392[label="MENOR
+ <"];
+Nodo388->Nodo392;
+Nodo393[label="VAL_IDENTIFICADOR
+ j"];
+Nodo392->Nodo393;
+Nodo394[label="SUMA
+ +"];
+Nodo392->Nodo394;
+Nodo395[label="MULTIPLICACION
+ *"];
+Nodo394->Nodo395;
+Nodo396[label="VAL_IDENTIFICADOR
+ i"];
+Nodo395->Nodo396;
+Nodo397[label="VAL_ENTERO
+ 2"];
+Nodo395->Nodo397;
+Nodo398[label="VAL_ENTERO
+ 5"];
+Nodo394->Nodo398;
+Nodo399[label="TIPO
+ INCREMENTO"];
+Nodo388->Nodo399;
+Nodo400[label="ID
+ j"];
+Nodo399->Nodo400;
+Nodo401[label="ASIGNACION"];
+Nodo388->Nodo401;
+Nodo402[label="ASIGNACION
+ cadenaFigura"];
+Nodo401->Nodo402;
+Nodo403[label="Print"];
+Nodo362->Nodo403;
+Nodo404[label="VAL_IDENTIFICADOR
+ cadenaFigura"];
+Nodo403->Nodo404;
+Nodo405[label="ASIGNACION"];
+Nodo362->Nodo405;
+Nodo406[label="ASIGNACION
+ cadenaFigura"];
+Nodo405->Nodo406;
+Nodo407[label="ASIGNACION"];
+Nodo296->Nodo407;
+Nodo408[label="ASIGNACION
+ cadenaFigura"];
+Nodo407->Nodo408;
+Nodo409[label="FOR"];
+Nodo296->Nodo409;
+Nodo410[label="TIPO
+ ENTERO"];
+Nodo409->Nodo410;
+Nodo411[label="ID
+ i"];
+Nodo409->Nodo411;
+Nodo412[label="VAL_ENTERO
+ 0"];
+Nodo409->Nodo412;
+Nodo413[label="MENOR
+ <"];
+Nodo409->Nodo413;
+Nodo414[label="VAL_IDENTIFICADOR
+ i"];
+Nodo413->Nodo414;
+Nodo415[label="DIVISION
+ /"];
+Nodo413->Nodo415;
+Nodo416[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo415->Nodo416;
+Nodo417[label="VAL_ENTERO
+ 4"];
+Nodo415->Nodo417;
+Nodo418[label="TIPO
+ INCREMENTO"];
+Nodo409->Nodo418;
+Nodo419[label="ID
+ i"];
+Nodo418->Nodo419;
+Nodo420[label="FOR"];
+Nodo409->Nodo420;
+Nodo421[label="TIPO
+ ENTERO"];
+Nodo420->Nodo421;
+Nodo422[label="ID
+ k"];
+Nodo420->Nodo422;
+Nodo423[label="VAL_ENTERO
+ 0"];
+Nodo420->Nodo423;
+Nodo424[label="MENOR
+ <"];
+Nodo420->Nodo424;
+Nodo425[label="VAL_IDENTIFICADOR
+ k"];
+Nodo424->Nodo425;
+Nodo426[label="RESTA
+ -"];
+Nodo424->Nodo426;
+Nodo427[label="RESTA
+ -"];
+Nodo426->Nodo427;
+Nodo428[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo427->Nodo428;
+Nodo429[label="VAL_IDENTIFICADOR
+ i"];
+Nodo427->Nodo429;
+Nodo430[label="VAL_ENTERO
+ 4"];
+Nodo426->Nodo430;
+Nodo431[label="TIPO
+ INCREMENTO"];
+Nodo420->Nodo431;
+Nodo432[label="ID
+ k"];
+Nodo431->Nodo432;
+Nodo433[label="ASIGNACION"];
+Nodo420->Nodo433;
+Nodo434[label="ASIGNACION
+ cadenaFigura"];
+Nodo433->Nodo434;
+Nodo435[label="FOR"];
+Nodo409->Nodo435;
+Nodo436[label="TIPO
+ ENTERO"];
+Nodo435->Nodo436;
+Nodo437[label="ID
+ j"];
+Nodo435->Nodo437;
+Nodo438[label="VAL_ENTERO
+ 0"];
+Nodo435->Nodo438;
+Nodo439[label="MENOR
+ <"];
+Nodo435->Nodo439;
+Nodo440[label="VAL_IDENTIFICADOR
+ j"];
+Nodo439->Nodo440;
+Nodo441[label="SUMA
+ +"];
+Nodo439->Nodo441;
+Nodo442[label="MULTIPLICACION
+ *"];
+Nodo441->Nodo442;
+Nodo443[label="VAL_IDENTIFICADOR
+ i"];
+Nodo442->Nodo443;
+Nodo444[label="VAL_ENTERO
+ 2"];
+Nodo442->Nodo444;
+Nodo445[label="VAL_ENTERO
+ 9"];
+Nodo441->Nodo445;
+Nodo446[label="TIPO
+ INCREMENTO"];
+Nodo435->Nodo446;
+Nodo447[label="ID
+ j"];
+Nodo446->Nodo447;
+Nodo448[label="ASIGNACION"];
+Nodo435->Nodo448;
+Nodo449[label="ASIGNACION
+ cadenaFigura"];
+Nodo448->Nodo449;
+Nodo450[label="Print"];
+Nodo409->Nodo450;
+Nodo451[label="VAL_IDENTIFICADOR
+ cadenaFigura"];
+Nodo450->Nodo451;
+Nodo452[label="ASIGNACION"];
+Nodo409->Nodo452;
+Nodo453[label="ASIGNACION
+ cadenaFigura"];
+Nodo452->Nodo453;
+Nodo454[label="ASIGNACION"];
+Nodo296->Nodo454;
+Nodo455[label="ASIGNACION
+ cadenaFigura"];
+Nodo454->Nodo455;
+Nodo456[label="FOR"];
+Nodo296->Nodo456;
+Nodo457[label="TIPO
+ ENTERO"];
+Nodo456->Nodo457;
+Nodo458[label="ID
+ i"];
+Nodo456->Nodo458;
+Nodo459[label="VAL_ENTERO
+ 0"];
+Nodo456->Nodo459;
+Nodo460[label="MENOR
+ <"];
+Nodo456->Nodo460;
+Nodo461[label="VAL_IDENTIFICADOR
+ i"];
+Nodo460->Nodo461;
+Nodo462[label="DIVISION
+ /"];
+Nodo460->Nodo462;
+Nodo463[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo462->Nodo463;
+Nodo464[label="VAL_ENTERO
+ 4"];
+Nodo462->Nodo464;
+Nodo465[label="TIPO
+ INCREMENTO"];
+Nodo456->Nodo465;
+Nodo466[label="ID
+ i"];
+Nodo465->Nodo466;
+Nodo467[label="FOR"];
+Nodo456->Nodo467;
+Nodo468[label="TIPO
+ ENTERO"];
+Nodo467->Nodo468;
+Nodo469[label="ID
+ k"];
+Nodo467->Nodo469;
+Nodo470[label="VAL_ENTERO
+ 0"];
+Nodo467->Nodo470;
+Nodo471[label="MENOR
+ <"];
+Nodo467->Nodo471;
+Nodo472[label="VAL_IDENTIFICADOR
+ k"];
+Nodo471->Nodo472;
+Nodo473[label="RESTA
+ -"];
+Nodo471->Nodo473;
+Nodo474[label="RESTA
+ -"];
+Nodo473->Nodo474;
+Nodo475[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo474->Nodo475;
+Nodo476[label="VAL_IDENTIFICADOR
+ i"];
+Nodo474->Nodo476;
+Nodo477[label="VAL_ENTERO
+ 6"];
+Nodo473->Nodo477;
+Nodo478[label="TIPO
+ INCREMENTO"];
+Nodo467->Nodo478;
+Nodo479[label="ID
+ k"];
+Nodo478->Nodo479;
+Nodo480[label="ASIGNACION"];
+Nodo467->Nodo480;
+Nodo481[label="ASIGNACION
+ cadenaFigura"];
+Nodo480->Nodo481;
+Nodo482[label="FOR"];
+Nodo456->Nodo482;
+Nodo483[label="TIPO
+ ENTERO"];
+Nodo482->Nodo483;
+Nodo484[label="ID
+ j"];
+Nodo482->Nodo484;
+Nodo485[label="VAL_ENTERO
+ 0"];
+Nodo482->Nodo485;
+Nodo486[label="MENOR
+ <"];
+Nodo482->Nodo486;
+Nodo487[label="VAL_IDENTIFICADOR
+ j"];
+Nodo486->Nodo487;
+Nodo488[label="SUMA
+ +"];
+Nodo486->Nodo488;
+Nodo489[label="MULTIPLICACION
+ *"];
+Nodo488->Nodo489;
+Nodo490[label="VAL_IDENTIFICADOR
+ i"];
+Nodo489->Nodo490;
+Nodo491[label="VAL_ENTERO
+ 2"];
+Nodo489->Nodo491;
+Nodo492[label="VAL_ENTERO
+ 13"];
+Nodo488->Nodo492;
+Nodo493[label="TIPO
+ INCREMENTO"];
+Nodo482->Nodo493;
+Nodo494[label="ID
+ j"];
+Nodo493->Nodo494;
+Nodo495[label="ASIGNACION"];
+Nodo482->Nodo495;
+Nodo496[label="ASIGNACION
+ cadenaFigura"];
+Nodo495->Nodo496;
+Nodo497[label="Print"];
+Nodo456->Nodo497;
+Nodo498[label="VAL_IDENTIFICADOR
+ cadenaFigura"];
+Nodo497->Nodo498;
+Nodo499[label="ASIGNACION"];
+Nodo456->Nodo499;
+Nodo500[label="ASIGNACION
+ cadenaFigura"];
+Nodo499->Nodo500;
+Nodo501[label="ASIGNACION"];
+Nodo296->Nodo501;
+Nodo502[label="ASIGNACION
+ cadenaFigura"];
+Nodo501->Nodo502;
+Nodo503[label="FOR"];
+Nodo296->Nodo503;
+Nodo504[label="TIPO
+ ENTERO"];
+Nodo503->Nodo504;
+Nodo505[label="ID
+ i"];
+Nodo503->Nodo505;
+Nodo506[label="VAL_ENTERO
+ 0"];
+Nodo503->Nodo506;
+Nodo507[label="MENOR
+ <"];
+Nodo503->Nodo507;
+Nodo508[label="VAL_IDENTIFICADOR
+ i"];
+Nodo507->Nodo508;
+Nodo509[label="DIVISION
+ /"];
+Nodo507->Nodo509;
+Nodo510[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo509->Nodo510;
+Nodo511[label="VAL_ENTERO
+ 4"];
+Nodo509->Nodo511;
+Nodo512[label="TIPO
+ INCREMENTO"];
+Nodo503->Nodo512;
+Nodo513[label="ID
+ i"];
+Nodo512->Nodo513;
+Nodo514[label="FOR"];
+Nodo503->Nodo514;
+Nodo515[label="TIPO
+ ENTERO"];
+Nodo514->Nodo515;
+Nodo516[label="ID
+ k"];
+Nodo514->Nodo516;
+Nodo517[label="VAL_ENTERO
+ 0"];
+Nodo514->Nodo517;
+Nodo518[label="MENOR
+ <"];
+Nodo514->Nodo518;
+Nodo519[label="VAL_IDENTIFICADOR
+ k"];
+Nodo518->Nodo519;
+Nodo520[label="RESTA
+ -"];
+Nodo518->Nodo520;
+Nodo521[label="VAL_IDENTIFICADOR
+ altura"];
+Nodo520->Nodo521;
+Nodo522[label="VAL_ENTERO
+ 2"];
+Nodo520->Nodo522;
+Nodo523[label="TIPO
+ INCREMENTO"];
+Nodo514->Nodo523;
+Nodo524[label="ID
+ k"];
+Nodo523->Nodo524;
+Nodo525[label="ASIGNACION"];
+Nodo514->Nodo525;
+Nodo526[label="ASIGNACION
+ cadenaFigura"];
+Nodo525->Nodo526;
+Nodo527[label="FOR"];
+Nodo503->Nodo527;
+Nodo528[label="TIPO
+ ENTERO"];
+Nodo527->Nodo528;
+Nodo529[label="ID
+ j"];
+Nodo527->Nodo529;
+Nodo530[label="VAL_ENTERO
+ 0"];
+Nodo527->Nodo530;
+Nodo531[label="MENOR
+ <"];
+Nodo527->Nodo531;
+Nodo532[label="VAL_IDENTIFICADOR
+ j"];
+Nodo531->Nodo532;
+Nodo533[label="VAL_ENTERO
+ 5"];
+Nodo531->Nodo533;
+Nodo534[label="TIPO
+ INCREMENTO"];
+Nodo527->Nodo534;
+Nodo535[label="ID
+ j"];
+Nodo534->Nodo535;
+Nodo536[label="ASIGNACION"];
+Nodo527->Nodo536;
+Nodo537[label="ASIGNACION
+ cadenaFigura"];
+Nodo536->Nodo537;
+Nodo538[label="Print"];
+Nodo503->Nodo538;
+Nodo539[label="VAL_IDENTIFICADOR
+ cadenaFigura"];
+Nodo538->Nodo539;
+Nodo540[label="ASIGNACION"];
+Nodo503->Nodo540;
+Nodo541[label="ASIGNACION
+ cadenaFigura"];
+Nodo540->Nodo541;
+Nodo542[label="Print"];
+Nodo296->Nodo542;
+Nodo543[label="VAL_CADENA
+ \"Si la figura es un Arbol +10 <3\""];
+Nodo542->Nodo543;
+Nodo544[label="DEC_METODO"];
+Nodo0->Nodo544;
+Nodo545[label="METODO
+ ciclosContinueBreak"];
+Nodo544->Nodo545;
+Nodo546[label="INSTRUCCIONES"];
+Nodo544->Nodo546;
+Nodo547[label="Print"];
+Nodo546->Nodo547;
+Nodo548[label="VAL_CADENA
+ \"============Validar Continue y Break===========\""];
+Nodo547->Nodo548;
+Nodo549[label="DECLARACION"];
+Nodo546->Nodo549;
+Nodo550[label="TIPO
+ ENTERO"];
+Nodo549->Nodo550;
+Nodo551[label="ID
+ i"];
+Nodo549->Nodo551;
+Nodo552[label="VAL_ENTERO
+ 0"];
+Nodo549->Nodo552;
+Nodo553[label="WHILE"];
+Nodo546->Nodo553;
+Nodo554[label="MENOR
+ <"];
+Nodo553->Nodo554;
+Nodo555[label="VAL_IDENTIFICADOR
+ i"];
+Nodo554->Nodo555;
+Nodo556[label="VAL_ENTERO
+ 10"];
+Nodo554->Nodo556;
+Nodo557[label="DECLARACION"];
+Nodo553->Nodo557;
+Nodo558[label="TIPO
+ ENTERO"];
+Nodo557->Nodo558;
+Nodo559[label="ID
+ j"];
+Nodo557->Nodo559;
+Nodo560[label="VAL_IDENTIFICADOR
+ i"];
+Nodo557->Nodo560;
+Nodo561[label="ELSE"];
+Nodo553->Nodo561;
+Nodo562[label="AND
+ &&"];
+Nodo561->Nodo562;
+Nodo563[label="DIFERENTE
+ !="];
+Nodo562->Nodo563;
+Nodo564[label="VAL_IDENTIFICADOR
+ i"];
+Nodo563->Nodo564;
+Nodo565[label="VAL_ENTERO
+ 7"];
+Nodo563->Nodo565;
+Nodo566[label="DIFERENTE
+ !="];
+Nodo562->Nodo566;
+Nodo567[label="VAL_IDENTIFICADOR
+ i"];
+Nodo566->Nodo567;
+Nodo568[label="VAL_ENTERO
+ 5"];
+Nodo566->Nodo568;
+Nodo569[label="WHILE"];
+Nodo561->Nodo569;
+Nodo570[label="NOT
+ !"];
+Nodo569->Nodo570;
+Nodo571[label="MENORIGUAL
+ <="];
+Nodo570->Nodo571;
+Nodo572[label="VAL_IDENTIFICADOR
+ j"];
+Nodo571->Nodo572;
+Nodo573[label="VAL_ENTERO
+ 0"];
+Nodo571->Nodo573;
+Nodo574[label="MENORIGUAL
+ <="];
+Nodo570->Nodo574;
+Nodo575[label="VAL_IDENTIFICADOR
+ j"];
+Nodo574->Nodo575;
+Nodo576[label="VAL_ENTERO
+ 0"];
+Nodo574->Nodo576;
+Nodo577[label="ASIGNACION"];
+Nodo569->Nodo577;
+Nodo578[label="ASIGNACION
+ j"];
+Nodo577->Nodo578;
+Nodo579[label="IF"];
+Nodo561->Nodo579;
+Nodo580[label="IGUALIGUAL
+ =="];
+Nodo579->Nodo580;
+Nodo581[label="VAL_IDENTIFICADOR
+ j"];
+Nodo580->Nodo581;
+Nodo582[label="VAL_ENTERO
+ 0"];
+Nodo580->Nodo582;
+Nodo583[label="Print"];
+Nodo579->Nodo583;
+Nodo584[label="SUMA
+ +"];
+Nodo583->Nodo584;
+Nodo585[label="SUMA
+ +"];
+Nodo584->Nodo585;
+Nodo586[label="VAL_CADENA
+ \"El numero: \""];
+Nodo585->Nodo586;
+Nodo587[label="VAL_IDENTIFICADOR
+ i"];
+Nodo585->Nodo587;
+Nodo588[label="VAL_CADENA
+ \" es par\""];
+Nodo584->Nodo588;
+Nodo589[label="IF"];
+Nodo561->Nodo589;
+Nodo590[label="DIFERENTE
+ !="];
+Nodo589->Nodo590;
+Nodo591[label="VAL_IDENTIFICADOR
+ j"];
+Nodo590->Nodo591;
+Nodo592[label="VAL_ENTERO
+ 0"];
+Nodo590->Nodo592;
+Nodo593[label="Print"];
+Nodo589->Nodo593;
+Nodo594[label="SUMA
+ +"];
+Nodo593->Nodo594;
+Nodo595[label="SUMA
+ +"];
+Nodo594->Nodo595;
+Nodo596[label="VAL_CADENA
+ \"El numero: \""];
+Nodo595->Nodo596;
+Nodo597[label="VAL_IDENTIFICADOR
+ i"];
+Nodo595->Nodo597;
+Nodo598[label="VAL_CADENA
+ \" es impar\""];
+Nodo594->Nodo598;
+Nodo599[label="IF"];
+Nodo561->Nodo599;
+Nodo600[label="IGUALIGUAL
+ =="];
+Nodo599->Nodo600;
+Nodo601[label="VAL_IDENTIFICADOR
+ i"];
+Nodo600->Nodo601;
+Nodo602[label="VAL_ENTERO
+ 7"];
+Nodo600->Nodo602;
+Nodo603[label="Print"];
+Nodo599->Nodo603;
+Nodo604[label="VAL_CADENA
+ \"Hay un break para el numero 7 :3\""];
+Nodo603->Nodo604;
+Nodo605[label="BREAK"];
+Nodo599->Nodo605;
+Nodo606[label="Print"];
+Nodo599->Nodo606;
+Nodo607[label="VAL_CADENA
+ \"Esto no deberia imprimirse por el continue :/\""];
+Nodo606->Nodo607;
+Nodo608[label="IF"];
+Nodo561->Nodo608;
+Nodo609[label="IGUALIGUAL
+ =="];
+Nodo608->Nodo609;
+Nodo610[label="VAL_IDENTIFICADOR
+ i"];
+Nodo609->Nodo610;
+Nodo611[label="VAL_ENTERO
+ 5"];
+Nodo609->Nodo611;
+Nodo612[label="Print"];
+Nodo608->Nodo612;
+Nodo613[label="VAL_CADENA
+ \"me voy a saltar el 5 porque hay un continue :3\""];
+Nodo612->Nodo613;
+Nodo614[label="ASIGNACION"];
+Nodo608->Nodo614;
+Nodo615[label="ASIGNACION
+ i"];
+Nodo614->Nodo615;
+Nodo616[label="ASIGNACION"];
+Nodo553->Nodo616;
+Nodo617[label="ASIGNACION
+ i"];
+Nodo616->Nodo617;
+Nodo618[label="ELSE"];
+Nodo546->Nodo618;
+Nodo619[label="IGUALIGUAL
+ =="];
+Nodo618->Nodo619;
+Nodo620[label="VAL_IDENTIFICADOR
+ i"];
+Nodo619->Nodo620;
+Nodo621[label="VAL_ENTERO
+ 7"];
+Nodo619->Nodo621;
+Nodo622[label="Print"];
+Nodo618->Nodo622;
+Nodo623[label="VAL_CADENA
+ \"Si el ultimo numero impreso es un 7, tienes un +5 :D\""];
+Nodo622->Nodo623;
+Nodo624[label="Print"];
+Nodo618->Nodo624;
+Nodo625[label="VAL_CADENA
+ \"No funciona tu Break o Continue, perdiste 5 puntos :(\""];
+Nodo624->Nodo625;
+Nodo626[label="Print"];
+Nodo546->Nodo626;
+Nodo627[label="VAL_CADENA
+ \"======================================\""];
+Nodo626->Nodo627;
+Nodo628[label="DECLARACION"];
+Nodo0->Nodo628;
+Nodo629[label="TIPO
+ DECIMAL"];
+Nodo628->Nodo629;
+Nodo630[label="ID
+ r_toRadians"];
+Nodo628->Nodo630;
+Nodo631[label="DECLARACION"];
+Nodo0->Nodo631;
+Nodo632[label="TIPO
+ DECIMAL"];
+Nodo631->Nodo632;
+Nodo633[label="ID
+ r_sine"];
+Nodo631->Nodo633;
+Nodo634[label="DEC_METODO"];
+Nodo0->Nodo634;
+Nodo635[label="METODO
+ toRadians"];
+Nodo634->Nodo635;
+Nodo636[label="PARAMETROS"];
+Nodo634->Nodo636;
+Nodo637[label="TIPO
+ DECIMAL"];
+Nodo636->Nodo637;
+Nodo638[label="ID
+ angle"];
+Nodo636->Nodo638;
+Nodo639[label="INSTRUCCIONES"];
+Nodo634->Nodo639;
+Nodo640[label="ASIGNACION"];
+Nodo639->Nodo640;
+Nodo641[label="ASIGNACION
+ r_toRadians"];
+Nodo640->Nodo641;
+Nodo642[label="DEC_METODO"];
+Nodo0->Nodo642;
+Nodo643[label="METODO
+ sine"];
+Nodo642->Nodo643;
+Nodo644[label="PARAMETROS"];
+Nodo642->Nodo644;
+Nodo645[label="TIPO
+ DECIMAL"];
+Nodo644->Nodo645;
+Nodo646[label="ID
+ x"];
+Nodo644->Nodo646;
+Nodo647[label="INSTRUCCIONES"];
+Nodo642->Nodo647;
+Nodo648[label="DECLARACION"];
+Nodo647->Nodo648;
+Nodo649[label="TIPO
+ DECIMAL"];
+Nodo648->Nodo649;
+Nodo650[label="ID
+ sin"];
+Nodo648->Nodo650;
+Nodo651[label="VAL_DECIMAL
+ 0"];
+Nodo648->Nodo651;
+Nodo652[label="DECLARACION"];
+Nodo647->Nodo652;
+Nodo653[label="TIPO
+ ENTERO"];
+Nodo652->Nodo653;
+Nodo654[label="ID
+ fact"];
+Nodo652->Nodo654;
+Nodo655[label="FOR"];
+Nodo647->Nodo655;
+Nodo656[label="TIPO
+ ENTERO"];
+Nodo655->Nodo656;
+Nodo657[label="ID
+ i"];
+Nodo655->Nodo657;
+Nodo658[label="VAL_ENTERO
+ 1"];
+Nodo655->Nodo658;
+Nodo659[label="MENORIGUAL
+ <="];
+Nodo655->Nodo659;
+Nodo660[label="VAL_IDENTIFICADOR
+ i"];
+Nodo659->Nodo660;
+Nodo661[label="VAL_ENTERO
+ 10"];
+Nodo659->Nodo661;
+Nodo662[label="TIPO
+ INCREMENTO"];
+Nodo655->Nodo662;
+Nodo663[label="ID
+ i"];
+Nodo662->Nodo663;
+Nodo664[label="ASIGNACION"];
+Nodo655->Nodo664;
+Nodo665[label="ASIGNACION
+ fact"];
+Nodo664->Nodo665;
+Nodo666[label="FOR"];
+Nodo655->Nodo666;
+Nodo667[label="TIPO
+ ENTERO"];
+Nodo666->Nodo667;
+Nodo668[label="ID
+ j"];
+Nodo666->Nodo668;
+Nodo669[label="VAL_ENTERO
+ 1"];
+Nodo666->Nodo669;
+Nodo670[label="MENORIGUAL
+ <="];
+Nodo666->Nodo670;
+Nodo671[label="VAL_IDENTIFICADOR
+ j"];
+Nodo670->Nodo671;
+Nodo672[label="RESTA
+ -"];
+Nodo670->Nodo672;
+Nodo673[label="MULTIPLICACION
+ *"];
+Nodo672->Nodo673;
+Nodo674[label="VAL_ENTERO
+ 2"];
+Nodo673->Nodo674;
+Nodo675[label="VAL_IDENTIFICADOR
+ i"];
+Nodo673->Nodo675;
+Nodo676[label="VAL_ENTERO
+ 1"];
+Nodo672->Nodo676;
+Nodo677[label="TIPO
+ INCREMENTO"];
+Nodo666->Nodo677;
+Nodo678[label="ID
+ j"];
+Nodo677->Nodo678;
+Nodo679[label="ASIGNACION"];
+Nodo666->Nodo679;
+Nodo680[label="ASIGNACION
+ fact"];
+Nodo679->Nodo680;
+Nodo681[label="ASIGNACION"];
+Nodo655->Nodo681;
+Nodo682[label="ASIGNACION
+ sin"];
+Nodo681->Nodo682;
+Nodo683[label="ASIGNACION"];
+Nodo647->Nodo683;
+Nodo684[label="ASIGNACION
+ r_sine"];
+Nodo683->Nodo684;
+Nodo685[label="DEC_METODO"];
+Nodo0->Nodo685;
+Nodo686[label="METODO
+ drawTree"];
+Nodo685->Nodo686;
+Nodo687[label="PARAMETROS"];
+Nodo685->Nodo687;
+Nodo688[label="TIPO
+ DECIMAL"];
+Nodo687->Nodo688;
+Nodo689[label="ID
+ x1"];
+Nodo687->Nodo689;
+Nodo690[label="TIPO
+ DECIMAL"];
+Nodo687->Nodo690;
+Nodo691[label="ID
+ y1"];
+Nodo687->Nodo691;
+Nodo692[label="TIPO
+ DECIMAL"];
+Nodo687->Nodo692;
+Nodo693[label="ID
+ angle"];
+Nodo687->Nodo693;
+Nodo694[label="TIPO
+ ENTERO"];
+Nodo687->Nodo694;
+Nodo695[label="ID
+ depth"];
+Nodo687->Nodo695;
+Nodo696[label="INSTRUCCIONES"];
+Nodo685->Nodo696;
+Nodo697[label="IF"];
+Nodo696->Nodo697;
+Nodo698[label="DIFERENTE
+ !="];
+Nodo697->Nodo698;
+Nodo699[label="VAL_IDENTIFICADOR
+ depth"];
+Nodo698->Nodo699;
+Nodo700[label="VAL_ENTERO
+ 0"];
+Nodo698->Nodo700;
+Nodo701[label="DECLARACION"];
+Nodo697->Nodo701;
+Nodo702[label="TIPO
+ DECIMAL"];
+Nodo701->Nodo702;
+Nodo703[label="ID
+ x2"];
+Nodo701->Nodo703;
+Nodo704[label="SUMA
+ +"];
+Nodo701->Nodo704;
+Nodo705[label="VAL_IDENTIFICADOR
+ x1"];
+Nodo704->Nodo705;
+Nodo706[label="MULTIPLICACION
+ *"];
+Nodo704->Nodo706;
+Nodo707[label="MULTIPLICACION
+ *"];
+Nodo706->Nodo707;
+Nodo708[label="VAL_IDENTIFICADOR
+ r_sine"];
+Nodo707->Nodo708;
+Nodo709[label="VAL_IDENTIFICADOR
+ depth"];
+Nodo707->Nodo709;
+Nodo710[label="VAL_DECIMAL
+ 10"];
+Nodo706->Nodo710;
+Nodo711[label="DECLARACION"];
+Nodo697->Nodo711;
+Nodo712[label="TIPO
+ DECIMAL"];
+Nodo711->Nodo712;
+Nodo713[label="ID
+ y2"];
+Nodo711->Nodo713;
+Nodo714[label="SUMA
+ +"];
+Nodo711->Nodo714;
+Nodo715[label="VAL_IDENTIFICADOR
+ y1"];
+Nodo714->Nodo715;
+Nodo716[label="MULTIPLICACION
+ *"];
+Nodo714->Nodo716;
+Nodo717[label="MULTIPLICACION
+ *"];
+Nodo716->Nodo717;
+Nodo718[label="VAL_IDENTIFICADOR
+ r_sine"];
+Nodo717->Nodo718;
+Nodo719[label="VAL_IDENTIFICADOR
+ depth"];
+Nodo717->Nodo719;
+Nodo720[label="VAL_DECIMAL
+ 10"];
+Nodo716->Nodo720;
+Nodo721[label="Print"];
+Nodo697->Nodo721;
+Nodo722[label="SUMA
+ +"];
+Nodo721->Nodo722;
+Nodo723[label="SUMA
+ +"];
+Nodo722->Nodo723;
+Nodo724[label="SUMA
+ +"];
+Nodo723->Nodo724;
+Nodo725[label="SUMA
+ +"];
+Nodo724->Nodo725;
+Nodo726[label="SUMA
+ +"];
+Nodo725->Nodo726;
+Nodo727[label="SUMA
+ +"];
+Nodo726->Nodo727;
+Nodo728[label="SUMA
+ +"];
+Nodo727->Nodo728;
+Nodo729[label="VAL_IDENTIFICADOR
+ x1"];
+Nodo728->Nodo729;
+Nodo730[label="VAL_CADENA
+ \" \""];
+Nodo728->Nodo730;
+Nodo731[label="VAL_IDENTIFICADOR
+ y1"];
+Nodo727->Nodo731;
+Nodo732[label="VAL_CADENA
+ \" \""];
+Nodo726->Nodo732;
+Nodo733[label="VAL_IDENTIFICADOR
+ x2"];
+Nodo725->Nodo733;
+Nodo734[label="VAL_CADENA
+ \" \""];
+Nodo724->Nodo734;
+Nodo735[label="VAL_IDENTIFICADOR
+ y2"];
+Nodo723->Nodo735;
+Nodo736[label="VAL_CADENA
+ \"\""];
+Nodo722->Nodo736;
+Nodo737[label="DEC_METODO"];
+Nodo0->Nodo737;
+Nodo738[label="METODO
+ RecursividadBasica"];
+Nodo737->Nodo738;
+Nodo739[label="INSTRUCCIONES"];
+Nodo737->Nodo739;
+Nodo740[label="Print"];
+Nodo739->Nodo740;
+Nodo741[label="VAL_CADENA
+ \"===============RECURSIVIDAD BASICA=================\""];
+Nodo740->Nodo741;
+Nodo742[label="Print"];
+Nodo739->Nodo742;
+Nodo743[label="VAL_CADENA
+ \"======================= FIN =======================\""];
+Nodo742->Nodo743;
+Nodo744[label="DEC_METODO"];
+Nodo0->Nodo744;
+Nodo745[label="METODO
+ multiPlicacionPorSumas"];
+Nodo744->Nodo745;
+Nodo746[label="PARAMETROS"];
+Nodo744->Nodo746;
+Nodo747[label="TIPO
+ ENTERO"];
+Nodo746->Nodo747;
+Nodo748[label="ID
+ m"];
+Nodo746->Nodo748;
+Nodo749[label="TIPO
+ ENTERO"];
+Nodo746->Nodo749;
+Nodo750[label="ID
+ n"];
+Nodo746->Nodo750;
+Nodo751[label="INSTRUCCIONES"];
+Nodo744->Nodo751;
+Nodo752[label="Print"];
+Nodo751->Nodo752;
+Nodo753[label="VAL_CADENA
+ \"===============MULTIPLICACION POR SUMAS==============\""];
+Nodo752->Nodo753;
+Nodo754[label="DECLARACION"];
+Nodo751->Nodo754;
+Nodo755[label="TIPO
+ ENTERO"];
+Nodo754->Nodo755;
+Nodo756[label="ID
+ mul"];
+Nodo754->Nodo756;
+Nodo757[label="VAL_ENTERO
+ 0"];
+Nodo754->Nodo757;
+Nodo758[label="IF"];
+Nodo751->Nodo758;
+Nodo759[label="AND
+ &&"];
+Nodo758->Nodo759;
+Nodo760[label="DIFERENTE
+ !="];
+Nodo759->Nodo760;
+Nodo761[label="VAL_IDENTIFICADOR
+ m"];
+Nodo760->Nodo761;
+Nodo762[label="VAL_ENTERO
+ 0"];
+Nodo760->Nodo762;
+Nodo763[label="DIFERENTE
+ !="];
+Nodo759->Nodo763;
+Nodo764[label="VAL_IDENTIFICADOR
+ n"];
+Nodo763->Nodo764;
+Nodo765[label="VAL_ENTERO
+ 0"];
+Nodo763->Nodo765;
+Nodo766[label="FOR"];
+Nodo758->Nodo766;
+Nodo767[label="TIPO
+ ENTERO"];
+Nodo766->Nodo767;
+Nodo768[label="ID
+ i"];
+Nodo766->Nodo768;
+Nodo769[label="VAL_ENTERO
+ 0"];
+Nodo766->Nodo769;
+Nodo770[label="MENOR
+ <"];
+Nodo766->Nodo770;
+Nodo771[label="VAL_IDENTIFICADOR
+ i"];
+Nodo770->Nodo771;
+Nodo772[label="VAL_IDENTIFICADOR
+ n"];
+Nodo770->Nodo772;
+Nodo773[label="TIPO
+ INCREMENTO"];
+Nodo766->Nodo773;
+Nodo774[label="ID
+ i"];
+Nodo773->Nodo774;
+Nodo775[label="ASIGNACION"];
+Nodo766->Nodo775;
+Nodo776[label="ASIGNACION
+ mul"];
+Nodo775->Nodo776;
+Nodo777[label="Print"];
+Nodo751->Nodo777;
+Nodo778[label="SUMA
+ +"];
+Nodo777->Nodo778;
+Nodo779[label="SUMA
+ +"];
+Nodo778->Nodo779;
+Nodo780[label="SUMA
+ +"];
+Nodo779->Nodo780;
+Nodo781[label="SUMA
+ +"];
+Nodo780->Nodo781;
+Nodo782[label="VAL_IDENTIFICADOR
+ m"];
+Nodo781->Nodo782;
+Nodo783[label="VAL_CADENA
+ \"x\""];
+Nodo781->Nodo783;
+Nodo784[label="VAL_IDENTIFICADOR
+ n"];
+Nodo780->Nodo784;
+Nodo785[label="VAL_CADENA
+ \" = \""];
+Nodo779->Nodo785;
+Nodo786[label="VAL_IDENTIFICADOR
+ mul"];
+Nodo778->Nodo786;
+Nodo787[label="Print"];
+Nodo751->Nodo787;
+Nodo788[label="VAL_CADENA
+ \"========================= FIN =======================\""];
+Nodo787->Nodo788;
+Nodo789[label="MAIN"];
+Nodo0->Nodo789;
+Nodo790[label="LLAMADA 
  Principal"];
-Nodo119->Nodo120;
+Nodo789->Nodo790;
+Nodo791[label="PARAMETROS"];
+Nodo789->Nodo791;
+Nodo792[label="VAL_ENTERO
+ 7"];
+Nodo791->Nodo792;
 }
