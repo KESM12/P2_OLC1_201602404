@@ -1,0 +1,175 @@
+Lenguaje 
+
+Salto de espacios en blanco \s+
+Comentario de una linea "//".*
+Comentario de varias líneas   [/][*][^*]*[*]+([^/*][^*]*[*]+)*[/] 
+Numeros [0-9]+("."[0-9]+)?\b 
+Identificador ([a-zA-Z])([a-zA-Z0-9_])*
+Cadena de caracteres ["\""]([^"\""])*["\""] 
+Caracter ["\'"]([^"\'"])*["\'"]
+
+Simbolos: "||", "&&", "==", "=", "!=", "<=", ">=", ">", "<", ",", ";", "{", "}", "*", "/", "--", 
+            "-", "++", "+", "^", "!", "%", "(", ")", "?", ":", "[", "]".
+
+Terminales: clase, double, string, boolean, true, false, int, char, print, while, for, main, if, 
+            new, break, continue, return, else, switch, case, default, do, void, writeline, 
+            tolower, toupper, with, length, truncate, round, typeof, tostring, new, dynamiclist, 
+            append, getvalue, setvalue, tochararray.
+
+No terminales: INICIO, OPCIONESCUERPO, CUERPO, MAIN, PARAMETROS_LLAMADA, LLAMADA_METODO, LISTAVALORES,
+                AS_VAR, INC_VAR, DECR_VAR, DEC_VAR, LISTADEC, TIPO, EXPRESION, DEC_MET, DEC_FUN, 
+                LISTAPARAMETROS, PARAMETROS, OPCIONESMETODO, CUERPOMETODO, MODVECTOR, DEC_ESTRUCTURA, 
+                ACCESOVECTOR, PRINT, WHILE, FOR, IF, ELSEIF, CONEIF, SWITCH, CUERPOSWITCH, CONSWITCH, 
+                DEFAULT, BREAK, CONTINUE.
+
+
+
+
+OPCIONESCUERPO ::= OPCIONESCUERPO CUERPO
+                | CUERPO
+                
+CUERPO ::= DEC_VAR
+            | DEC_MET
+            | AS_VAR PTCOMA
+            | MAIN
+            | DEC_FUN
+            | DEC_ESTRUCTURA
+            | MODVECTOR
+
+
+
+
+
+PARAMETROS_LLAMADA ::= PARAMETROS_LLAMADA 
+                    |EXPRESION 
+
+
+LISTAVALORES ::= LISTAVALORES
+            | EXPRESION 
+
+
+LISTADEC ::= LISTADEC
+
+TIPO ::= decimal 
+    | cadena 
+    | booleano 
+    | intpr 
+    | Rchar 
+    | corA corC
+
+
+EXPRESION ::= suma
+            | menos   
+            | multi   
+            | div   
+            | exponente   
+            | modulo   
+            | menos  
+            | umenos 
+            | parA   
+            | parC 
+            | igualigual   
+            | diferente   
+            | menor   
+            | menorigual  
+            | mayor   
+            | mayorigual  
+            | or   
+            | and   
+            | not   
+            | incremento 
+            | decremento 
+            | interrogacion   
+            | dospuntos   
+            | toupper
+            | tolower 
+            | length 
+            | truncate 
+            | round 
+            | typeof 
+            | tostring 
+            | identificador 
+            | getvalue 
+            | NUMBER 
+            | Rtrue 
+            | Rfalse
+            | string 
+            | identificador
+            | char 
+            | ACCESOVECTOR 
+
+
+DEC_MET ::= void 
+
+DEC_FUN ::= TIPO 
+
+
+LISTAPARAMETROS ::= LISTAPARAMETROS
+               | PARAMETROS
+
+PARAMETROS: TIPO 
+
+OPCIONESMETODO: OPCIONESMETODO 
+              | CUERPOMETODO 
+;
+
+CUERPOMETODO ::= DEC_VAR   
+            | WHILE   
+            | FOR   
+            | DOWHILE   
+            | PRINT   
+            | AS_VAR ptcoma   
+            | LLAMADA_METODO   
+            | IF   
+            | BREAK   
+            | INC_VAR ptcoma   
+            | DECR_VAR ptcoma   
+            | SWITCH   
+            | CONTINUE   
+            | RETURN   
+            | DEC_ESTRUCTURA   
+            | MODVECTOR    
+            | ACCESOVECTOR   
+
+
+
+DEC_ESTRUCTURA ::= TIPO 
+
+
+PRINT ::= Rprint 
+
+WHILE ::= while 
+
+FOR ::= for 
+
+DOWHILE ::= do while 
+
+
+IF ::= if 
+
+ELSEIF ::= ELSEIF 
+      | CONEIF 
+
+CONEIF ::= else if
+
+
+SWITCH ::= switch 
+        | EXPRESION
+        | DEFAULT
+
+CUERPOSWITCH ::= CUERPOSWITCH 
+            | CONSWITCH
+
+CONSWITCH ::= case 
+
+DEFAULT ::= default 
+        | OPCIONESMETODO
+
+BREAK ::= break 
+
+CONTINUE ::= continue 
+
+
+
+
+
