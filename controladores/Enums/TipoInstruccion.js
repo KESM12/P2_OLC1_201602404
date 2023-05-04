@@ -21,7 +21,12 @@ const TIPO_INSTRUCCION={
     WHILE: 'WHILE',
     DOWHILE: 'DOWHILE',
     
-    
+    ACCESO_VEC: 'ACCESO_VEC',
+    VEC_VALORES: 'VEC_VALORES',
+    VEC_VACIO: 'VEC_VACIO',
+    MOD_VEC: 'MOD_VEC',
+
+
     FOR: 'FOR',
 
     BREAK: 'BREAK',

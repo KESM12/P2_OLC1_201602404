@@ -23,6 +23,7 @@
 "for"                 return 'for'
 "main"               return 'Rmain'
 "if"               return 'if'
+"new"            return 'Rnew'
 "break"               return 'break'
 "continue"            return 'continue'
 "return"              return 'return'
@@ -127,6 +128,8 @@ CUERPO: DEC_VAR {$$=$1}
       | AS_VAR ptcoma {$$=$1}
       | MAIN {$$=$1}
       | DEC_FUN {$$=$1}
+      | DEC_ESTRUCTURA {$$=$1}
+      | MODVECTOR {$$=$1}
     
 ;
 
@@ -221,6 +224,7 @@ EXPRESION: EXPRESION suma EXPRESION {$$= INSTRUCCION.nuevaOperacionBinaria($1,$3
         | string {$$ = INSTRUCCION.nuevoValor($1, TIPO_VALOR.CADENA, this._$.first_line,this._$.first_column+1)}
         | identificador {$$ = INSTRUCCION.nuevoValor($1, TIPO_VALOR.IDENTIFICADOR, this._$.first_line,this._$.first_column+1)}
         | char {$$= INSTRUCCION.nuevoValor($1,TIPO_VALOR.CHAR,this._$.first_line, this._$.first_column+1);}
+        //| ACCESOVECTOR {$$ = $1;}
 ;
 
 DEC_MET : void identificador parA parC llaveA OPCIONESMETODO llaveC {$$ = INSTRUCCION.nuevoMetodo($2, null, $6, this._$.first_line,this._$.first_column+1)}
@@ -259,8 +263,22 @@ CUERPOMETODO: DEC_VAR {$$=$1}
             | SWITCH {$$=$1}
             | CONTINUE {$$=$1}
             | RETURN {$$=$1}
+            | DEC_ESTRUCTURA {$$=$1}
+            | MODVECTOR {$$=$1} 
+            | ACCESOVECTOR {$$=$1}
 
 
+;
+
+DEC_ESTRUCTURA: TIPO corA corC identificador igual Rnew TIPO corA EXPRESION corC ptcoma {$$ = INSTRUCCION.nuevoVectorVacio($1, $4, $7, $9, this._$.first_line,this._$.first_column+1)}
+                | TIPO corA corC identificador igual llaveA LISTAVALORES llaveC ptcoma {$$ = INSTRUCCION.nuevoVectorValores($1, $4, $7, this._$.first_line,this._$.first_column+1)}
+;
+
+MODVECTOR: identificador corA EXPRESION corC igual EXPRESION ptcoma {$$ = INSTRUCCION.modVectores($1, $3, $6, this._$.first_line,this._$.first_column+1)}
+;
+
+
+ACCESOVECTOR: identificador corA EXPRESION corC {$$ = INSTRUCCION.nuevoAccesoVector($1, $3, this._$.first_line,this._$.first_column+1)}
 ;
 
 PRINT: Rprint parA EXPRESION parC ptcoma {$$ = INSTRUCCION.nuevoPrint($3, this._$.first_line,this._$.first_column+1)}

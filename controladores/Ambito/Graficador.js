@@ -171,9 +171,22 @@ class Graficador {
                 this.contador++;
                 this.grafo += nombreHijo + "[label=\"BREAK\"];\n"
                 this.grafo += _padre + "->" + nombreHijo + ";\n"
+            } else if(instruccion.tipo === TIPO_INSTRUCCION.ACCESO_VEC){
+                console.log(instruccion, "entro al acceso vec")
+            } else if(instruccion.tipo === TIPO_INSTRUCCION.VEC_VALORES){
+                console.log(instruccion, "entro al valores vec")
+            } else if(instruccion.tipo === TIPO_INSTRUCCION.VEC_VACIO){
+                console.log(instruccion, "entro al vacio vec")
+            } else if(instruccion.tipo === TIPO_INSTRUCCION.MOD_VEC){
+                console.log(instruccion, "entro al mod vec")
             }
         });
         }
+
+    //     ACCESO_VEC: 'ACCESO_VEC',
+    // VEC_VALORES: 'VEC_VALORES',
+    // VEC_VACIO: 'VEC_VACIO',
+    // MOD_VEC: 'MOD_VEC',
 
         graficarDefault(_instruccion, _padre){
             console.log(_instruccion, "entro al DEFAULT")
@@ -215,6 +228,7 @@ class Graficador {
         }
 
         graficarOperacion(_expresion, _padre){
+            if(_expresion != null){
             if(_expresion.tipo === TIPO_VALOR.DECIMAL || _expresion.tipo === TIPO_VALOR.BOOL || _expresion.tipo === TIPO_VALOR.ENTERO ||
                 _expresion.tipo === TIPO_VALOR.CADENA || _expresion.tipo === TIPO_VALOR.IDENTIFICADOR || _expresion.tipo === TIPO_VALOR.CHAR){
                     console.log(_expresion.tipo, "valor")
@@ -246,6 +260,8 @@ class Graficador {
                         this.graficarOperacion(_expresion.opDer, value)
                     }
                 }
+            }
+            
             getSimbolo(_tipo){
                 switch(_tipo){
                     case TIPO_OPERACION.SUMA:

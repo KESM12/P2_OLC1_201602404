@@ -1,7 +1,7 @@
 const Operacion = require("../Operaciones/Operacion");
 
 function Asignacion(_instruccion, _ambito) {
-    console.log(_instruccion, "instruccion asignacion")
+    //console.log(_instruccion, "instruccion asignacion")
     const id = _instruccion.id;
     const existe = _ambito.existeSimbolo(id);
     if (existe) {

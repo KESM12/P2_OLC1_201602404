@@ -54,4 +54,3 @@ function Main(_instruccion, _ambito) {
 }
 
 module.exports = Main
-// // creo que falta el main que venga con parametros :v

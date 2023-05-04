@@ -2,7 +2,7 @@ const Ambito = require("../Ambito/Ambito")
 const Operacion = require("../Operaciones/Operacion")
 
 function SentenciaFor(_instruccion, _ambito) {
-    console.log(_instruccion, "for")
+    //console.log(_instruccion, "for")
     var mensaje = ""
     var mensajeC = "";
     var operacion = Operacion(_instruccion.condicion, _ambito);

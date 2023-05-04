@@ -217,5 +217,47 @@ const Instruccion ={
             columna: _columna
 		}
     },
+    nuevoVectorVacio: function(_tipo, _id, _tipoCreado, _tamanio, _linea, _columna){
+        return{
+            tipo: TIPO_INSTRUCCION.VEC_VACIO,
+            tipoVec: _tipo,
+            id: _id,
+            tipoCreadoVec: _tipoCreado,
+            tamanio: _tamanio,
+            linea: _linea,
+            columna: _columna
+        }
+    },
+    nuevoVectorValores: function(_tipo, _id, _lista_valores, _linea, _columna){
+        return{
+            tipo: TIPO_INSTRUCCION.VEC_VALORES,
+            tipoVec: _tipo,
+            id: _id,
+            lista_valores: _lista_valores,
+            linea: _linea,
+            columna: _columna
+        }
+    },
+    nuevoAccesoVec: function(_id, _indice, _linea, _columna){
+        return{
+            tipo: TIPO_INSTRUCCION.ACCESO_VEC,
+            id: _id,
+            indice: _indice,
+            linea: _linea,
+            columna: _columna
+        }
+    }, 
+    modVectores: function(_id, _posicion, _valor, _linea, _columna){
+        return{
+            tipo: TIPO_INSTRUCCION.MOD_VEC,
+            id: _id,
+            posicion: _posicion,
+            valor: _valor,
+            linea: _linea,
+            columna: _columna
+        }
+    }
+
+
 }
 module.exports = Instruccion;

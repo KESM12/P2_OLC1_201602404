@@ -75,7 +75,7 @@ function Bloque(_instrucciones, _ambito) {
                 cadena += mensaje
             }
         } else if (instruccion.tipo === TIPO_INSTRUCCION.DOWHILE) {
-            console.log(instruccion, "do while")
+           // console.log(instruccion, "do while")
             var ejec = SentenciaDoWhile(instruccion, _ambito)
             var mensaje = ejec.cadena
             if (mensaje != null) {

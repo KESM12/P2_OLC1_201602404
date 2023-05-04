@@ -5,7 +5,7 @@ const Operacion = require("../Operaciones/Operacion");
 function SentenciaDoWhile(_instruccion, _ambito) {
     var mensaje = "";
     var mensajeC = "";
-    console.log(_instruccion, "instruccion en el do while");
+    //console.log(_instruccion, "instruccion en el do while");
     var operacion = Operacion(_instruccion.expresion, _ambito);
     do {
       var nuevoAmbito = new Ambito(_ambito, "While");
@@ -14,7 +14,7 @@ function SentenciaDoWhile(_instruccion, _ambito) {
       mensaje += ejec.cadena;
       //console.log(mensaje, "mensaje dentro del while");
       operacion = Operacion(_instruccion.expresion, _ambito);
-      console.log(operacion, "operacion dentro del do while");
+      //console.log(operacion, "operacion dentro del do while");
     }   while (operacion.valor);
     mensaje += mensajeC;
     return { cadena: mensaje };
