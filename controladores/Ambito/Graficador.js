@@ -60,6 +60,7 @@ class Graficador {
 }
 
     recorrerInstrucciones(_padre, _hijo){
+        if(_hijo != null){
         _hijo.forEach(instruccion => {
             console.log(instruccion.tipo, "instrucciona al inicio del recorrerInstrucciones")
             if(instruccion.tipo === TIPO_INSTRUCCION.DECLARACION){
@@ -182,6 +183,7 @@ class Graficador {
             }
         });
         }
+    }
 
     //     ACCESO_VEC: 'ACCESO_VEC',
     // VEC_VALORES: 'VEC_VALORES',
